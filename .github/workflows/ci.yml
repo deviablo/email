@@ -1,0 +1,109 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Builds and checks every pull request on Ubuntu, on Fedora and as a Flatpak.
+# The .deb and .rpm packages for releases will be added as further jobs that
+# reuse the same `meson install` step.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  ubuntu:
+    name: Ubuntu
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev \
+            meson ninja-build gettext desktop-file-utils appstream \
+            libglib2.0-dev-bin
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Formatting
+        run: cargo fmt --all --check
+      - name: Lints
+        run: cargo clippy --all-targets -- -D warnings
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-audit
+      # Fails on known vulnerabilities; "unmaintained" notices only warn.
+      - name: Security advisories
+        run: cargo audit
+      - name: Tests
+        run: cargo test
+      - name: Integration test with a local mail server
+        run: |
+          build-aux/test-mail-server.sh "$RUNNER_TEMP/mail-server"
+          E_MAIL_TEST_CA="$RUNNER_TEMP/mail-server/ca.der" \
+            cargo test -p e-mail-core --test mail_server -- --ignored
+      - name: Meson build and checks
+        run: |
+          meson setup builddir --prefix=/usr
+          meson compile -C builddir
+          meson test -C builddir --print-errorlogs
+          DESTDIR="$PWD/install-root" meson install -C builddir
+
+  fedora:
+    name: Fedora
+    runs-on: ubuntu-24.04
+    container: fedora:latest
+    steps:
+      - name: Install system packages
+        run: |
+          dnf install -y --setopt=install_weak_deps=False \
+            git gcc cargo rust clippy rustfmt \
+            gtk4-devel libadwaita-devel webkitgtk6.0-devel \
+            meson ninja-build gettext desktop-file-utils appstream \
+            glib2-devel
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - name: Formatting
+        run: cargo fmt --all --check
+      - name: Lints
+        run: cargo clippy --all-targets -- -D warnings
+      - name: Tests
+        run: cargo test
+      - name: Meson build and checks
+        run: |
+          meson setup builddir --prefix=/usr
+          meson compile -C builddir
+          meson test -C builddir --print-errorlogs
+          DESTDIR="$PWD/install-root" meson install -C builddir
+
+  flatpak:
+    name: Flatpak
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+      # Updating the runtimes baked into the image fails with "Invalid
+      # cross-device link" on overlayfs. A copy lives in the writable layer.
+      - name: Make preinstalled runtimes updatable
+        run: |
+          cp -a /var/lib/flatpak /var/lib/flatpak.writable
+          rm -rf /var/lib/flatpak
+          mv /var/lib/flatpak.writable /var/lib/flatpak
+      - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
+        with:
+          bundle: e-mail.flatpak
+          manifest-path: build-aux/flatpak/io.github.deviablo.EMail.json
+          cache-key: flatpak-builder-${{ github.sha }}

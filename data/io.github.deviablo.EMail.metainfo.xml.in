@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+<component type="desktop-application">
+  <id>io.github.deviablo.EMail</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name translate="no">E-Mail</name>
+  <summary>Simple, modern email</summary>
+  <description>
+    <p>E-Mail is a simple email app for GNOME and KDE. It connects to your accounts with IMAP and SMTP and does nothing else: no calendar, no chat, no contact management.</p>
+    <ul>
+      <li>Several accounts, strictly kept apart</li>
+      <li>Conversations with replies right below the message</li>
+      <li>Writing with formatting, pictures and a signature per account</li>
+      <li>Search with filters and keyboard shortcuts</li>
+      <li>Notifications through the system, also with the window closed</li>
+      <li>External images stay blocked until you allow them</li>
+      <li>Passwords are kept in the system keyring</li>
+    </ul>
+  </description>
+  <developer id="io.github.deviablo">
+    <name translate="no">The E-Mail developers</name>
+  </developer>
+  <launchable type="desktop-id">io.github.deviablo.EMail.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/main.png</image>
+      <caption>Conversations, list and folders at a glance</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/main-dark.png</image>
+      <caption>Dark style</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/compose.png</image>
+      <caption>Writing a message with formatting and signature</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/setup.png</image>
+      <caption>Guided account setup</caption>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/deviablo/email</url>
+  <url type="bugtracker">https://github.com/deviablo/email/issues</url>
+  <url type="vcs-browser">https://github.com/deviablo/email</url>
+  <content_rating type="oars-1.1"/>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+  <provides>
+    <binary>e-mail</binary>
+  </provides>
+  <releases>
+    <release version="1.0.0" date="2026-11-22">
+      <description>
+        <p>The first release.</p>
+        <ul>
+          <li>Several IMAP accounts, strictly kept apart</li>
+          <li>Conversations with replies right below the message</li>
+          <li>Writing with formatting, pictures and a signature per account</li>
+          <li>Drafts, and mail that is sent once you are online again</li>
+          <li>Search with filters and keyboard shortcuts</li>
+          <li>Notifications through the system, also with the window closed</li>
+          <li>External images only after you allow them</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2026-11-21">
+      <description>
+        <p>First technical preview: connect one IMAP account and read your mail.</p>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<schemalist gettext-domain="e-mail">
+  <schema id="io.github.deviablo.EMail" path="/io/github/deviablo/EMail/">
+    <key name="window-width" type="i">
+      <default>1100</default>
+      <summary>Window width</summary>
+    </key>
+    <key name="window-height" type="i">
+      <default>720</default>
+      <summary>Window height</summary>
+    </key>
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Whether the window is maximized</summary>
+    </key>
+    <key name="list-width" type="i">
+      <range min="300" max="700"/>
+      <default>380</default>
+      <summary>Width of the message list</summary>
+    </key>
+    <key name="active-account" type="x">
+      <default>-1</default>
+      <summary>Account shown at start</summary>
+    </key>
+    <key name="run-in-background" type="b">
+      <default>true</default>
+      <summary>Keep running after the window is closed</summary>
+      <description>New mail is fetched and notified even when the window is closed. Also starts the app hidden after login.</description>
+    </key>
+    <key name="show-tray-icon" type="b">
+      <default>true</default>
+      <summary>Show an icon in the panel while running in the background</summary>
+    </key>
+    <key name="notifications" type="b">
+      <default>true</default>
+      <summary>Notify about new mail</summary>
+    </key>
+    <key name="muted-accounts" type="ax">
+      <default>[]</default>
+      <summary>Accounts without notifications</summary>
+    </key>
+    <key name="language" type="s">
+      <choices>
+        <choice value=""/>
+        <choice value="de"/>
+        <choice value="en"/>
+      </choices>
+      <default>""</default>
+      <summary>Language of the app</summary>
+      <description>Empty to follow the system. Takes effect after a restart.</description>
+    </key>
+    <key name="load-remote-images" type="b">
+      <default>false</default>
+      <summary>Load external images without asking</summary>
+    </key>
+    <key name="group-conversations" type="b">
+      <default>true</default>
+      <summary>Group messages into conversations</summary>
+      <description>Otherwise every message is listed on its own.</description>
+    </key>
+    <key name="empty-trash" type="b">
+      <default>false</default>
+      <summary>Remove mail older than 30 days from the trash</summary>
+    </key>
+    <key name="empty-spam" type="b">
+      <default>false</default>
+      <summary>Remove mail older than 30 days from the spam folder</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Ubuntu (from 24.04) allows user namespaces only to programs with an
+# AppArmor profile. WebKit needs them for the sandbox that shows mail, so
+# E-Mail gets the same small profile Ubuntu ships for its own WebKit apps
+# (Epiphany, Devhelp, Geary): no restrictions, only user namespaces allowed.
+# Installed by the .deb package.
+abi <abi/4.0>,
+include <tunables/global>
+
+profile io.github.deviablo.EMail /usr/bin/e-mail flags=(unconfined) {
+  userns,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/io.github.deviablo.EMail>
+}

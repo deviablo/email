@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=E-Mail
+Comment=Read your email
+Exec=e-mail
+Icon=@APP_ID@
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Network;Email;
+# Translators: search terms, separated by semicolons, ending with a semicolon.
+Keywords=mail;email;imap;inbox;
+StartupNotify=true
+DBusActivatable=true
+X-GNOME-UsesNotifications=true

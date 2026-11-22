@@ -1,0 +1,102 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Scripted user tests: the installed .deb on a virtual screen, driven
+# through the accessibility interface, against a local test mail server.
+# Running the package (not a development build) also shows that its
+# AppArmor profile lets WebKit's sandbox start on Ubuntu 24.04.
+# Screenshots and the report are kept as artifacts.
+
+name: User tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  e2e:
+    name: User tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev gettext \
+            libglib2.0-dev-bin meson ninja-build dpkg-dev desktop-file-utils appstream \
+            apparmor-utils xvfb openbox xdotool imagemagick dbus-x11 dbus-daemon \
+            at-spi2-core python3-gi gir1.2-atspi-2.0 gnome-keyring adwaita-icon-theme librsvg2-common fonts-cantarell optipng locales yaru-theme-icon
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build and install the package
+        run: |
+          build-aux/package-deb.sh dist
+          sudo apt-get install -y ./dist/*.deb
+          sudo aa-status | grep io.github.deviablo.EMail
+      - name: Test mail server
+        run: |
+          build-aux/test-mail-server.sh "$RUNNER_TEMP/mail-server"
+          sudo cp "$RUNNER_TEMP/mail-server/ca.pem" /usr/local/share/ca-certificates/e-mail-test.crt
+          sudo update-ca-certificates
+      - name: Settings
+        run: |
+          mkdir -p "$RUNNER_TEMP/schemas"
+          cp data/io.github.deviablo.EMail.gschema.xml "$RUNNER_TEMP/schemas/"
+          # A tall window, so whole forms fit on the virtual screen.
+          printf '[io.github.deviablo.EMail]\nwindow-width=1300\nwindow-height=1150\n' \
+            > "$RUNNER_TEMP/schemas/zz-e2e.gschema.override"
+          glib-compile-schemas "$RUNNER_TEMP/schemas"
+      - name: Run the user tests
+        timeout-minutes: 45
+        env:
+          E2E_APP: /usr/bin/e-mail
+          RUST_LOG: info,e_mail=debug,e_mail_core=debug
+          E_MAIL_TEST_CA_PEM: ${{ runner.temp }}/mail-server/ca.pem
+          GSETTINGS_SCHEMA_DIR: ${{ runner.temp }}/schemas
+          GSETTINGS_BACKEND: memory
+        run: dbus-run-session -- build-aux/e2e/session.sh "$RUNNER_TEMP/e2e"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: user-tests
+          path: ${{ runner.temp }}/e2e
+      # Pictures for the README and the metainfo: a made-up mailbox in a
+      # fresh profile, window 1200 × 760.
+      - name: Screenshots
+        if: success() || failure()
+        timeout-minutes: 12
+        env:
+          E2E_APP: /usr/bin/e-mail
+          E_MAIL_TEST_CA_PEM: ${{ runner.temp }}/mail-server/ca.pem
+          GSETTINGS_SCHEMA_DIR: ${{ runner.temp }}/shot-schemas
+          GSETTINGS_BACKEND: memory
+        run: |
+          mkdir -p "$RUNNER_TEMP/shot-schemas"
+          cp data/io.github.deviablo.EMail.gschema.xml "$RUNNER_TEMP/shot-schemas/"
+          printf '[io.github.deviablo.EMail]\nwindow-width=1200\nwindow-height=760\n' \
+            > "$RUNNER_TEMP/shot-schemas/zz-shots.gschema.override"
+          glib-compile-schemas "$RUNNER_TEMP/shot-schemas"
+          export HOME="$RUNNER_TEMP/shot-home"
+          export XDG_DATA_HOME="$HOME/.local/share" XDG_CONFIG_HOME="$HOME/.config" XDG_CACHE_HOME="$HOME/.cache"
+          mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME"
+          # GNOME's interface font, as on a real desktop (Xvfb has no settings daemon).
+          mkdir -p "$XDG_CONFIG_HOME/gtk-4.0"
+          printf '[Settings]\ngtk-font-name=Cantarell 11\n' > "$XDG_CONFIG_HOME/gtk-4.0/settings.ini"
+          sudo locale-gen de_DE.UTF-8 >/dev/null
+          dbus-run-session -- build-aux/e2e/session.sh "$RUNNER_TEMP/screenshots" build-aux/e2e/screenshots.py
+          cd "$RUNNER_TEMP/screenshots" && optipng -quiet -o5 setup.png main.png main-dark.png compose.png || true
+      - uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: screenshots
+          path: ${{ runner.temp }}/screenshots

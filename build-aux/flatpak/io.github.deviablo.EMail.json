@@ -1,0 +1,49 @@
+{
+  "id": "io.github.deviablo.EMail",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "51",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.rust-stable"
+  ],
+  "command": "e-mail",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--talk-name=org.kde.StatusNotifierWatcher"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/rust-stable/bin",
+    "build-args": [
+      "--share=network"
+    ],
+    "env": {
+      "CARGO_HOME": "/run/build/e-mail/cargo"
+    }
+  },
+  "modules": [
+    {
+      "name": "e-mail",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "dir",
+          "path": "../..",
+          "skip": [
+            ".flatpak-builder",
+            ".git",
+            "builddir",
+            "flatpak-build",
+            "target"
+          ]
+        }
+      ],
+      "config-opts": [
+        "-Dpackage_format=flatpak"
+      ]
+    }
+  ]
+}

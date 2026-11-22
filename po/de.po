@@ -1,0 +1,1965 @@
+# German translation for E-Mail.
+# This file is distributed under the same license as the E-Mail package (GPL-3.0-or-later).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: e-mail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-22 14:18+0100\n"
+"PO-Revision-Date: 2026-11-21 20:00+0100\n"
+"Last-Translator: Die Entwicklerinnen und Entwickler von E-Mail\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.deviablo.EMail.desktop.in.in:2
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: data/io.github.deviablo.EMail.desktop.in.in:3
+msgid "Read your email"
+msgstr "Deine E-Mails lesen"
+
+#. Translators: search terms, separated by semicolons, ending with a semicolon.
+#: data/io.github.deviablo.EMail.desktop.in.in:10
+msgid "mail;email;imap;inbox;"
+msgstr "mail;email;e-mail;imap;posteingang;"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:8
+msgid "Simple, modern email"
+msgstr "Einfach und modern mailen"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:10
+msgid ""
+"E-Mail is a simple email app for GNOME and KDE. It connects to your accounts "
+"with IMAP and SMTP and does nothing else: no calendar, no chat, no contact "
+"management."
+msgstr ""
+"E-Mail ist eine einfache E-Mail-App für GNOME und KDE. Sie verbindet sich "
+"per IMAP und SMTP mit deinen Konten und macht sonst nichts: kein Kalender, "
+"kein Chat, keine Kontaktverwaltung."
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:12
+msgid "Several accounts, strictly kept apart"
+msgstr "Mehrere Konten, streng getrennt"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:13
+#: data/io.github.deviablo.EMail.metainfo.xml.in:46 crates/app/src/about.rs:36
+msgid "Conversations with replies right below the message"
+msgstr "Unterhaltungen mit Antworten direkt unter der Nachricht"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:14
+#: data/io.github.deviablo.EMail.metainfo.xml.in:47 crates/app/src/about.rs:37
+msgid "Writing with formatting, pictures and a signature per account"
+msgstr "Schreiben mit Formatierung, Bildern und einer Signatur pro Konto"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:15
+#: data/io.github.deviablo.EMail.metainfo.xml.in:49 crates/app/src/about.rs:39
+msgid "Search with filters and keyboard shortcuts"
+msgstr "Suche mit Filtern und Tastenkürzel"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:16
+#: data/io.github.deviablo.EMail.metainfo.xml.in:50 crates/app/src/about.rs:40
+msgid "Notifications through the system, also with the window closed"
+msgstr "Benachrichtigungen über das System, auch bei geschlossenem Fenster"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:17
+msgid "External images stay blocked until you allow them"
+msgstr "Externe Bilder bleiben blockiert, bis du sie freigibst"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:18
+msgid "Passwords are kept in the system keyring"
+msgstr "Passwörter liegen im Schlüsselbund des Systems"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:43 crates/app/src/about.rs:43
+msgid "The first release."
+msgstr "Die erste Version."
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:45 crates/app/src/about.rs:35
+msgid "Several IMAP accounts, strictly kept apart"
+msgstr "Mehrere IMAP-Konten, strikt getrennt"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:48 crates/app/src/about.rs:38
+msgid "Drafts, and mail that is sent once you are online again"
+msgstr "Entwürfe, und Mails werden gesendet, sobald du wieder online bist"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:51 crates/app/src/about.rs:41
+msgid "External images only after you allow them"
+msgstr "Externe Bilder erst nach deiner Freigabe"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:57
+msgid "First technical preview: connect one IMAP account and read your mail."
+msgstr "Erste technische Vorschau: ein IMAP-Konto verbinden und Mails lesen."
+
+#: data/io.github.deviablo.EMail.gschema.xml:7
+msgid "Window width"
+msgstr "Fensterbreite"
+
+#: data/io.github.deviablo.EMail.gschema.xml:11
+msgid "Window height"
+msgstr "Fensterhöhe"
+
+#: data/io.github.deviablo.EMail.gschema.xml:15
+msgid "Whether the window is maximized"
+msgstr "Ob das Fenster maximiert ist"
+
+#: data/io.github.deviablo.EMail.gschema.xml:20
+msgid "Width of the message list"
+msgstr "Breite der Mail-Liste"
+
+#: data/io.github.deviablo.EMail.gschema.xml:24
+msgid "Account shown at start"
+msgstr "Konto, das beim Start angezeigt wird"
+
+#: data/io.github.deviablo.EMail.gschema.xml:28
+msgid "Keep running after the window is closed"
+msgstr "Nach dem Schließen des Fensters weiterlaufen"
+
+#: data/io.github.deviablo.EMail.gschema.xml:29
+msgid ""
+"New mail is fetched and notified even when the window is closed. Also starts "
+"the app hidden after login."
+msgstr ""
+"Neue Mails werden auch bei geschlossenem Fenster abgeholt und gemeldet. "
+"Startet die App außerdem unsichtbar nach der Anmeldung."
+
+#: data/io.github.deviablo.EMail.gschema.xml:33 crates/app/src/settings.rs:153
+msgid "Notify about new mail"
+msgstr "Bei neuen Mails benachrichtigen"
+
+#: data/io.github.deviablo.EMail.gschema.xml:37
+msgid "Accounts without notifications"
+msgstr "Konten ohne Benachrichtigungen"
+
+#: data/io.github.deviablo.EMail.gschema.xml:46 crates/app/src/settings.rs:74
+msgid "Language of the app"
+msgstr "Sprache der App"
+
+#: data/io.github.deviablo.EMail.gschema.xml:47
+msgid "Empty to follow the system. Takes effect after a restart."
+msgstr "Leer, um dem System zu folgen. Gilt nach einem Neustart."
+
+#: data/io.github.deviablo.EMail.gschema.xml:51
+msgid "Load external images without asking"
+msgstr "Externe Bilder ohne Nachfrage laden"
+
+#: data/io.github.deviablo.EMail.gschema.xml:55 crates/app/src/settings.rs:135
+msgid "Group messages into conversations"
+msgstr "Als Unterhaltungen gruppieren"
+
+#: data/io.github.deviablo.EMail.gschema.xml:56
+msgid "Otherwise every message is listed on its own."
+msgstr "Sonst wird jede Mail einzeln aufgeführt."
+
+#: data/io.github.deviablo.EMail.gschema.xml:60
+msgid "Remove mail older than 30 days from the trash"
+msgstr "Mails nach 30 Tagen aus dem Papierkorb entfernen"
+
+#: data/io.github.deviablo.EMail.gschema.xml:64
+msgid "Remove mail older than 30 days from the spam folder"
+msgstr "Mails nach 30 Tagen aus dem Spam-Ordner entfernen"
+
+#: crates/app/src/folder_list.rs:17 crates/app/src/window.rs:1421
+msgid "Inbox"
+msgstr "Posteingang"
+
+#: crates/app/src/folder_list.rs:18
+msgid "Drafts"
+msgstr "Entwürfe"
+
+#: crates/app/src/folder_list.rs:19
+msgid "Sent"
+msgstr "Gesendet"
+
+#: crates/app/src/folder_list.rs:20
+msgid "Archive"
+msgstr "Archiv"
+
+#: crates/app/src/folder_list.rs:21
+msgid "Spam"
+msgstr "Spam"
+
+#: crates/app/src/folder_list.rs:22
+msgid "Trash"
+msgstr "Papierkorb"
+
+#: crates/app/src/folder_list.rs:64 crates/app/src/window.rs:366
+msgid "Folders"
+msgstr "Ordner"
+
+#: crates/app/src/folder_list.rs:189
+msgid "Other Folders"
+msgstr "Eigene Ordner"
+
+#: crates/app/src/message_list.rs:116 crates/app/src/window.rs:513
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: crates/app/src/message_list.rs:360 crates/app/src/reader.rs:490
+#: crates/app/src/window.rs:1991
+msgid "Me"
+msgstr "Ich"
+
+#: crates/app/src/message_list.rs:387
+msgid "Draft"
+msgstr "Entwurf"
+
+#: crates/app/src/message_list.rs:405 crates/app/src/reader.rs:372
+#: crates/app/src/window.rs:2490
+msgid "(No subject)"
+msgstr "(Kein Betreff)"
+
+#: crates/app/src/message_list.rs:455 crates/app/src/window.rs:414
+msgid "Unread"
+msgstr "Ungelesen"
+
+#: crates/app/src/message_list.rs:492
+msgid "Has attachments"
+msgstr "Mit Anhang"
+
+#: crates/app/src/message_list.rs:495 crates/app/src/window.rs:415
+msgid "Starred"
+msgstr "Markiert"
+
+#. Translators: date of a message from this year, see strftime(3).
+#: crates/app/src/message_list.rs:622
+msgid "%b %-e"
+msgstr "%-e. %b"
+
+#. Translators: date and time of a message, see strftime(3).
+#: crates/app/src/message_list.rs:637
+msgid "%A, %B %-e, %Y, %R"
+msgstr "%A, %-e. %B %Y, %R"
+
+#: crates/app/src/reader.rs:111
+msgid "No Conversation Selected"
+msgstr "Keine Unterhaltung ausgewählt"
+
+#: crates/app/src/reader.rs:112
+msgid "Choose a message on the left to read it."
+msgstr "Wähle links eine Nachricht, um sie zu lesen."
+
+#: crates/app/src/reader.rs:191
+msgid "Conversation Menu"
+msgstr "Menü der Unterhaltung"
+
+#: crates/app/src/reader.rs:269
+#, rust-format
+msgid "Reply to {} …"
+msgstr "Antworten an {} …"
+
+#: crates/app/src/reader.rs:381 crates/app/src/reader.rs:405
+#, rust-format
+msgid "{} messages"
+msgstr "{} Nachrichten"
+
+#: crates/app/src/reader.rs:390
+msgid "with attachment"
+msgstr "mit Anhang"
+
+#: crates/app/src/reader.rs:392
+msgid "with attachments"
+msgstr "mit Anhängen"
+
+#: crates/app/src/reader.rs:398 crates/app/src/window.rs:530
+#: crates/app/src/editor.rs:135 crates/app/src/shortcuts.rs:20
+msgid "Message"
+msgstr "Nachricht"
+
+#: crates/app/src/reader.rs:401
+msgid "Conversation"
+msgstr "Unterhaltung"
+
+#: crates/app/src/reader.rs:403
+msgid "1 message"
+msgstr "1 Nachricht"
+
+#: crates/app/src/reader.rs:527
+msgid "Show message"
+msgstr "Nachricht anzeigen"
+
+#. Translators: "to <recipients> · <date>" below the sender.
+#: crates/app/src/reader.rs:572
+#, rust-format
+msgid "to {recipients} · {date}"
+msgstr "an {recipients} · {date}"
+
+#: crates/app/src/reader.rs:596
+msgid "Newest"
+msgstr "Neueste"
+
+#: crates/app/src/reader.rs:607
+msgid "Message Could Not Be Loaded"
+msgstr "Nachricht konnte nicht geladen werden"
+
+#: crates/app/src/reader.rs:646
+msgid "Actions for this message"
+msgstr "Aktionen für diese Nachricht"
+
+#: crates/app/src/reader.rs:651 crates/app/src/window.rs:2689
+#: crates/app/src/reply_editor.rs:56 crates/app/src/shortcuts.rs:22
+msgid "Reply"
+msgstr "Antworten"
+
+#: crates/app/src/reader.rs:652
+msgid "Reply to this message"
+msgstr "Auf diese Nachricht antworten"
+
+#: crates/app/src/reader.rs:657 crates/app/src/window.rs:2690
+#: crates/app/src/reply_editor.rs:57 crates/app/src/shortcuts.rs:23
+msgid "Reply All"
+msgstr "Allen antworten"
+
+#: crates/app/src/reader.rs:658
+msgid "Reply to all recipients of this message"
+msgstr "Allen Empfängern dieser Nachricht antworten"
+
+#: crates/app/src/reader.rs:663 crates/app/src/window.rs:2691
+#: crates/app/src/reply_editor.rs:58 crates/app/src/shortcuts.rs:24
+msgid "Forward"
+msgstr "Weiterleiten"
+
+#: crates/app/src/reader.rs:664
+msgid "Forward this message"
+msgstr "Diese Nachricht weiterleiten"
+
+#: crates/app/src/reader.rs:712
+msgid "Delete this message"
+msgstr "Diese Nachricht löschen"
+
+#: crates/app/src/reader.rs:758
+msgid ""
+"External images were blocked so the sender cannot see that you opened this "
+"message."
+msgstr ""
+"Externe Bilder wurden blockiert, damit der Absender nicht sieht, dass du die "
+"Mail geöffnet hast."
+
+#: crates/app/src/reader.rs:775
+msgid "Show Once"
+msgstr "Einmal anzeigen"
+
+#: crates/app/src/reader.rs:785
+#, rust-format
+msgid "Always for {}"
+msgstr "Immer für {}"
+
+#: crates/app/src/reader.rs:845
+msgid "Remove star"
+msgstr "Markierung entfernen"
+
+#: crates/app/src/reader.rs:847
+msgid "Star this message"
+msgstr "Diese Nachricht markieren"
+
+#: crates/app/src/reader.rs:861 crates/app/src/window.rs:2700
+msgid "Mark as Unread"
+msgstr "Als ungelesen markieren"
+
+#: crates/app/src/reader.rs:863 crates/app/src/window.rs:236
+#: crates/app/src/window.rs:480 crates/app/src/window.rs:2698
+msgid "Mark as Read"
+msgstr "Als gelesen markieren"
+
+#: crates/app/src/reader.rs:929 crates/app/src/shortcuts.rs:14
+msgid "Open"
+msgstr "Öffnen"
+
+#: crates/app/src/reader.rs:933
+msgid "Save As…"
+msgstr "Speichern unter …"
+
+#: crates/app/src/settings.rs:45 crates/app/src/window.rs:345
+#: crates/app/src/shortcuts.rs:36
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: crates/app/src/settings.rs:51 crates/app/src/settings.rs:54
+msgid "Accounts"
+msgstr "Konten"
+
+#: crates/app/src/settings.rs:62 crates/app/src/settings.rs:534
+#: crates/app/src/shortcuts.rs:31
+msgid "General"
+msgstr "Allgemein"
+
+#: crates/app/src/settings.rs:66
+msgid "Language"
+msgstr "Sprache"
+
+#: crates/app/src/settings.rs:72
+msgid "As in the system"
+msgstr "Wie im System"
+
+#: crates/app/src/settings.rs:75
+msgid "German or English, also different from the system"
+msgstr "Deutsch oder Englisch, unabhängig vom System möglich"
+
+#: crates/app/src/settings.rs:85
+msgid "Restart Now"
+msgstr "Jetzt neu starten"
+
+#: crates/app/src/settings.rs:91
+msgid "The new language applies after restarting E-Mail. Drafts are kept."
+msgstr ""
+"Die neue Sprache gilt nach einem Neustart von E-Mail. Entwürfe bleiben "
+"erhalten."
+
+#: crates/app/src/settings.rs:124
+msgid "Behavior"
+msgstr "Verhalten"
+
+#: crates/app/src/settings.rs:127
+msgid "Run in background"
+msgstr "Im Hintergrund weiterlaufen"
+
+#: crates/app/src/settings.rs:129
+msgid ""
+"New mail arrives even when the window is closed. E-Mail also starts after "
+"login."
+msgstr ""
+"Neue Mails kommen auch bei geschlossenem Fenster an. E-Mail startet außerdem "
+"nach der Anmeldung."
+
+#: crates/app/src/settings.rs:136
+msgid "Replies appear together with the message they answer"
+msgstr "Antworten erscheinen zusammen mit der Mail, auf die sie antworten"
+
+#: crates/app/src/settings.rs:150
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: crates/app/src/settings.rs:155
+msgid ""
+"Through the notifications of the system, never as a notice inside the app"
+msgstr "Über die Benachrichtigungen des Systems, nie als Hinweis in der App"
+
+#: crates/app/src/settings.rs:162
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: crates/app/src/settings.rs:165
+msgid "Always ask"
+msgstr "Immer fragen"
+
+#: crates/app/src/settings.rs:165
+msgid "Always show"
+msgstr "Immer anzeigen"
+
+#: crates/app/src/settings.rs:167
+msgid "External images"
+msgstr "Externe Bilder"
+
+#: crates/app/src/settings.rs:169
+msgid "Images from other servers reveal that you opened a message"
+msgstr "Bilder von fremden Servern verraten, dass du eine Mail geöffnet hast"
+
+#: crates/app/src/settings.rs:186
+msgid "Trash and Spam"
+msgstr "Papierkorb und Spam"
+
+#: crates/app/src/settings.rs:189
+msgid "Empty trash"
+msgstr "Papierkorb leeren"
+
+#: crates/app/src/settings.rs:192
+msgid "Empty spam folder"
+msgstr "Spam-Ordner leeren"
+
+#: crates/app/src/settings.rs:197
+msgid "Never automatically"
+msgstr "Niemals automatisch"
+
+#: crates/app/src/settings.rs:197
+msgid "After 30 days"
+msgstr "Nach 30 Tagen"
+
+#: crates/app/src/settings.rs:201
+msgid "Mail that has been there for 30 days is removed for good"
+msgstr "Mails, die seit 30 Tagen dort liegen, werden endgültig entfernt"
+
+#: crates/app/src/settings.rs:219
+msgid ""
+"Formatting, links and pictures such as a logo are possible. The signature is "
+"added below new messages and replies automatically. Every account has its "
+"own; switch the account in the folder sidebar to edit another one."
+msgstr ""
+"Formatierung, Links und Bilder wie ein Logo sind möglich. Die Signatur wird "
+"automatisch unter neue Mails und Antworten gesetzt. Jedes Konto hat eine "
+"eigene; wechsle das Konto in der Ordnerleiste, um eine andere zu bearbeiten."
+
+#: crates/app/src/settings.rs:223 crates/app/src/settings.rs:349
+msgid "Signature"
+msgstr "Signatur"
+
+#: crates/app/src/settings.rs:297
+msgid "Sound, lock screen and “Do Not Disturb”"
+msgstr "Ton, Sperrbildschirm und „Nicht stören“"
+
+#: crates/app/src/settings.rs:299
+msgid "Set these in the system settings under “Notifications”"
+msgstr "Regelst du in den Systemeinstellungen unter „Benachrichtigungen“"
+
+#: crates/app/src/settings.rs:304
+msgid "System Settings"
+msgstr "Systemeinstellungen"
+
+#: crates/app/src/settings.rs:341
+#, rust-format
+msgid "Signature for “{}”"
+msgstr "Signatur für „{}“"
+
+#: crates/app/src/settings.rs:425
+msgid "Active"
+msgstr "Aktiv"
+
+#: crates/app/src/settings.rs:444 crates/app/src/setup.rs:157
+#: crates/app/src/window.rs:1012 crates/app/src/window.rs:3645
+msgid "Add Account"
+msgstr "Konto hinzufügen"
+
+#: crates/app/src/settings.rs:446
+msgid "Posteo, GMX, WEB.DE, Gmail, iCloud or your own server"
+msgstr "Posteo, GMX, WEB.DE, Gmail, iCloud oder eigener Server"
+
+#: crates/app/src/settings.rs:459
+msgid ""
+"Choose an account to change its name, password or server settings, or to "
+"remove it."
+msgstr ""
+"Wähle ein Konto, um Namen, Passwort oder Servereinstellungen zu ändern oder "
+"es zu entfernen."
+
+#: crates/app/src/settings.rs:538
+msgid "Account name"
+msgstr "Kontoname"
+
+#: crates/app/src/settings.rs:539
+msgid "Only visible to you"
+msgstr "Nur für dich sichtbar"
+
+#: crates/app/src/settings.rs:545 crates/app/src/setup.rs:1252
+msgid "Your name"
+msgstr "Dein Name"
+
+#: crates/app/src/settings.rs:546
+msgid "This is how recipients see you"
+msgstr "So sehen dich die Empfänger"
+
+#: crates/app/src/settings.rs:551 crates/app/src/setup.rs:785
+#: crates/app/src/setup.rs:1083 crates/app/src/setup.rs:1654
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: crates/app/src/settings.rs:553
+msgid "To use a different address, please add a new account"
+msgstr "Für eine andere Adresse bitte ein neues Konto hinzufügen"
+
+#: crates/app/src/settings.rs:595
+msgid "Sign-in"
+msgstr "Anmeldung"
+
+#: crates/app/src/settings.rs:598
+msgid "Connection"
+msgstr "Verbindung"
+
+#: crates/app/src/settings.rs:609 crates/app/src/setup.rs:1020
+msgid "Change"
+msgstr "Ändern"
+
+#: crates/app/src/settings.rs:614 crates/app/src/setup.rs:645
+#: crates/app/src/setup.rs:1040 crates/app/src/setup.rs:1092
+msgid "Password"
+msgstr "Passwort"
+
+#: crates/app/src/settings.rs:615
+msgid "Stored in the keyring"
+msgstr "Gespeichert im Schlüsselbund"
+
+#: crates/app/src/settings.rs:620
+msgid "New password"
+msgstr "Neues Passwort"
+
+#: crates/app/src/settings.rs:625 crates/app/src/settings.rs:731
+msgid "Save and Check"
+msgstr "Speichern und prüfen"
+
+#: crates/app/src/settings.rs:669
+msgid "Please enter a new password."
+msgstr "Bitte ein neues Passwort eingeben."
+
+#: crates/app/src/settings.rs:689
+msgid "Password changed and checked successfully"
+msgstr "Passwort geändert und erfolgreich geprüft"
+
+#: crates/app/src/settings.rs:707
+msgid "Server settings"
+msgstr "Servereinstellungen"
+
+#: crates/app/src/settings.rs:708
+msgid "Only change if your provider asks you to"
+msgstr "Nur ändern, wenn dein Anbieter es verlangt"
+
+#: crates/app/src/settings.rs:711 crates/app/src/setup.rs:1105
+#: crates/app/src/setup.rs:1161
+msgid "Incoming mail (IMAP)"
+msgstr "Eingehende Mails (IMAP)"
+
+#: crates/app/src/settings.rs:712 crates/app/src/setup.rs:1106
+#: crates/app/src/setup.rs:1162
+msgid "Outgoing mail (SMTP)"
+msgstr "Ausgehende Mails (SMTP)"
+
+#: crates/app/src/settings.rs:714
+msgid "Server for incoming mail (IMAP)"
+msgstr "Server für eingehende Mails (IMAP)"
+
+#: crates/app/src/settings.rs:716
+msgid "Server for outgoing mail (SMTP)"
+msgstr "Server für ausgehende Mails (SMTP)"
+
+#: crates/app/src/settings.rs:726 crates/app/src/setup.rs:1088
+msgid "User name"
+msgstr "Benutzername"
+
+#: crates/app/src/settings.rs:732
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: crates/app/src/settings.rs:768 crates/app/src/setup.rs:418
+msgid "Please fill in the server names and the user name."
+msgstr "Bitte trage die Server und den Benutzernamen ein."
+
+#: crates/app/src/settings.rs:785
+msgid "Server settings saved and checked"
+msgstr "Servereinstellungen gespeichert und geprüft"
+
+#: crates/app/src/settings.rs:796
+msgid "Remove Account"
+msgstr "Konto entfernen"
+
+#: crates/app/src/settings.rs:809
+#, rust-format
+msgid "Really remove “{}”?"
+msgstr "„{}“ wirklich entfernen?"
+
+#: crates/app/src/settings.rs:818
+msgid ""
+"Your emails stay with your provider. This app only forgets the account, the "
+"data stored on this device and the password in the keyring."
+msgstr ""
+"Deine Mails bleiben bei deinem Anbieter erhalten. Diese App vergisst nur das "
+"Konto, die auf diesem Gerät gespeicherten Daten und das Passwort im "
+"Schlüsselbund."
+
+#: crates/app/src/settings.rs:829 crates/app/src/settings.rs:934
+#: crates/app/src/editor.rs:355
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: crates/app/src/settings.rs:833
+msgid "Remove"
+msgstr "Entfernen"
+
+#: crates/app/src/settings.rs:892
+msgid "Edit Account"
+msgstr "Konto bearbeiten"
+
+#: crates/app/src/settings.rs:969
+#, rust-format
+msgid "Last synced at {}"
+msgstr "Zuletzt synchronisiert um {}"
+
+#: crates/app/src/settings.rs:972
+msgid "Not synced yet"
+msgstr "Noch nicht synchronisiert"
+
+#: crates/app/src/setup.rs:191
+msgid "Back"
+msgstr "Zurück"
+
+#: crates/app/src/setup.rs:194
+msgid "Please wait a moment …"
+msgstr "Bitte einen Moment Geduld …"
+
+#: crates/app/src/setup.rs:363
+msgid "Please enter your email address."
+msgstr "Bitte gib deine E-Mail-Adresse ein."
+
+#: crates/app/src/setup.rs:367 crates/app/src/setup.rs:408
+msgid ""
+"This address looks incomplete. It needs an @ and an ending, for example "
+"name@posteo.de."
+msgstr ""
+"Diese Adresse sieht unvollständig aus. Sie braucht ein @ und eine Endung, "
+"zum Beispiel name@posteo.de."
+
+#: crates/app/src/setup.rs:371 crates/app/src/setup.rs:412
+#: crates/app/src/setup.rs:558
+msgid "This account has already been added."
+msgstr "Dieses Konto ist schon eingerichtet."
+
+#: crates/app/src/setup.rs:391 crates/app/src/setup.rs:422
+msgid "Please enter your password."
+msgstr "Bitte gib dein Passwort ein."
+
+#: crates/app/src/setup.rs:542 crates/app/src/setup.rs:1639
+msgid "New Account"
+msgstr "Neues Konto"
+
+#: crates/app/src/setup.rs:572
+msgid ""
+"The password could not be saved in the system keyring. Please make sure the "
+"keyring is unlocked and try again."
+msgstr ""
+"Das Passwort konnte nicht im Schlüsselbund des Systems gespeichert werden. "
+"Bitte prüfe, ob der Schlüsselbund entsperrt ist, und versuche es noch einmal."
+
+#: crates/app/src/setup.rs:640
+msgid "Which address?"
+msgstr "Welche Adresse?"
+
+#: crates/app/src/setup.rs:643
+msgid "Password checked"
+msgstr "Passwort geprüft"
+
+#: crates/app/src/setup.rs:648
+msgid "Mailbox connected"
+msgstr "Postfach verbunden"
+
+#: crates/app/src/setup.rs:650 crates/app/src/setup.rs:1208
+msgid "Open mailbox"
+msgstr "Postfach öffnen"
+
+#: crates/app/src/setup.rs:655
+msgid "Name and account name"
+msgstr "Name und Kontoname"
+
+#: crates/app/src/setup.rs:712
+#, rust-format
+msgid "Step {} of 4"
+msgstr "Schritt {} von 4"
+
+#: crates/app/src/setup.rs:742 crates/app/src/setup.rs:978
+#: crates/app/src/setup.rs:1181
+msgid "Enter Servers Yourself"
+msgstr "Server selbst eintragen"
+
+#: crates/app/src/setup.rs:779
+msgid "Which address would you like to add?"
+msgstr "Welche Adresse möchtest du hinzufügen?"
+
+#: crates/app/src/setup.rs:781
+msgid "We recognise your provider and set up everything else for you."
+msgstr "Wir erkennen deinen Anbieter und richten alles Weitere für dich ein."
+
+#: crates/app/src/setup.rs:817
+msgid "Continue"
+msgstr "Weiter"
+
+#: crates/app/src/setup.rs:828
+msgid "Preparation"
+msgstr "Vorbereitung"
+
+#: crates/app/src/setup.rs:830
+msgid "Create an app password"
+msgstr "Erstelle ein App-Passwort"
+
+#: crates/app/src/setup.rs:832
+#, rust-format
+msgid "Allow access at {}"
+msgstr "Erlaube den Zugriff bei {}"
+
+#: crates/app/src/setup.rs:837
+#, rust-format
+msgid ""
+"For security reasons, {} does not accept your normal password in mail apps. "
+"An app password is created in two minutes."
+msgstr ""
+"Aus Sicherheitsgründen nimmt {} in Mailprogrammen nicht dein normales "
+"Passwort an. Ein App-Passwort ist in zwei Minuten erstellt."
+
+#: crates/app/src/setup.rs:844
+#, rust-format
+msgid ""
+"{} only lets mail apps in after you allow it once. This takes about a minute."
+msgstr ""
+"{} lässt Mailprogramme erst zu, wenn du das einmal freigibst. Das dauert "
+"etwa eine Minute."
+
+#: crates/app/src/setup.rs:851
+msgid "Requires an app password for mail apps"
+msgstr "Verlangt ein App-Passwort für Mailprogramme"
+
+#: crates/app/src/setup.rs:853
+msgid "Access for mail apps is switched off at first"
+msgstr "Zugriff für Mailprogramme ist anfangs ausgeschaltet"
+
+#: crates/app/src/setup.rs:882
+#, rust-format
+msgid "Open the instructions from {}"
+msgstr "Anleitung von {} öffnen"
+
+#: crates/app/src/setup.rs:905
+msgid "I Have an App Password"
+msgstr "Ich habe ein App-Passwort"
+
+#: crates/app/src/setup.rs:907
+msgid "Done, Continue"
+msgstr "Erledigt, weiter"
+
+#: crates/app/src/setup.rs:917
+msgid "Note"
+msgstr "Hinweis"
+
+#: crates/app/src/setup.rs:918
+msgid "Microsoft accounts are not supported"
+msgstr "Microsoft-Konten werden nicht unterstützt"
+
+#: crates/app/src/setup.rs:920
+msgid ""
+"Microsoft no longer lets mail apps like this one sign in with a password. "
+"Unfortunately, there is nothing we can do about that."
+msgstr ""
+"Microsoft erlaubt Mailprogrammen wie diesem keine Anmeldung mit Passwort "
+"mehr. Daran können wir leider nichts ändern."
+
+#: crates/app/src/setup.rs:927
+msgid "Outlook, Hotmail and Live"
+msgstr "Outlook, Hotmail und Live"
+
+#: crates/app/src/setup.rs:934
+msgid ""
+"Your address keeps working in the browser on outlook.com and in the Outlook "
+"app."
+msgstr ""
+"Deine Adresse funktioniert weiter im Browser auf outlook.com und in der "
+"Outlook-App."
+
+#: crates/app/src/setup.rs:938
+msgid "Enter a Different Address"
+msgstr "Andere Adresse eingeben"
+
+#: crates/app/src/setup.rs:949
+msgid "Settings not found"
+msgstr "Einstellungen nicht gefunden"
+
+#: crates/app/src/setup.rs:952
+#, rust-format
+msgid ""
+"We could not find the server settings for <b>{}</b> automatically. How would "
+"you like to continue?"
+msgstr ""
+"Für <b>{}</b> konnten wir die Servereinstellungen nicht automatisch finden. "
+"Wie möchtest du weitermachen?"
+
+#: crates/app/src/setup.rs:967
+msgid "Check Address"
+msgstr "Adresse prüfen"
+
+#: crates/app/src/setup.rs:968
+msgid "Maybe a typo has crept in."
+msgstr "Vielleicht hat sich ein Tippfehler eingeschlichen."
+
+#: crates/app/src/setup.rs:979
+msgid "The details are on your provider's help page."
+msgstr "Die Angaben stehen auf der Hilfeseite deines Anbieters."
+
+#: crates/app/src/setup.rs:1006
+msgid "Enter the app password"
+msgstr "App-Passwort eingeben"
+
+#: crates/app/src/setup.rs:1008
+msgid "Enter your password"
+msgstr "Passwort eingeben"
+
+#: crates/app/src/setup.rs:1012
+#, rust-format
+msgid "The app password you just created at {}. Not your normal password."
+msgstr ""
+"Das App-Passwort, das du gerade bei {} erstellt hast. Nicht dein normales "
+"Passwort."
+
+#: crates/app/src/setup.rs:1016
+msgid "The same password you use to sign in at your provider."
+msgstr "Dasselbe Passwort, mit dem du dich bei deinem Anbieter anmeldest."
+
+#: crates/app/src/setup.rs:1031
+msgid "Own provider"
+msgstr "Eigener Anbieter"
+
+#: crates/app/src/setup.rs:1038
+msgid "App password"
+msgstr "App-Passwort"
+
+#: crates/app/src/setup.rs:1050
+msgid ""
+"Stored safely in the keyring and only leaves this device to sign in to your "
+"provider."
+msgstr ""
+"Wird sicher im Schlüsselbund gespeichert und verlässt dieses Gerät nur zur "
+"Anmeldung bei deinem Anbieter."
+
+#: crates/app/src/setup.rs:1058
+msgid "Sign In"
+msgstr "Anmelden"
+
+#: crates/app/src/setup.rs:1064
+msgid "Manual"
+msgstr "Manuell"
+
+#: crates/app/src/setup.rs:1065
+msgid "Enter servers yourself"
+msgstr "Server selbst eintragen"
+
+#: crates/app/src/setup.rs:1067
+msgid ""
+"You can find the details on your provider's help page, usually under “IMAP "
+"settings”."
+msgstr ""
+"Die Angaben findest du auf der Hilfeseite deines Anbieters, meist unter "
+"„IMAP-Einstellungen“."
+
+#: crates/app/src/setup.rs:1098
+msgid "Account"
+msgstr "Konto"
+
+#: crates/app/src/setup.rs:1136 crates/app/src/setup.rs:1180
+#: crates/app/src/setup.rs:1656
+msgid "Connect"
+msgstr "Verbinden"
+
+#: crates/app/src/setup.rs:1152
+msgid "Check the mail server"
+msgstr "Mailserver prüfen"
+
+#: crates/app/src/setup.rs:1155
+#, rust-format
+msgid ""
+"These servers were found for {}, but they do not belong to that domain. Only "
+"continue if they are your provider's; otherwise enter the servers yourself."
+msgstr ""
+"Diese Server wurden für {} gefunden, gehören aber nicht zu dieser Domain. "
+"Mach nur weiter, wenn es die Server deines Anbieters sind; sonst trag die "
+"Server selbst ein."
+
+#: crates/app/src/setup.rs:1188
+msgid "Connecting your mailbox"
+msgstr "Postfach wird verbunden"
+
+#: crates/app/src/setup.rs:1189
+msgid "This usually takes only a few seconds."
+msgstr "Das dauert meist nur ein paar Sekunden."
+
+#: crates/app/src/setup.rs:1200
+msgid "Reach the server"
+msgstr "Server erreichen"
+
+#: crates/app/src/setup.rs:1203
+#, rust-format
+msgid "Find settings for {}"
+msgstr "Einstellungen für {} finden"
+
+#: crates/app/src/setup.rs:1204
+msgid "Find settings for your provider"
+msgstr "Einstellungen für deinen Anbieter finden"
+
+#: crates/app/src/setup.rs:1208 crates/app/src/setup.rs:1655
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: crates/app/src/setup.rs:1242
+msgid "Connected! Two more things"
+msgstr "Verbunden! Noch zwei Angaben"
+
+#: crates/app/src/setup.rs:1244
+msgid ""
+"We have already suggested something. You can change both later in the "
+"settings."
+msgstr ""
+"Wir haben schon etwas vorgeschlagen. Beides kannst du später in den "
+"Einstellungen ändern."
+
+#: crates/app/src/setup.rs:1257
+msgid "This is how the recipients of your emails see you."
+msgstr "So sehen dich die Empfänger deiner Mails."
+
+#: crates/app/src/setup.rs:1260
+msgid "Name for this account"
+msgstr "Name für dieses Konto"
+
+#: crates/app/src/setup.rs:1265
+msgid "Only visible to you, for example “Personal” or “Club”."
+msgstr "Nur für dich sichtbar, zum Beispiel „Privat“ oder „Verein“."
+
+#: crates/app/src/setup.rs:1275
+msgid "How it looks to recipients"
+msgstr "So sieht es beim Empfänger aus"
+
+#: crates/app/src/setup.rs:1315
+msgid "Done"
+msgstr "Fertig"
+
+#: crates/app/src/setup.rs:1327
+msgid "Finished"
+msgstr "Abgeschlossen"
+
+#: crates/app/src/setup.rs:1328
+msgid "All set"
+msgstr "Alles bereit"
+
+#: crates/app/src/setup.rs:1330
+msgid ""
+"The emails from the last 30 days are loading now. Older ones follow in the "
+"background, and you can start right away."
+msgstr ""
+"Die Mails der letzten 30 Tage werden jetzt geladen. Ältere folgen im "
+"Hintergrund, du kannst sofort loslegen."
+
+#: crates/app/src/setup.rs:1345
+msgid "Open Inbox"
+msgstr "Posteingang öffnen"
+
+#: crates/app/src/setup.rs:1346
+msgid "Another Account"
+msgstr "Weiteres Konto"
+
+#: crates/app/src/setup.rs:1361
+msgid "The password was not accepted. Please check it and try again."
+msgstr ""
+"Das Passwort wurde nicht angenommen. Prüfe es bitte und versuche es noch "
+"einmal."
+
+#: crates/app/src/setup.rs:1365
+#, rust-format
+msgid ""
+"The app password was not accepted. Make sure you enter the app password, not "
+"your normal {} password."
+msgstr ""
+"Das App-Passwort wurde nicht angenommen. Achte darauf, das App-Passwort "
+"einzugeben, nicht dein normales {}-Passwort."
+
+#: crates/app/src/setup.rs:1371
+#, rust-format
+msgid ""
+"Signing in did not work. Check your password and whether access is really "
+"allowed at {}."
+msgstr ""
+"Die Anmeldung hat nicht geklappt. Prüfe dein Passwort und ob der Zugriff bei "
+"{} wirklich erlaubt ist."
+
+#: crates/app/src/setup.rs:1377
+#, rust-format
+msgid ""
+"The server for incoming mail ({}) could not be reached. Check your internet "
+"connection and the server details."
+msgstr ""
+"Der Server für eingehende Mails ({}) ist nicht erreichbar. Prüfe deine "
+"Internetverbindung und die Serverangaben."
+
+#: crates/app/src/setup.rs:1383
+#, rust-format
+msgid ""
+"Receiving mail works, but the server for outgoing mail ({}) could not be "
+"reached."
+msgstr ""
+"Mails empfangen klappt, aber der Server für ausgehende Mails ({}) ist nicht "
+"erreichbar."
+
+#: crates/app/src/setup.rs:1388
+msgid ""
+"Signing in worked, but the mailbox could not be opened. Please try again "
+"later."
+msgstr ""
+"Die Anmeldung hat geklappt, aber das Postfach ließ sich nicht öffnen. Bitte "
+"versuche es später noch einmal."
+
+#: crates/app/src/setup.rs:1428
+msgid "Works with, for example"
+msgstr "Funktioniert zum Beispiel mit"
+
+#: crates/app/src/setup.rs:1441
+msgid "your own server"
+msgstr "eigener Server"
+
+#: crates/app/src/setup.rs:1469
+msgid "Unfortunately not supported"
+msgstr "Wird leider nicht unterstützt"
+
+#: crates/app/src/setup.rs:1477
+msgid "Settings are known"
+msgstr "Einstellungen sind bekannt"
+
+#: crates/app/src/setup.rs:1479
+msgid "Settings are known · one short extra step"
+msgstr "Einstellungen sind bekannt · ein kurzer Zwischenschritt"
+
+#: crates/app/src/setup.rs:1487
+msgid "Settings will be looked up in the next step"
+msgstr "Einstellungen werden im nächsten Schritt gesucht"
+
+#: crates/app/src/setup.rs:1498
+msgid "Open your Google account and go to “Security”."
+msgstr "Öffne dein Google-Konto und gehe zu „Sicherheit“."
+
+#: crates/app/src/setup.rs:1499
+msgid "Turn on 2-Step Verification if it is still off."
+msgstr "Schalte die Bestätigung in zwei Schritten ein, falls sie noch aus ist."
+
+#: crates/app/src/setup.rs:1500
+msgid "Under “App passwords”, create a new password, for example named “Mail”."
+msgstr ""
+"Erstelle unter „App-Passwörter“ ein neues Passwort, zum Beispiel mit dem "
+"Namen „Mail“."
+
+#: crates/app/src/setup.rs:1503
+msgid "Sign in at account.apple.com."
+msgstr "Melde dich auf account.apple.com an."
+
+#: crates/app/src/setup.rs:1504
+msgid "Open “Sign-In and Security” and then “App-Specific Passwords”."
+msgstr ""
+"Öffne „Anmeldung und Sicherheit“ und dann „App-spezifische Passwörter“."
+
+#: crates/app/src/setup.rs:1505
+msgid "Create a new password, for example named “Mail”."
+msgstr "Erstelle ein neues Passwort, zum Beispiel mit dem Namen „Mail“."
+
+#: crates/app/src/setup.rs:1508
+msgid "Sign in to Yahoo and open “Account security”."
+msgstr "Melde dich bei Yahoo an und öffne „Kontosicherheit“."
+
+#: crates/app/src/setup.rs:1509
+msgid "Choose “Generate app password”."
+msgstr "Wähle „App-Passwort generieren“."
+
+#: crates/app/src/setup.rs:1510
+msgid "Enter “Mail” as the name and copy the password shown."
+msgstr "Gib als Namen „Mail“ ein und kopiere das angezeigte Passwort."
+
+#: crates/app/src/setup.rs:1513
+msgid "Sign in at gmx.net."
+msgstr "Melde dich auf gmx.net an."
+
+#: crates/app/src/setup.rs:1514
+msgid "Open “Email settings” and then “POP3/IMAP retrieval”."
+msgstr "Öffne „E-Mail-Einstellungen“ und dann „POP3/IMAP Abruf“."
+
+#: crates/app/src/setup.rs:1515 crates/app/src/setup.rs:1520
+msgid "Tick “Allow access via POP3 and IMAP” and save."
+msgstr ""
+"Setze den Haken bei „Zugriff über POP3 und IMAP erlauben“ und speichere."
+
+#: crates/app/src/setup.rs:1518
+msgid "Sign in at web.de."
+msgstr "Melde dich auf web.de an."
+
+#: crates/app/src/setup.rs:1519
+msgid "Open “Settings” and then “POP3/IMAP retrieval”."
+msgstr "Öffne „Einstellungen“ und dann „POP3/IMAP Abruf“."
+
+#: crates/app/src/setup.rs:1577
+msgid "Server"
+msgstr "Server"
+
+#: crates/app/src/setup.rs:1582
+msgid "Port"
+msgstr "Port"
+
+#: crates/app/src/setup.rs:1585
+msgid "Encryption"
+msgstr "Verschlüsselung"
+
+#: crates/app/src/setup.rs:1587
+msgid "SSL/TLS (recommended)"
+msgstr "SSL/TLS (empfohlen)"
+
+#: crates/app/src/setup.rs:1588
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+#: crates/app/src/setup.rs:1646
+msgid "Takes about a minute."
+msgstr "Dauert etwa eine Minute."
+
+#: crates/app/src/setup.rs:1657
+msgid "Finish"
+msgstr "Fertig"
+
+#: crates/app/src/setup.rs:1710
+msgid "Your login details stay on this device, in the keyring."
+msgstr "Deine Zugangsdaten bleiben auf diesem Gerät, im Schlüsselbund."
+
+#: crates/app/src/widgets.rs:152
+msgid "Connecting…"
+msgstr "Verbinde …"
+
+#: crates/app/src/widgets.rs:153
+msgid "Connected"
+msgstr "Verbunden"
+
+#: crates/app/src/widgets.rs:154
+msgid "Offline"
+msgstr "Offline"
+
+#: crates/app/src/widgets.rs:155
+msgid "Sign-in failed"
+msgstr "Anmeldung fehlgeschlagen"
+
+#: crates/app/src/window.rs:242 crates/app/src/window.rs:483
+#: crates/app/src/window.rs:2684 crates/app/src/window.rs:2727
+#: crates/app/src/shortcuts.rs:27
+msgid "Delete"
+msgstr "Löschen"
+
+#: crates/app/src/window.rs:346 crates/app/src/shortcuts.rs:38
+msgid "Keyboard Shortcuts"
+msgstr "Tastenkürzel"
+
+#: crates/app/src/window.rs:347
+msgid "About E-Mail"
+msgstr "Über diese App"
+
+#: crates/app/src/window.rs:352
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+#: crates/app/src/window.rs:375 crates/app/src/window.rs:381
+#: crates/app/src/window.rs:3581
+msgid "Select"
+msgstr "Auswählen"
+
+#: crates/app/src/window.rs:379
+msgid "Select conversations"
+msgstr "Unterhaltungen auswählen"
+
+#: crates/app/src/window.rs:384 crates/app/src/window.rs:392
+#: crates/app/src/window.rs:3586
+msgid "New Mail"
+msgstr "Neue Mail"
+
+#: crates/app/src/window.rs:388
+msgid "New Mail (Ctrl+N)"
+msgstr "Neue Mail (Strg+N)"
+
+#: crates/app/src/window.rs:398
+msgid "Search (/)"
+msgstr "Suchen (/)"
+
+#: crates/app/src/window.rs:400 crates/app/src/shortcuts.rs:34
+msgid "Search"
+msgstr "Suchen"
+
+#: crates/app/src/window.rs:416
+msgid "With Attachment"
+msgstr "Mit Anhang"
+
+#: crates/app/src/window.rs:417
+msgid "Only This Folder"
+msgstr "Nur dieser Ordner"
+
+#: crates/app/src/window.rs:436
+msgid "Searching on the server …"
+msgstr "Suche auf dem Server …"
+
+#: crates/app/src/window.rs:458 crates/app/src/window.rs:1441
+msgid "Nothing Here"
+msgstr "Hier ist nichts"
+
+#: crates/app/src/window.rs:459 crates/app/src/window.rs:1443
+msgid "This folder is empty."
+msgstr "Dieser Ordner ist leer."
+
+#: crates/app/src/window.rs:481 crates/app/src/window.rs:2709
+#: crates/app/src/shortcuts.rs:25
+msgid "Star"
+msgstr "Markieren"
+
+#: crates/app/src/window.rs:482 crates/app/src/window.rs:1873
+#: crates/app/src/window.rs:2715
+msgid "Move To…"
+msgstr "Verschieben nach …"
+
+#: crates/app/src/window.rs:509
+msgid "Drag to change the width of the list"
+msgstr "Ziehen, um die Breite der Liste zu ändern"
+
+#: crates/app/src/window.rs:697
+#, rust-format
+msgid "{} selected"
+msgstr "{} ausgewählt"
+
+#: crates/app/src/window.rs:755 crates/app/src/window.rs:1761
+#, rust-format
+msgid "Moved to {}"
+msgstr "Verschoben nach {}"
+
+#: crates/app/src/window.rs:896 crates/app/src/window.rs:1202
+msgid "No password found in the system keyring."
+msgstr "Im Schlüsselbund des Systems wurde kein Passwort gefunden."
+
+#: crates/app/src/window.rs:1036
+msgid "The account could not be saved. Please try again."
+msgstr ""
+"Das Konto konnte nicht gespeichert werden. Bitte versuche es noch einmal."
+
+#: crates/app/src/window.rs:1041
+msgid "The local storage for this account could not be created."
+msgstr "Der lokale Speicher für dieses Konto konnte nicht angelegt werden."
+
+#: crates/app/src/window.rs:1091 crates/app/src/window.rs:1638
+#: crates/app/src/window.rs:1952 crates/app/src/compose_window.rs:195
+msgid "Undo"
+msgstr "Rückgängig"
+
+#: crates/app/src/window.rs:1185
+msgid "The password could not be saved in the system keyring."
+msgstr ""
+"Das Passwort konnte nicht im Schlüsselbund des Systems gespeichert werden."
+
+#: crates/app/src/window.rs:1218
+msgid "The settings could not be saved. Please try again."
+msgstr ""
+"Die Einstellungen konnten nicht gespeichert werden. Bitte versuche es noch "
+"einmal."
+
+#: crates/app/src/window.rs:1281
+#, rust-format
+msgid "Account “{}” removed"
+msgstr "Konto „{}“ entfernt"
+
+#: crates/app/src/window.rs:1350
+#, rust-format
+msgid "Switch account · {}"
+msgstr "Konto wechseln · {}"
+
+#: crates/app/src/window.rs:1391
+#, rust-format
+msgid "{}, {} unread"
+msgstr "{}, {} ungelesen"
+
+#: crates/app/src/window.rs:1436
+msgid "No Spam"
+msgstr "Kein Spam"
+
+#: crates/app/src/window.rs:1438
+msgid "The server has not sorted anything out."
+msgstr "Der Server hat nichts aussortiert."
+
+#: crates/app/src/window.rs:1675
+msgid "Marked as read"
+msgstr "Als gelesen markiert"
+
+#: crates/app/src/window.rs:1678
+msgid "Marked as unread"
+msgstr "Als ungelesen markiert"
+
+#: crates/app/src/window.rs:1728
+msgid "Conversation deleted"
+msgstr "Unterhaltung gelöscht"
+
+#: crates/app/src/window.rs:1731
+#, rust-format
+msgid "{} conversations deleted"
+msgstr "{} Unterhaltungen gelöscht"
+
+#: crates/app/src/window.rs:1737 crates/app/src/window.rs:1838
+msgid "Permanently deleted"
+msgstr "Endgültig gelöscht"
+
+#: crates/app/src/window.rs:1780 crates/app/src/window.rs:1791
+#, rust-format
+msgid "{} updated"
+msgstr "{} aktualisiert"
+
+#: crates/app/src/window.rs:1820
+msgid "Message marked as read"
+msgstr "Nachricht als gelesen markiert"
+
+#: crates/app/src/window.rs:1822
+msgid "Message marked as unread"
+msgstr "Nachricht als ungelesen markiert"
+
+#: crates/app/src/window.rs:1836
+msgid "Message deleted"
+msgstr "Nachricht gelöscht"
+
+#: crates/app/src/window.rs:1876 crates/app/src/window.rs:2719
+msgid "Not Spam"
+msgstr "Kein Spam"
+
+#: crates/app/src/window.rs:1878 crates/app/src/window.rs:2721
+msgid "Mark as Spam"
+msgstr "Als Spam markieren"
+
+#: crates/app/src/window.rs:1884
+msgid "Show Source"
+msgstr "Quelltext anzeigen"
+
+#: crates/app/src/window.rs:1885
+msgid "Print…"
+msgstr "Drucken …"
+
+#: crates/app/src/window.rs:1912
+msgid "Moved to the inbox"
+msgstr "In den Posteingang verschoben"
+
+#: crates/app/src/window.rs:1916
+msgid "Marked as spam. New mail from this sender goes to spam."
+msgstr "Als Spam markiert. Neue Mails dieses Absenders landen im Spam-Ordner."
+
+#: crates/app/src/window.rs:1921
+msgid "This account has no spam folder."
+msgstr "Dieses Konto hat keinen Spam-Ordner."
+
+#: crates/app/src/window.rs:1981
+msgid "The message is still loading."
+msgstr "Die Nachricht wird noch geladen."
+
+#: crates/app/src/window.rs:2012
+msgid "To:"
+msgstr "An:"
+
+#: crates/app/src/window.rs:2013
+msgid "This message has not been loaded yet."
+msgstr "Diese Nachricht wurde noch nicht geladen."
+
+#: crates/app/src/window.rs:2088
+msgid "The message could not be read."
+msgstr "Die Nachricht konnte nicht gelesen werden."
+
+#: crates/app/src/window.rs:2138
+msgid "The attachment could not be read."
+msgstr "Der Anhang konnte nicht gelesen werden."
+
+#: crates/app/src/window.rs:2157 crates/app/src/window.rs:2168
+msgid "The attachment could not be opened."
+msgstr "Der Anhang konnte nicht geöffnet werden."
+
+#: crates/app/src/window.rs:2177
+msgid "Save Attachment"
+msgstr "Anhang speichern"
+
+#: crates/app/src/window.rs:2194
+msgid "Attachment saved"
+msgstr "Anhang gespeichert"
+
+#: crates/app/src/window.rs:2197
+msgid "The attachment could not be saved."
+msgstr "Der Anhang konnte nicht gespeichert werden."
+
+#: crates/app/src/window.rs:2259
+msgid "A change could not be saved on the server."
+msgstr "Eine Änderung konnte nicht auf dem Server gespeichert werden."
+
+#: crates/app/src/window.rs:2262
+msgid "Message sent"
+msgstr "Nachricht gesendet"
+
+#. Translators: title of a notification; {count} is a number.
+#: crates/app/src/window.rs:2487
+#, rust-format
+msgid "{count} new messages · {account}"
+msgstr "{count} neue Nachrichten · {account}"
+
+#. Translators: title of a notification; {name} is the sender.
+#: crates/app/src/window.rs:2489
+#, rust-format
+msgid "{name} · {account}"
+msgstr "{name} · {account}"
+
+#. Translators: last line of a notification listing messages.
+#: crates/app/src/window.rs:2492
+#, rust-format
+msgid "and {count} more"
+msgstr "und {count} weitere"
+
+#: crates/app/src/window.rs:2682
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: crates/app/src/window.rs:2707
+msgid "Remove Star"
+msgstr "Markierung entfernen"
+
+#: crates/app/src/window.rs:3008 crates/app/src/window.rs:3009
+msgid "Search Results"
+msgstr "Suchergebnisse"
+
+#: crates/app/src/window.rs:3013
+msgid "No Results"
+msgstr "Keine Treffer"
+
+#: crates/app/src/window.rs:3015
+msgid "Try another word or remove a filter."
+msgstr "Versuche einen anderen Begriff oder entferne einen Filter."
+
+#: crates/app/src/window.rs:3036
+#, rust-format
+msgid "Search in “{}”"
+msgstr "In „{}“ suchen"
+
+#: crates/app/src/window.rs:3040
+msgid "all folders"
+msgstr "allen Ordnern"
+
+#: crates/app/src/window.rs:3043
+#, rust-format
+msgid "1 result in {}"
+msgstr "1 Treffer in {}"
+
+#: crates/app/src/window.rs:3045
+#, rust-format
+msgid "{} results in {}"
+msgstr "{} Treffer in {}"
+
+#: crates/app/src/window.rs:3272
+msgid "The signature could not be saved."
+msgstr "Die Signatur konnte nicht gespeichert werden."
+
+#. Translators: introduces the quoted message in a reply.
+#: crates/app/src/window.rs:3279
+#, rust-format
+msgid "On {date}, {name} wrote:"
+msgstr "Am {date} schrieb {name}:"
+
+#: crates/app/src/window.rs:3280
+msgid "Forwarded message"
+msgstr "Weitergeleitete Nachricht"
+
+#: crates/app/src/window.rs:3281 crates/app/src/compose_window.rs:62
+msgid "From"
+msgstr "Von"
+
+#: crates/app/src/window.rs:3282
+msgid "Date"
+msgstr "Datum"
+
+#: crates/app/src/window.rs:3283 crates/app/src/compose_window.rs:94
+#: crates/app/src/compose_window.rs:105 crates/app/src/compose_window.rs:107
+msgid "Subject"
+msgstr "Betreff"
+
+#: crates/app/src/window.rs:3284 crates/app/src/composer.rs:61
+msgid "To"
+msgstr "An"
+
+#: crates/app/src/window.rs:3423
+msgid "Reply saved as draft"
+msgstr "Antwort als Entwurf gespeichert"
+
+#: crates/app/src/window.rs:3491
+msgid ""
+"No connection. The message will be sent as soon as you are online again."
+msgstr ""
+"Keine Verbindung. Die Nachricht wird gesendet, sobald du wieder online bist."
+
+#: crates/app/src/window.rs:3515
+msgid "The message could not be sent. Please try again."
+msgstr ""
+"Die Nachricht konnte nicht gesendet werden. Bitte versuche es noch einmal."
+
+#: crates/app/src/window.rs:3544
+msgid "Message Not Sent"
+msgstr "Nachricht nicht gesendet"
+
+#: crates/app/src/window.rs:3547
+#, rust-format
+msgid ""
+"The outgoing mail server of “{}” refused the message. It is waiting in "
+"Drafts so you can correct it.\n"
+"\n"
+"The server said: {}"
+msgstr ""
+"Der Postausgangsserver von „{}“ hat die Nachricht abgelehnt. Sie liegt jetzt "
+"in „Entwürfe“, damit du sie korrigieren kannst.\n"
+"\n"
+"Der Server meldet: {}"
+
+#: crates/app/src/window.rs:3553
+msgid "OK"
+msgstr "OK"
+
+#: crates/app/src/window.rs:3559
+#, rust-format
+msgid ""
+"Sending from “{}” failed: the outgoing mail server did not accept the "
+"password. The message will be sent once that works again."
+msgstr ""
+"Senden von „{}“ fehlgeschlagen: Der Postausgangsserver hat das Passwort "
+"nicht angenommen. Die Nachricht wird gesendet, sobald das wieder klappt."
+
+#: crates/app/src/window.rs:3564
+msgid ""
+"The outgoing mail server cannot be reached right now. The message will be "
+"sent later."
+msgstr ""
+"Der Postausgangsserver ist gerade nicht erreichbar. Die Nachricht wird "
+"später gesendet."
+
+#: crates/app/src/window.rs:3598
+msgid "Fetch new mail and show notifications while the window is closed"
+msgstr "Neue Mails abholen und melden, während das Fenster geschlossen ist"
+
+#: crates/app/src/window.rs:3632 crates/app/src/window.rs:3636
+msgid "New mail in another account"
+msgstr "Neue Mails in einem anderen Konto"
+
+#: crates/app/src/window.rs:3652 crates/app/src/window.rs:3671
+msgid "Switch Account"
+msgstr "Konto wechseln"
+
+#: crates/app/src/dialogs.rs:58
+msgid "Move To"
+msgstr "Verschieben nach"
+
+#: crates/app/src/dialogs.rs:96
+msgid "Message Source"
+msgstr "Quelltext der Nachricht"
+
+#: crates/app/src/compose_window.rs:44 crates/app/src/reply_editor.rs:81
+#: crates/app/src/shortcuts.rs:35
+msgid "Send"
+msgstr "Senden"
+
+#: crates/app/src/compose_window.rs:47 crates/app/src/reply_editor.rs:84
+msgid "Send (Ctrl+Enter)"
+msgstr "Senden (Strg+Enter)"
+
+#: crates/app/src/compose_window.rs:80
+msgid ""
+"Mail is always sent from the active account. Switch the account in the "
+"folder sidebar to write from another one."
+msgstr ""
+"Gesendet wird immer vom aktiven Konto. Wechsle das Konto in der "
+"Ordnerleiste, um von einem anderen zu schreiben."
+
+#: crates/app/src/compose_window.rs:116
+msgid "The draft is saved automatically"
+msgstr "Entwurf wird automatisch gespeichert"
+
+#: crates/app/src/compose_window.rs:277
+msgid "Saved as draft"
+msgstr "Als Entwurf gespeichert"
+
+#: crates/app/src/compose_window.rs:328 crates/app/src/shortcuts.rs:33
+msgid "New Message"
+msgstr "Neue Nachricht"
+
+#: crates/app/src/composer.rs:62
+msgid "Cc"
+msgstr "Cc"
+
+#: crates/app/src/composer.rs:63
+msgid "Bcc"
+msgstr "Bcc"
+
+#: crates/app/src/composer.rs:72
+msgid "+ Cc"
+msgstr "+ Cc"
+
+#: crates/app/src/composer.rs:72
+msgid "Add a copy recipient"
+msgstr "Empfänger in Kopie hinzufügen"
+
+#: crates/app/src/composer.rs:74
+msgid "+ Bcc"
+msgstr "+ Bcc"
+
+#: crates/app/src/composer.rs:75
+msgid "Add a blind copy recipient, invisible to the others"
+msgstr "Empfänger in Blindkopie hinzufügen, für die anderen unsichtbar"
+
+#: crates/app/src/composer.rs:101
+msgid "Remove Cc"
+msgstr "Cc entfernen"
+
+#: crates/app/src/composer.rs:102
+msgid "Remove Bcc"
+msgstr "Bcc entfernen"
+
+#: crates/app/src/composer.rs:112
+msgid "Attach File"
+msgstr "Datei anhängen"
+
+#: crates/app/src/composer.rs:295
+msgid "Cc removed"
+msgstr "Cc entfernt"
+
+#: crates/app/src/composer.rs:295
+msgid "Bcc removed"
+msgstr "Bcc entfernt"
+
+#: crates/app/src/composer.rs:341 crates/app/src/recipients.rs:267
+#, rust-format
+msgid "Remove {}"
+msgstr "{} entfernen"
+
+#: crates/app/src/composer.rs:366
+msgid "Attach Files"
+msgstr "Dateien anhängen"
+
+#: crates/app/src/composer.rs:406
+#, rust-format
+msgid "Could not read {}."
+msgstr "{} konnte nicht gelesen werden."
+
+#: crates/app/src/composer.rs:419
+msgid ""
+"The attachments are very large. Many providers do not accept messages over "
+"20 MB."
+msgstr ""
+"Die Anhänge sind sehr groß. Viele Anbieter nehmen keine Nachrichten über 20 "
+"MB an."
+
+#: crates/app/src/composer.rs:463
+#, rust-format
+msgid "Please check the address “{}”."
+msgstr "Bitte prüfe die Adresse „{}“."
+
+#: crates/app/src/composer.rs:472
+msgid "Add at least one recipient."
+msgstr "Gib mindestens einen Empfänger an."
+
+#: crates/app/src/editor.rs:191
+msgid "Bold (Ctrl+B)"
+msgstr "Fett (Strg+B)"
+
+#: crates/app/src/editor.rs:192
+msgid "Italic (Ctrl+I)"
+msgstr "Kursiv (Strg+I)"
+
+#: crates/app/src/editor.rs:193
+msgid "Link"
+msgstr "Link"
+
+#: crates/app/src/editor.rs:193 crates/app/src/editor.rs:348
+msgid "Insert Link"
+msgstr "Link einfügen"
+
+#: crates/app/src/editor.rs:194
+msgid "List"
+msgstr "Liste"
+
+#: crates/app/src/editor.rs:194
+msgid "Bulleted List"
+msgstr "Aufzählung"
+
+#: crates/app/src/editor.rs:197
+msgid "Insert Picture into the Text"
+msgstr "Bild in den Text einfügen"
+
+#: crates/app/src/editor.rs:349
+msgid "Enter the web address the link leads to."
+msgstr "Gib die Webadresse ein, zu der der Link führen soll."
+
+#: crates/app/src/editor.rs:356
+msgid "Insert"
+msgstr "Einfügen"
+
+#: crates/app/src/editor.rs:398
+msgid "Pictures"
+msgstr "Bilder"
+
+#: crates/app/src/editor.rs:406
+msgid "Insert Picture"
+msgstr "Bild einfügen"
+
+#: crates/app/src/reply_editor.rs:73
+msgid "Discard"
+msgstr "Verwerfen"
+
+#: crates/app/src/reply_editor.rs:74
+msgid "Throw away this reply"
+msgstr "Diese Antwort verwerfen"
+
+#: crates/app/src/shortcuts.rs:10
+msgid "Navigation"
+msgstr "Navigation"
+
+#: crates/app/src/shortcuts.rs:12
+msgid "Next conversation"
+msgstr "Nächste Unterhaltung"
+
+#: crates/app/src/shortcuts.rs:13
+msgid "Previous conversation"
+msgstr "Vorherige Unterhaltung"
+
+#: crates/app/src/shortcuts.rs:15
+msgid "Back / Close"
+msgstr "Zurück / Schließen"
+
+#: crates/app/src/shortcuts.rs:16
+msgid "Folder sidebar"
+msgstr "Ordnerleiste"
+
+#: crates/app/src/shortcuts.rs:26
+msgid "Read/Unread"
+msgstr "Gelesen/Ungelesen"
+
+#: crates/app/src/about.rs:21
+msgid "The E-Mail developers"
+msgstr "Die Entwicklerinnen und Entwickler von E-Mail"
+
+#: crates/app/src/about.rs:29
+msgid "Source Code"
+msgstr "Quelltext"
+
+#: data/io.github.deviablo.EMail.gschema.xml:32
+msgid "Show an icon in the panel while running in the background"
+msgstr "Im Hintergrund ein Symbol in der Leiste zeigen"
+
+#: crates/app/src/settings.rs:134
+msgid "Show icon in the panel"
+msgstr "Symbol in der Leiste zeigen"
+
+#: crates/app/src/settings.rs:135
+msgid "While E-Mail runs in the background"
+msgstr "Solange E-Mail im Hintergrund läuft"
+
+#: crates/app/src/tray.rs:131
+msgid "E-Mail – {} unread"
+msgstr "E-Mail – {} ungelesen"
+
+#: crates/app/src/tray.rs:357
+msgid "Open E-Mail"
+msgstr "E-Mail öffnen"
+
+#: crates/app/src/tray.rs:365
+msgid "Quit"
+msgstr "Beenden"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:28
+msgid "Conversations, list and folders at a glance"
+msgstr "Unterhaltungen, Liste und Ordner auf einen Blick"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:32
+msgid "Dark style"
+msgstr "Dunkler Modus"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:36
+msgid "Writing a message with formatting and signature"
+msgstr "Neue Mail mit Formatierung und Signatur"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in:40
+msgid "Guided account setup"
+msgstr "Geführte Kontoeinrichtung"
+
+
+#: crates/app/src/reader.rs:686
+msgid "Hide message"
+msgstr "Nachricht einklappen"
+
+#: crates/app/src/window.rs
+msgid "No Mail"
+msgstr "Keine Mails"
+
+#: crates/app/src/window.rs
+msgid "New mail appears here."
+msgstr "Neue Mails erscheinen hier."
+
+#: crates/app/src/window.rs
+msgid "No Drafts"
+msgstr "Keine Entwürfe"
+
+#: crates/app/src/window.rs
+msgid "Mail you have not sent yet is kept here."
+msgstr "Hier liegen Mails, die du noch nicht gesendet hast."
+
+#: crates/app/src/window.rs
+msgid "Nothing Sent Yet"
+msgstr "Noch nichts gesendet"
+
+#: crates/app/src/window.rs
+msgid "Archive Is Empty"
+msgstr "Archiv ist leer"
+
+#: crates/app/src/window.rs
+msgid "Trash Is Empty"
+msgstr "Papierkorb ist leer"
+
+#: crates/app/src/compose_window.rs
+msgid "Saved"
+msgstr "Gespeichert"
+
+#: crates/app/src/reader.rs
+msgid "Save"
+msgstr "Speichern"
+
+#: crates/app/src/reader.rs
+msgid "me"
+msgstr "mich"
+
+#: crates/app/src/message_list.rs
+msgid "Yesterday"
+msgstr "Gestern"
+
+#. Translators: short date of an older message, see strftime(3).
+#: crates/app/src/message_list.rs
+msgid "%-m/%-d/%y"
+msgstr "%d.%m.%y"
+
+#. Translators: "Today, 13:35".
+#: crates/app/src/message_list.rs
+msgid "Today, {}"
+msgstr "Heute, {}"
+
+#. Translators: "Yesterday, 13:35".
+#: crates/app/src/message_list.rs
+msgid "Yesterday, {}"
+msgstr "Gestern, {}"
+
+#. Translators: weekday and time of a message from this week.
+#: crates/app/src/message_list.rs
+msgid "%A, %R"
+msgstr "%A, %R"
+
+#. Translators: date and time of an older message, see strftime(3).
+#: crates/app/src/message_list.rs
+msgid "%-m/%-d/%y, %R"
+msgstr "%d.%m.%y, %R"
+
+#. Translators: date in "On {date}, {name} wrote:", see strftime(3).
+#: crates/app/src/message_list.rs
+msgid "%-m/%-d/%y at %R"
+msgstr "%d.%m.%y um %R"
+
+#: crates/app/src/setup.rs
+msgid ""
+"Works with Posteo, GMX, WEB.DE, Gmail, iCloud, mailbox.org and many more, or "
+"with your own server."
+msgstr ""
+"Funktioniert z. B. mit Posteo, GMX, WEB.DE, Gmail, iCloud, mailbox.org oder "
+"deinem eigenen Server."
+
+#: crates/app/src/window.rs
+msgctxt "title of the search results"
+msgid "Search"
+msgstr "Suche"
+
+msgid "Empty Trash"
+msgstr "Papierkorb leeren"
+
+msgid "Empty Spam"
+msgstr "Spam leeren"
+
+msgid "Empty Trash?"
+msgstr "Papierkorb leeren?"
+
+msgid "Empty Spam?"
+msgstr "Spam leeren?"
+
+msgid "1 message will be deleted for good. This cannot be undone."
+msgstr "1 Nachricht wird endgültig gelöscht. Das lässt sich nicht rückgängig machen."
+
+msgid "{} messages will be deleted for good. This cannot be undone."
+msgstr "{} Nachrichten werden endgültig gelöscht. Das lässt sich nicht rückgängig machen."
+
+msgid "1 message deleted for good"
+msgstr "1 Nachricht endgültig gelöscht"
+
+msgid "{} messages deleted for good"
+msgstr "{} Nachrichten endgültig gelöscht"
