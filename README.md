@@ -23,9 +23,9 @@ Several accounts, IMAP and SMTP, nothing else: no calendar, no chat, no contact 
 ## Features
 
 - **Several accounts, strictly separate:** every account on its own, without a shared inbox. The guided setup recognises your provider and helps with app passwords.
-- **Conversations:** replies sit right below the message, the newest one stands out.
+- **Conversations:** replies sit right below the message, the newest one stands out. Move, spam and print are one click away above the reading pane, which uses the whole width of the window.
 - **Writing:** new messages in their own window, formatting, pictures in the text, attachments and one signature per account. Drafts are saved automatically, and what you write while offline is sent as soon as you are connected again.
-- **Search and keyboard shortcuts:** search the whole account with filters; `?` shows all shortcuts.
+- **Search and keyboard shortcuts:** search the whole account with filters; `?` or Settings → Keyboard Shortcuts shows all shortcuts. The gear at the top of the folder sidebar opens the settings.
 - **Notifications through the system,** also with the window closed, per account if you like. In the background an icon in the panel shows unread mail; on GNOME this needs the “AppIndicator” extension (included in Ubuntu).
 - **Private:** external images load only after you allow them, passwords live in the system keyring.
 - **Languages:** English and German.

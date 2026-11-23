@@ -23,9 +23,9 @@ Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kon
 ## Funktionen
 
 - **Mehrere Konten, strikt getrennt:** jedes Konto für sich, ohne gemeinsamen Posteingang. Die geführte Einrichtung erkennt den Anbieter und hilft bei App-Passwörtern.
-- **Unterhaltungen:** Antworten stehen direkt unter der Nachricht, die neueste ist hervorgehoben.
+- **Unterhaltungen:** Antworten stehen direkt unter der Nachricht, die neueste ist hervorgehoben. Verschieben, Spam und Drucken sind mit einem Klick über der Leseansicht erreichbar, die die ganze Fensterbreite nutzt.
 - **Schreiben:** neue Mails im eigenen Fenster, Formatierung, Bilder im Text, Anhänge und eine Signatur pro Konto. Entwürfe werden automatisch gespeichert, und was ohne Internet geschrieben wird, geht raus, sobald die Verbindung wieder steht.
-- **Suche und Tastenkürzel:** Suche im ganzen Konto mit Filtern; `?` zeigt alle Tastenkürzel.
+- **Suche und Tastenkürzel:** Suche im ganzen Konto mit Filtern; `?` oder Einstellungen → Tastenkürzel zeigt alle Tastenkürzel. Das Zahnrad oben in der Ordnerleiste öffnet die Einstellungen.
 - **Benachrichtigungen über das System,** auch wenn das Fenster geschlossen ist, auf Wunsch pro Konto. Im Hintergrund zeigt ein Symbol in der Leiste ungelesene Mails; unter GNOME braucht es dafür die Erweiterung „AppIndicator“ (bei Ubuntu schon dabei).
 - **Privat:** Externe Bilder werden erst nach Freigabe geladen, Passwörter liegen im Schlüsselbund des Systems.
 - **Sprachen:** Deutsch und Englisch.
