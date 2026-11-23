@@ -94,6 +94,13 @@ impl MessageWindow {
             glib::Propagation::Proceed
         });
         this.window.add_controller(keys);
+
+        // Otherwise the selectable subject takes the focus and shows up
+        // fully selected when the window opens.
+        this.window.connect_map(|window| {
+            let window = window.clone();
+            glib::idle_add_local_once(move || window.set_focus(gtk::Widget::NONE));
+        });
         this
     }
 
