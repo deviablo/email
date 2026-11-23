@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! The keyboard shortcuts: as an overview window (Ctrl+?, F1, ? or the
-//! main menu) and as the page "Keyboard Shortcuts" in the settings.
+//! The keyboard shortcuts: as an overview window (Ctrl+?, F1 or ?) and
+//! as the page "Keyboard Shortcuts" in the settings.
 
 use adw::prelude::*;
 use gettextrs::gettext;

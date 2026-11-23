@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-mod about;
 mod application;
 mod background;
 mod compose_window;

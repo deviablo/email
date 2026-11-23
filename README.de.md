@@ -94,7 +94,7 @@ Wie man die App aus dem Quelltext baut, testet und die Pakete selbst erzeugt, st
 
 ## Mitmachen
 
-Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden. In der App führt „Über diese App → Ein Problem melden“ direkt dorthin, mit vorausgefüllten technischen Angaben (ohne Passwörter oder Mailinhalte).
+Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden.
 
 ## Lizenz
 

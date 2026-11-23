@@ -94,7 +94,7 @@ How to build the app from source, run the tests and make the packages yourself i
 
 ## Contributing
 
-Please report bugs and ideas as an [issue](https://github.com/deviablo/email/issues). In the app, “About E-Mail → Report an Issue” takes you there, with technical details already filled in (no passwords or message contents).
+Please report bugs and ideas as an [issue](https://github.com/deviablo/email/issues).
 
 ## License
 

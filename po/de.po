@@ -1224,8 +1224,8 @@ msgid "About E-Mail"
 msgstr "Über diese App"
 
 #: crates/app/src/window.rs:352
-msgid "Main Menu"
-msgstr "Hauptmenü"
+msgid "Settings (Ctrl+,)"
+msgstr "Einstellungen (Strg+,)"
 
 #: crates/app/src/window.rs:375 crates/app/src/window.rs:381
 #: crates/app/src/window.rs:3581

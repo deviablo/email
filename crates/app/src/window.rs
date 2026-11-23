@@ -350,18 +350,14 @@ impl Window {
         // Folder sidebar.
         let folders = FolderList::new();
         let switcher = build_account_switcher();
-        let menu = gio::Menu::new();
-        menu.append(Some(&gettext("Settings")), Some("app.settings"));
-        menu.append(Some(&gettext("Keyboard Shortcuts")), Some("app.shortcuts"));
-        menu.append(Some(&gettext("About E-Mail")), Some("app.about"));
-        let menu_button = gtk::MenuButton::builder()
-            .icon_name("open-menu-symbolic")
-            .menu_model(&menu)
-            .primary(true)
-            .tooltip_text(gettext("Main Menu"))
+        let settings_button = gtk::Button::builder()
+            .icon_name(format!("{APP_ID}-settings-symbolic"))
+            .action_name("app.settings")
+            .tooltip_text(gettext("Settings (Ctrl+,)"))
             .build();
+        settings_button.update_property(&[gtk::accessible::Property::Label(&gettext("Settings"))]);
         let sidebar_header = adw::HeaderBar::builder().show_title(false).build();
-        sidebar_header.pack_end(&menu_button);
+        sidebar_header.pack_end(&settings_button);
         let sidebar_view = adw::ToolbarView::new();
         sidebar_view.add_top_bar(&sidebar_header);
         sidebar_view.set_content(Some(&folders.widget));

@@ -764,16 +764,12 @@ def tray():
     return f"Symbol: {icon.strip()}"
 
 
-@scenario("Tastenkürzel-Übersicht, Über diese App, dunkler Modus, schmales Fenster")
+@scenario("Tastenkürzel-Übersicht, dunkler Modus, schmales Fenster")
 def no_webkit_looks():
     focus(find("list", "Messages"))
     key("question")
     find(None, "Next conversation", timeout=10)
     shot("10-kuerzel-uebersicht")
-    key("Escape")
-    action("about")
-    find(None, "Report an Issue", timeout=10)
-    shot("11-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})
@@ -915,17 +911,23 @@ def settings_shortcuts():
     key("Escape")
 
 
-@scenario("Einstellungen, Über diese App, dunkler Modus, schmales Fenster")
+@scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
+def gear():
+    assert not find_all("push button", "Main Menu"), "the old main menu is still there"
+    press(find("push button", "Settings", exact=True))
+    find("page tab", "General", timeout=10)
+    shot("19a-zahnrad-einstellungen")
+    key("Escape")
+    gone("page tab", "General")
+
+
+@scenario("Einstellungen, dunkler Modus, schmales Fenster")
 def looks():
     stop_app()
     start_app()
     action("settings")
     find(None, "Accounts", timeout=15)
     shot("20-einstellungen")
-    key("Escape")
-    action("about")
-    find(None, "E-Mail", timeout=10)
-    shot("21-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})
@@ -995,7 +997,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, settings_shortcuts, looks,
+                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, settings_shortcuts, gear, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()

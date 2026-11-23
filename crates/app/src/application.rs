@@ -259,16 +259,6 @@ pub fn run() -> glib::ExitCode {
     let quit = gio::ActionEntry::builder("quit")
         .activate(|app: &adw::Application, _, _| app.quit())
         .build();
-    let about = {
-        let window = window.clone();
-        gio::ActionEntry::builder("about")
-            .activate(move |_: &adw::Application, _, _| {
-                if let Some(window) = window.borrow().as_ref() {
-                    crate::about::show(&window.window, window.accounts().len());
-                }
-            })
-            .build()
-    };
     let add_account = {
         let window = window.clone();
         gio::ActionEntry::builder("add-account")
@@ -347,7 +337,6 @@ pub fn run() -> glib::ExitCode {
     };
     app.add_action_entries([
         quit,
-        about,
         add_account,
         settings,
         compose,
