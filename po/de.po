@@ -1372,13 +1372,7 @@ msgstr "Endgültig gelöscht"
 msgid "{} updated"
 msgstr "{} aktualisiert"
 
-#: crates/app/src/window.rs:1820
-msgid "Message marked as read"
-msgstr "Nachricht als gelesen markiert"
 
-#: crates/app/src/window.rs:1822
-msgid "Message marked as unread"
-msgstr "Nachricht als ungelesen markiert"
 
 #: crates/app/src/window.rs:1836
 msgid "Message deleted"

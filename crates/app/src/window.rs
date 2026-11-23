@@ -1908,18 +1908,6 @@ impl Window {
             CardAction::ToggleStar => {
                 self.change(|store| store.set_flagged(&[id], !message.flags.flagged));
             }
-            CardAction::ToggleRead => {
-                let seen = !message.flags.seen;
-                self.change(|store| store.set_seen(&[id], seen));
-                self.undo_toast(
-                    &if seen {
-                        gettext("Message marked as read")
-                    } else {
-                        gettext("Message marked as unread")
-                    },
-                    Vec::new(),
-                );
-            }
             CardAction::Delete => {
                 if self.reader.messages().len() <= 1 {
                     let thread = self.reader.thread().unwrap_or(message.thread_id);

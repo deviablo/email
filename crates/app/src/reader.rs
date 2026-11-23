@@ -39,7 +39,6 @@ pub enum CardAction {
     ReplyAll,
     Forward,
     ToggleStar,
-    ToggleRead,
     Delete,
 }
 
@@ -59,7 +58,6 @@ pub struct BodyContent {
 
 struct OpenCard {
     star: gtk::Button,
-    read: gtk::Button,
     body: gtk::Stack,
     web: webkit::WebView,
     error: adw::StatusPage,
@@ -693,8 +691,9 @@ impl Reader {
         );
         let head = gtk::Box::builder()
             .spacing(12)
+            .hexpand(true)
             .margin_start(14)
-            .margin_end(14)
+            .margin_end(6)
             .margin_top(12)
             .margin_bottom(8)
             .build();
@@ -729,6 +728,27 @@ impl Reader {
             });
             button.upcast()
         };
+        // The star sits at the right of the head, beside the "Newest" tag.
+        let star = gtk::Button::builder()
+            .icon_name("non-starred-symbolic")
+            .valign(gtk::Align::Center)
+            .margin_end(10)
+            .css_classes(["flat"])
+            .build();
+        {
+            let weak = self.weak.borrow().clone();
+            let id = message.id;
+            star.connect_clicked(move |_| {
+                if let Some(this) = weak.upgrade()
+                    && let Some(callback) = this.on_action.borrow().as_ref()
+                {
+                    callback(CardAction::ToggleStar, id);
+                }
+            });
+        }
+        let head_row = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+        head_row.append(&head);
+        head_row.append(&star);
         let banner = self.image_banner(&message);
         let web = self.build_web_view();
         let error = adw::StatusPage::builder()
@@ -831,8 +851,6 @@ impl Reader {
             actions.append(&button);
             button
         };
-        let star = action_button("non-starred-symbolic", "", CardAction::ToggleStar);
-        let read = action_button("mail-unread-symbolic", "", CardAction::ToggleRead);
         action_button(
             "user-trash-symbolic",
             &gettext("Delete this message"),
@@ -846,7 +864,7 @@ impl Reader {
         if newest && tagged {
             frame.add_css_class("newest");
         }
-        frame.append(&head);
+        frame.append(&head_row);
         let rest = gtk::Box::new(gtk::Orientation::Vertical, 0);
         rest.append(&banner);
         rest.append(&body);
@@ -867,7 +885,6 @@ impl Reader {
 
         *card.open.borrow_mut() = Some(OpenCard {
             star,
-            read,
             body,
             web,
             error,
@@ -988,17 +1005,6 @@ impl Reader {
         } else {
             open.star.remove_css_class("accent");
         }
-        let seen = message.flags.seen;
-        open.read.set_icon_name(if seen {
-            "mail-unread-symbolic"
-        } else {
-            "mail-read-symbolic"
-        });
-        open.read.set_tooltip_text(Some(&if seen {
-            gettext("Mark as Unread")
-        } else {
-            gettext("Mark as Read")
-        }));
     }
 
     /// True if the message is open on screen and has no body yet.
