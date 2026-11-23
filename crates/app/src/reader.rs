@@ -153,15 +153,12 @@ impl Reader {
         column.append(&line);
         column.append(&cards_box);
         column.append(&reply_button);
-        let clamp = adw::Clamp::builder()
-            .maximum_size(900)
-            .tightening_threshold(600)
-            .child(&column)
-            .build();
+        // The conversation uses the whole width of the pane, so a larger
+        // or full-screen window leaves no empty margins beside it.
         let scroller = gtk::ScrolledWindow::builder()
             .hscrollbar_policy(gtk::PolicyType::Never)
             .vexpand(true)
-            .child(&clamp)
+            .child(&column)
             .build();
 
         let widget = gtk::Stack::new();
