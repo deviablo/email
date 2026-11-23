@@ -900,7 +900,10 @@ def open_general_settings():
 
 @scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
 def gear():
-    press(find("push button", "Settings", exact=True))
+    # The tray scenario before quits the app.
+    stop_app()
+    start_app()
+    press(find("push button", "Settings", exact=True, timeout=20))
     find("page tab", "General", timeout=10)
     shot("19a-zahnrad-einstellungen")
     key("Escape")
