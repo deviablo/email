@@ -274,11 +274,20 @@ impl MessageList {
     }
 
     /// Updates check boxes and highlight of every visible row.
+    /// Updates every row on screen directly: GTK keeps the rows of
+    /// unchanged items bound, so a rebind alone would leave the avatars.
     fn refresh_marks(&self) {
         let selecting = self.selecting.get();
+        if selecting {
+            self.widget.add_css_class("selecting");
+        } else {
+            self.widget.remove_css_class("selecting");
+        }
         let selected = self.selected.borrow();
         for row in self.rows.borrow().iter().filter_map(Weak::upgrade) {
             let picked = selecting && selected.contains(&row.thread.get());
+            row.avatar.set_visible(!selecting);
+            row.check.set_visible(selecting);
             row.check.set_active(picked);
             if picked {
                 row.root.add_css_class("picked");

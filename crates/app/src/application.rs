@@ -21,9 +21,10 @@ const STYLE: &str = "
 }
 .message-row-frame { border-radius: 8px; }
 .message-row-frame.picked {
-    background-color: alpha(@accent_bg_color, 0.22);
-    box-shadow: inset 0 0 0 1px alpha(@accent_bg_color, 0.6);
+    background-color: alpha(@accent_bg_color, 0.18);
+    box-shadow: inset 0 0 0 1px @accent_bg_color;
 }
+.selecting .unread-dot { opacity: 0; }
 .unread-dot {
     background-color: @accent_bg_color;
     border: 2px solid @window_bg_color;
