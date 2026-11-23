@@ -764,16 +764,12 @@ def tray():
     return f"Symbol: {icon.strip()}"
 
 
-@scenario("Tastenkürzel-Übersicht, Über diese App, dunkler Modus, schmales Fenster")
+@scenario("Tastenkürzel-Übersicht, dunkler Modus, schmales Fenster")
 def no_webkit_looks():
     focus(find("list", "Messages"))
     key("question")
     find(None, "Next conversation", timeout=10)
     shot("10-kuerzel-uebersicht")
-    key("Escape")
-    action("about")
-    find(None, "Report an Issue", timeout=10)
-    shot("11-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})
@@ -912,17 +908,13 @@ def gear():
     gone("page tab", "General")
 
 
-@scenario("Einstellungen, Über diese App, dunkler Modus, schmales Fenster")
+@scenario("Einstellungen, dunkler Modus, schmales Fenster")
 def looks():
     stop_app()
     start_app()
     action("settings")
     find(None, "Accounts", timeout=15)
     shot("20-einstellungen")
-    key("Escape")
-    action("about")
-    find(None, "E-Mail", timeout=10)
-    shot("21-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})

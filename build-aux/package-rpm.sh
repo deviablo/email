@@ -10,7 +10,7 @@ version="$(sed -n "s/^  version: '\(.*\)',$/\1/p" meson.build)"
 stage="$(mktemp -d)"
 top="$(mktemp -d)"
 
-meson setup build-rpm --prefix=/usr --buildtype=release -Dpackage_format=rpm
+meson setup build-rpm --prefix=/usr --buildtype=release
 meson compile -C build-rpm
 DESTDIR="$stage" meson install -C build-rpm --no-rebuild
 

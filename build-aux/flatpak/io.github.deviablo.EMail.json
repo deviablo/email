@@ -40,9 +40,6 @@
             "target"
           ]
         }
-      ],
-      "config-opts": [
-        "-Dpackage_format=flatpak"
       ]
     }
   ]

@@ -36,7 +36,6 @@ endif
 
 cargo_env = environment()
 cargo_env.set('E_MAIL_LOCALEDIR', localedir)
-cargo_env.set('E_MAIL_PACKAGE', get_option('package_format'))
 
 custom_target(
   'cargo-build',

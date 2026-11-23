@@ -1,2 +1,1 @@
 option('offline', type: 'boolean', value: false, description: 'Build without downloading Rust crates')
-option('package_format', type: 'string', value: 'source', description: 'Shown in the technical details: deb, rpm, flatpak or source')
