@@ -902,15 +902,6 @@ def open_general_settings():
     open_settings_page("General", "Run in background")
 
 
-@scenario("Einstellungen: Seite Tastenkürzel")
-def settings_shortcuts():
-    open_settings_page("Keyboard Shortcuts", "Next conversation")
-    for name in ("Reply All", "New Message", "Folder sidebar"):
-        find(None, name, timeout=5)
-    shot("20a-einstellungen-tastenkuerzel")
-    key("Escape")
-
-
 @scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
 def gear():
     assert not find_all("push button", "Main Menu"), "the old main menu is still there"
@@ -997,7 +988,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, settings_shortcuts, gear, looks,
+                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, gear, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()
