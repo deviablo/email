@@ -902,6 +902,16 @@ def open_general_settings():
     raise AssertionError("the General page did not open")
 
 
+@scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
+def gear():
+    assert not find_all("push button", "Main Menu"), "the old main menu is still there"
+    press(find("push button", "Settings", exact=True))
+    find("page tab", "General", timeout=10)
+    shot("19a-zahnrad-einstellungen")
+    key("Escape")
+    gone("page tab", "General")
+
+
 @scenario("Einstellungen, Über diese App, dunkler Modus, schmales Fenster")
 def looks():
     stop_app()
@@ -982,7 +992,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, looks,
+                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, gear, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()

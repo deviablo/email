@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! The overview of keyboard shortcuts (Ctrl+?, F1, ? or the main menu).
+//! The overview of keyboard shortcuts (Ctrl+?, F1 or ?).
 
 use gettextrs::gettext;
 
