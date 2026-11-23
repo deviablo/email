@@ -113,6 +113,7 @@ impl Reader {
             .icon_name(format!("{APP_ID}-symbolic"))
             .title(gettext("No Conversation Selected"))
             .description(gettext("Choose a message on the left to read it."))
+            .css_classes(["compact"])
             .build();
 
         let subject = gtk::Label::builder()
