@@ -382,14 +382,23 @@ impl Window {
             .tooltip_text(gettext("Select conversations"))
             .build();
         select_button.update_property(&[gtk::accessible::Property::Label(&gettext("Select"))]);
-        let compose_button = gtk::Button::builder()
-            .icon_name(format!("{APP_ID}-compose-symbolic"))
-            .tooltip_text(gettext("New Mail (Ctrl+N)"))
-            .action_name("app.compose")
-            .build();
-        compose_button.update_property(&[gtk::accessible::Property::Label(&gettext("New Mail"))]);
-        // From the left: search, select, new message.
-        list_header.pack_end(&compose_button);
+        let compose_button = || {
+            let button = gtk::Button::builder()
+                .icon_name(format!("{APP_ID}-compose-symbolic"))
+                .tooltip_text(gettext("New Mail (Ctrl+N)"))
+                .action_name("app.compose")
+                .build();
+            button.update_property(&[gtk::accessible::Property::Label(&gettext("New Mail"))]);
+            button
+        };
+        // "New Mail" sits at the left of the reading pane; only in the
+        // single-column layout, where that pane is hidden, it moves to the
+        // list (see `add_breakpoints`).
+        let reader_compose = compose_button();
+        let list_compose = compose_button();
+        list_compose.set_visible(false);
+        // From the left: search, select (and new message when narrow).
+        list_header.pack_end(&list_compose);
         list_header.pack_end(&select_button);
         let search_button = gtk::ToggleButton::builder()
             .icon_name("system-search-symbolic")
@@ -517,6 +526,7 @@ impl Window {
         let reader_header = adw::HeaderBar::builder()
             .title_widget(&reader.title)
             .build();
+        reader_header.pack_start(&reader_compose);
         reader_header.pack_end(&reader.menu_button);
         let reader_view = adw::ToolbarView::new();
         reader_view.add_top_bar(&reader_header);
@@ -600,7 +610,7 @@ impl Window {
         toasts.set_child(Some(&root));
         window.set_content(Some(&toasts));
 
-        add_breakpoints(&window, &outer, &inner);
+        add_breakpoints(&window, &outer, &inner, &list_compose);
 
         let this = Rc::new(Window {
             window,
@@ -3851,6 +3861,7 @@ fn add_breakpoints(
     window: &adw::ApplicationWindow,
     outer: &adw::OverlaySplitView,
     inner: &adw::NavigationSplitView,
+    list_compose: &gtk::Button,
 ) {
     let medium = adw::Breakpoint::new(
         adw::BreakpointCondition::parse("max-width: 900sp").expect("valid condition"),
@@ -3863,5 +3874,6 @@ fn add_breakpoints(
     );
     narrow.add_setter(outer, "collapsed", Some(&true.to_value()));
     narrow.add_setter(inner, "collapsed", Some(&true.to_value()));
+    narrow.add_setter(list_compose, "visible", Some(&true.to_value()));
     window.add_breakpoint(narrow);
 }
