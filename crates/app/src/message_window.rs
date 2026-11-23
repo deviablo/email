@@ -99,7 +99,9 @@ impl MessageWindow {
         // fully selected when the window opens.
         this.window.connect_map(|window| {
             let window = window.clone();
-            glib::idle_add_local_once(move || window.set_focus(gtk::Widget::NONE));
+            glib::idle_add_local_once(move || {
+                gtk::prelude::GtkWindowExt::set_focus(&window, gtk::Widget::NONE);
+            });
         });
         this
     }
