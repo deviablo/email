@@ -80,10 +80,7 @@ fn clean_html(html: &str, inline_images: &[InlineImage], allow_remote: bool) -> 
     let clean = ammonia::Builder::default()
         .add_tags(["style", "font", "center"])
         .rm_clean_content_tags(["style"])
-        // Class names cannot run anything, and the mail's own styles need
-        // them, for example to hide the preview text many senders put first.
         .add_generic_attributes([
-            "class",
             "style",
             "align",
             "valign",
@@ -268,20 +265,6 @@ mod tests {
         assert!(!body.contains("onclick"));
         assert!(!body.contains("javascript:"));
         assert!(body.contains("<p>Hi</p>"));
-    }
-
-    #[test]
-    fn keeps_class_names_for_the_mail_styles() {
-        let rendered = render_html(
-            "<style>.preheader { display: none !important; }</style>\
-             <span class=\"preheader\">Preview text</span><p class=\"lead\">Hello</p>",
-            &[],
-            false,
-        );
-        let body = body_of(&rendered.document);
-        assert!(body.contains(".preheader { display: none !important; }"));
-        assert!(body.contains("<span class=\"preheader\">Preview text</span>"));
-        assert!(body.contains("<p class=\"lead\">Hello</p>"));
     }
 
     #[test]
