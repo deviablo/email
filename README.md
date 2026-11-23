@@ -1,44 +1,44 @@
+**English** · [Deutsch](README.de.md)
+
 <img src="design/icon/io.github.deviablo.EMail.svg" width="96" alt="">
 
-# E-Mail – die moderne E-Mail-App für Linux
+# E-Mail – the modern email app for Linux
 
-*A simple, modern email client for Linux (GNOME and KDE). IMAP and SMTP, built with Rust, GTK 4 and libadwaita.*
+A simple, modern email client for Linux (GNOME and KDE), written in Rust with GTK 4 and libadwaita.
 
-Eine einfache, moderne E-Mail-App für Linux (GNOME und KDE), geschrieben in Rust mit GTK 4 und libadwaita.
+Several accounts, IMAP and SMTP, nothing else: no calendar, no chat, no contact management.
 
-Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kontaktverwaltung.
+**Current version: 1.0**
 
-**Aktuelle Version: 1.0**
-
-![Hauptfenster mit Ordnern, Liste und geöffneter Unterhaltung](data/screenshots/main.png)
+![Main window with folders, message list and an open conversation](data/screenshots/main.png)
 
 <p>
-  <img src="data/screenshots/main-dark.png" width="49%" alt="Dunkler Modus">
-  <img src="data/screenshots/compose.png" width="49%" alt="Neue Mail mit Formatierung und Signatur">
+  <img src="data/screenshots/main-dark.png" width="49%" alt="Dark mode">
+  <img src="data/screenshots/compose.png" width="49%" alt="New message with formatting and signature">
 </p>
 <p>
-  <img src="data/screenshots/setup.png" width="49%" alt="Kontoeinrichtung">
+  <img src="data/screenshots/setup.png" width="49%" alt="Account setup">
 </p>
 
-## Funktionen
+## Features
 
-- **Mehrere Konten, strikt getrennt:** jedes Konto für sich, ohne gemeinsamen Posteingang. Die geführte Einrichtung erkennt den Anbieter und hilft bei App-Passwörtern.
-- **Unterhaltungen:** Antworten stehen direkt unter der Nachricht, die neueste ist hervorgehoben.
-- **Schreiben:** neue Mails im eigenen Fenster, Formatierung, Bilder im Text, Anhänge und eine Signatur pro Konto. Entwürfe werden automatisch gespeichert, und was ohne Internet geschrieben wird, geht raus, sobald die Verbindung wieder steht.
-- **Suche und Tastenkürzel:** Suche im ganzen Konto mit Filtern; `?` zeigt alle Tastenkürzel.
-- **Benachrichtigungen über das System,** auch wenn das Fenster geschlossen ist, auf Wunsch pro Konto. Im Hintergrund zeigt ein Symbol in der Leiste ungelesene Mails; unter GNOME braucht es dafür die Erweiterung „AppIndicator“ (bei Ubuntu schon dabei).
-- **Privat:** Externe Bilder werden erst nach Freigabe geladen, Passwörter liegen im Schlüsselbund des Systems.
-- **Sprachen:** Deutsch und Englisch.
+- **Several accounts, strictly separate:** every account on its own, without a shared inbox. The guided setup recognises your provider and helps with app passwords.
+- **Conversations:** replies sit right below the message, the newest one stands out.
+- **Writing:** new messages in their own window, formatting, pictures in the text, attachments and one signature per account. Drafts are saved automatically, and what you write while offline is sent as soon as you are connected again.
+- **Search and keyboard shortcuts:** search the whole account with filters; `?` shows all shortcuts.
+- **Notifications through the system,** also with the window closed, per account if you like. In the background an icon in the panel shows unread mail; on GNOME this needs the “AppIndicator” extension (included in Ubuntu).
+- **Private:** external images load only after you allow them, passwords live in the system keyring.
+- **Languages:** English and German.
 
-Unterstützt werden alle Anbieter mit IMAP und SMTP, zum Beispiel Gmail, GMX, WEB.DE, iCloud, Yahoo, Posteo, mailbox.org und die meisten Firmen- und Hostingpostfächer. Microsoft-Konten (Outlook, Hotmail, Office 365) werden nicht unterstützt.
+Every provider with IMAP and SMTP works, for example Gmail, GMX, WEB.DE, iCloud, Yahoo, Posteo, mailbox.org and most company and hosting mailboxes. Microsoft accounts (Outlook, Hotmail, Office 365) are not supported.
 
-## Installieren
+## Install
 
-Die Installationsdateien liegen bei jeder Version unter [Releases](https://github.com/deviablo/email/releases/latest). Passende Datei herunterladen, ein Terminal im Download-Ordner öffnen und den Befehl für dein System ausführen. Danach erscheint „E-Mail“ in der App-Übersicht.
+The installation files for every version are under [Releases](https://github.com/deviablo/email/releases/latest). Download the file for your system, open a terminal in the download folder and run the command for your system. “E-Mail” then shows up in your app overview.
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-Datei: `e-mail_1.0.0_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
+File: `e-mail_1.0.0_amd64.deb` · for Ubuntu 24.04 and newer, Debian 13 and newer, Linux Mint 22 and newer
 
 ```bash
 sudo apt install ./e-mail_1.0.0_amd64.deb
@@ -46,25 +46,25 @@ sudo apt install ./e-mail_1.0.0_amd64.deb
 
 ### Fedora
 
-Datei: `e-mail-1.0.0-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
+File: `e-mail-1.0.0-1.x86_64.rpm` · for the current Fedora releases
 
 ```bash
 sudo dnf install ./e-mail-1.0.0-1.x86_64.rpm
 ```
 
-### Alle anderen Systeme (Flatpak)
+### All other systems (Flatpak)
 
-Datei: `e-mail.flatpak` · läuft auf praktisch jedem Linux, zum Beispiel openSUSE, Arch Linux, Manjaro, EndeavourOS oder ältere Ubuntu- und Debian-Versionen.
+File: `e-mail.flatpak` · runs on practically every Linux, for example openSUSE, Arch Linux, Manjaro, EndeavourOS or older Ubuntu and Debian releases.
 
-Falls Flatpak noch nicht installiert ist, zuerst einmalig:
+If Flatpak is not installed yet, do this once first:
 
-| System | Befehl |
+| System | Command |
 |---|---|
 | openSUSE | `sudo zypper install flatpak` |
 | Arch Linux, Manjaro, EndeavourOS | `sudo pacman -S flatpak` |
 | Ubuntu, Debian | `sudo apt install flatpak` |
 
-Dann Flathub einrichten (liefert die nötigen GNOME-Bausteine) und die App installieren:
+Then add Flathub (it provides the GNOME building blocks) and install the app:
 
 ```bash
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -74,36 +74,36 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 flatpak install --user ./e-mail.flatpak
 ```
 
-Starten lässt sich die App dann über die App-Übersicht oder mit `flatpak run io.github.deviablo.EMail`.
+Start the app from your app overview or with `flatpak run io.github.deviablo.EMail`.
 
-### Tipp zum Ausprobieren
+### Tip for trying it out
 
-Zuerst ein Testkonto einrichten, nicht gleich das wichtigste Postfach.
+Set up a test account first, not your most important mailbox.
 
-### Wieder entfernen
+### Uninstall
 
-| Installiert als | Befehl |
+| Installed as | Command |
 |---|---|
 | `.deb` | `sudo apt remove e-mail` |
 | `.rpm` | `sudo dnf remove e-mail` |
 | Flatpak | `flatpak uninstall --user io.github.deviablo.EMail` |
 
-## Selbst bauen
+## Build it yourself
 
-Wie man die App aus dem Quelltext baut, testet und die Pakete selbst erzeugt, steht in [`docs/ENTWICKLUNG.md`](docs/ENTWICKLUNG.md).
+How to build the app from source, run the tests and make the packages yourself is described in [`docs/ENTWICKLUNG.md`](docs/ENTWICKLUNG.md) (in German).
 
-## Mitmachen
+## Contributing
 
-Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden. In der App führt „Über diese App → Fehler melden“ direkt dorthin, mit vorausgefüllten technischen Angaben (ohne Passwörter oder Mailinhalte).
+Please report bugs and ideas as an [issue](https://github.com/deviablo/email/issues). In the app, “About E-Mail → Report an Issue” takes you there, with technical details already filled in (no passwords or message contents).
 
-## Lizenz
+## License
 
-E-Mail ist ein offenes Gemeinschaftsprojekt der Entwicklerinnen und Entwickler von E-Mail.
+E-Mail is an open community project by the E-Mail developers.
 
-Dieses Programm ist freie Software: Du kannst es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder verändern, entweder gemäß Version 3 der Lizenz oder (nach deiner Wahl) jeder späteren Version.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Dieses Programm wird in der Hoffnung verbreitet, dass es nützlich ist, aber **ohne jede Gewährleistung**, sogar ohne die implizite Gewährleistung der Marktreife oder der Eignung für einen bestimmten Zweck. Details stehen in der GNU General Public License.
+This program is distributed in the hope that it will be useful, but **without any warranty**; without even the implied warranty of merchantability or fitness for a particular purpose. See the GNU General Public License for more details.
 
-Den vollständigen Lizenztext findest du in der Datei [`LICENSE`](LICENSE).
+The full license text is in the file [`LICENSE`](LICENSE).
 
 `SPDX-License-Identifier: GPL-3.0-or-later`
