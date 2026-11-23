@@ -772,14 +772,17 @@ impl Reader {
         body.add_named(&web, Some("web"));
         body.add_named(&error, Some("error"));
 
+        // Room above and below, so the chips do not touch the message
+        // text or the separator of the action bar.
         let attachments = gtk::FlowBox::builder()
             .selection_mode(gtk::SelectionMode::None)
-            .column_spacing(6)
-            .row_spacing(6)
+            .column_spacing(10)
+            .row_spacing(10)
             .max_children_per_line(4)
             .margin_start(14)
             .margin_end(14)
-            .margin_bottom(6)
+            .margin_top(14)
+            .margin_bottom(14)
             .visible(false)
             .build();
 
