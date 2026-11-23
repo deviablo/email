@@ -883,13 +883,13 @@ def ungrouped():
     shot("19c-gruppiert")
 
 
-def open_general_settings():
+def open_settings_page(name, marker):
     """The dialog grows in; a click too early hits the wrong tab."""
     action("settings")
-    find("page tab", "General", timeout=10)
+    find("page tab", name, timeout=10)
     for _ in range(3):
         time.sleep(1.5)
-        tab = find("page tab", "General", timeout=10)
+        tab = find("page tab", name, timeout=10)
         # Through the accessibility interface; a click hit the wrong tab.
         actions = tab.get_action_iface()
         if actions is not None and actions.get_n_actions() > 0:
@@ -897,9 +897,22 @@ def open_general_settings():
         else:
             click(tab)
         time.sleep(1)
-        if find_all(None, "Run in background"):
+        if find_all(None, marker):
             return
-    raise AssertionError("the General page did not open")
+    raise AssertionError(f"the page {name} did not open")
+
+
+def open_general_settings():
+    open_settings_page("General", "Run in background")
+
+
+@scenario("Einstellungen: Seite Tastenkürzel")
+def settings_shortcuts():
+    open_settings_page("Keyboard Shortcuts", "Next conversation")
+    for name in ("Reply All", "New Message", "Folder sidebar"):
+        find(None, name, timeout=5)
+    shot("20a-einstellungen-tastenkuerzel")
+    key("Escape")
 
 
 @scenario("Einstellungen, Über diese App, dunkler Modus, schmales Fenster")
@@ -982,7 +995,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, looks,
+                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, settings_shortcuts, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()
