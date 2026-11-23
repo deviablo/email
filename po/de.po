@@ -1963,3 +1963,27 @@ msgstr "1 Nachricht endgültig gelöscht"
 
 msgid "{} messages deleted for good"
 msgstr "{} Nachrichten endgültig gelöscht"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "A small update after the first feedback."
+msgstr "Ein kleines Update nach den ersten Rückmeldungen."
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "The reading pane uses the whole width of the window"
+msgstr "Die Leseansicht nutzt die ganze Breite des Fensters"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "Double-click a message to open it in a window of its own"
+msgstr "Doppelklick öffnet eine Mail in einem eigenen Fenster"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "Keyboard shortcuts are listed in the settings"
+msgstr "Die Tastenkürzel stehen jetzt auch in den Einstellungen"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "A gear in the folder sidebar opens the settings"
+msgstr "Ein Zahnrad in der Ordnerleiste öffnet die Einstellungen"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "New Mail sits above the reading pane, with a clearer icon"
+msgstr "„Neue Mail“ steht über der Leseansicht, mit klarerem Symbol"
