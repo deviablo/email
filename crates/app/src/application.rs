@@ -127,11 +127,6 @@ const STYLE: &str = "
 .account-confirm {
     padding: 14px;
 }
-.count-pill.outline {
-    background-color: transparent;
-    border: 1px solid alpha(currentColor, 0.25);
-    font-weight: normal;
-}
 .navigation-sidebar > row:drop(active) {
     background-color: alpha(@accent_bg_color, 0.25);
     box-shadow: inset 0 0 0 2px @accent_bg_color;

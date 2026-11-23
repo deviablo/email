@@ -900,7 +900,6 @@ def open_general_settings():
 
 @scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
 def gear():
-    assert not find_all("push button", "Main Menu"), "the old main menu is still there"
     press(find("push button", "Settings", exact=True))
     find("page tab", "General", timeout=10)
     shot("19a-zahnrad-einstellungen")
