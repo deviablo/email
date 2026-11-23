@@ -242,9 +242,6 @@ msgstr "Keine Unterhaltung ausgewählt"
 msgid "Choose a message on the left to read it."
 msgstr "Wähle links eine Nachricht, um sie zu lesen."
 
-#: crates/app/src/reader.rs:191
-msgid "Conversation Menu"
-msgstr "Menü der Unterhaltung"
 
 #: crates/app/src/reader.rs:269
 #, rust-format

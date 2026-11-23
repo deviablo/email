@@ -523,7 +523,7 @@ impl Window {
             .title_widget(&reader.title)
             .build();
         reader_header.pack_start(&reader_compose);
-        reader_header.pack_end(&reader.menu_button);
+        reader_header.pack_start(&reader.actions);
         let reader_view = adw::ToolbarView::new();
         reader_view.add_top_bar(&reader_header);
         reader_view.set_content(Some(&reader.widget));
@@ -1964,23 +1964,15 @@ impl Window {
         let junk = self
             .current_folder()
             .is_some_and(|folder| folder.role == Some(FolderRole::Junk));
-        let menu = gio::Menu::new();
-        let first = gio::Menu::new();
-        first.append(Some(&gettext("Move To…")), Some("conversation.move"));
-        first.append(
-            Some(&if junk {
-                gettext("Not Spam")
-            } else {
-                gettext("Mark as Spam")
-            }),
-            Some("conversation.spam"),
-        );
-        menu.append_section(None, &first);
-        let second = gio::Menu::new();
-        second.append(Some(&gettext("Show Source")), Some("conversation.source"));
-        second.append(Some(&gettext("Print…")), Some("conversation.print"));
-        menu.append_section(None, &second);
-        self.reader.menu_button.set_menu_model(Some(&menu));
+        let spam = if junk {
+            gettext("Not Spam")
+        } else {
+            gettext("Mark as Spam")
+        };
+        self.reader.spam_button.set_tooltip_text(Some(&spam));
+        self.reader
+            .spam_button
+            .update_property(&[gtk::accessible::Property::Label(&spam)]);
     }
 
     fn move_conversation(self: &Rc<Self>) {

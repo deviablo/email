@@ -617,11 +617,7 @@ def drag_to_folder():
 @scenario("Als Spam markieren: Mail erscheint sofort im Spam-Ordner")
 def spam():
     press(find(None, "Newsletter"))
-    click(find(None, "Conversation Menu"))
-    # Menus are separate windows the accessibility tree does not reach;
-    # the keyboard does: "Move To…", then "Mark as Spam".
-    key("Down")
-    key("Return")
+    press(find("push button", "Mark as Spam", exact=True))
     time.sleep(1)
     click(find("label", "Spam", exact=True))
     wait_until(lambda: find_all(None, "Newsletter"), 15, "the mail in spam")

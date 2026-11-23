@@ -82,7 +82,9 @@ type AttachmentCallback = Box<dyn Fn(MessageId, Attachment, bool)>;
 pub struct Reader {
     pub widget: gtk::Stack,
     pub title: adw::WindowTitle,
-    pub menu_button: gtk::MenuButton,
+    /// Move, spam, source and print for the whole conversation.
+    pub actions: gtk::Box,
+    pub spam_button: gtk::Button,
     scroller: gtk::ScrolledWindow,
     link_preview: gtk::Label,
     subject: gtk::Label,
@@ -182,16 +184,43 @@ impl Reader {
         widget.add_named(&conversation, Some("conversation"));
 
         let title = adw::WindowTitle::new("", "");
-        let menu_button = gtk::MenuButton::builder()
-            .icon_name("view-more-symbolic")
-            .tooltip_text(gettext("Conversation Menu"))
-            .visible(false)
-            .build();
+        let action_button = |icon: String, tooltip: String, action: &str| {
+            let button = gtk::Button::builder()
+                .icon_name(icon)
+                .tooltip_text(&tooltip)
+                .action_name(action)
+                .build();
+            button.update_property(&[gtk::accessible::Property::Label(&tooltip)]);
+            button
+        };
+        let spam_button = action_button(
+            "mail-mark-junk-symbolic".into(),
+            gettext("Mark as Spam"),
+            "conversation.spam",
+        );
+        let actions = gtk::Box::builder().spacing(6).visible(false).build();
+        actions.append(&action_button(
+            format!("{APP_ID}-move-symbolic"),
+            gettext("Move To…"),
+            "conversation.move",
+        ));
+        actions.append(&spam_button);
+        actions.append(&action_button(
+            format!("{APP_ID}-source-symbolic"),
+            gettext("Show Source"),
+            "conversation.source",
+        ));
+        actions.append(&action_button(
+            "document-print-symbolic".into(),
+            gettext("Print…"),
+            "conversation.print",
+        ));
 
         let this = Rc::new(Reader {
             widget,
             title,
-            menu_button,
+            actions,
+            spam_button,
             scroller,
             link_preview,
             subject,
@@ -349,7 +378,7 @@ impl Reader {
         self.clear_cards();
         self.title.set_title("");
         self.title.set_subtitle("");
-        self.menu_button.set_visible(false);
+        self.actions.set_visible(false);
         self.widget.set_visible_child_name("empty");
     }
 
@@ -386,7 +415,7 @@ impl Reader {
         // The subject and the cards say it all; the title bar stays empty.
         self.title.set_title("");
         self.title.set_subtitle("");
-        self.menu_button.set_visible(true);
+        self.actions.set_visible(true);
         self.widget.set_visible_child_name("conversation");
 
         let same_thread = self.thread.get() == Some(thread);
