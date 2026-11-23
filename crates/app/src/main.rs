@@ -21,6 +21,7 @@ mod shortcuts;
 mod tray;
 mod widgets;
 mod window;
+mod wrap_layout;
 
 use gettextrs::LocaleCategory;
 use gtk::glib;

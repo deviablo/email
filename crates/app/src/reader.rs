@@ -24,6 +24,7 @@ use webkit::prelude::*;
 use crate::config::APP_ID;
 use crate::message_list::{format_long_time, format_message_time, format_time};
 use crate::widgets::fmt;
+use crate::wrap_layout::WrapLayout;
 
 const WORLD: &str = "e-mail";
 const HEIGHT_SCRIPT: &str = "(() => {
@@ -62,7 +63,7 @@ struct OpenCard {
     web: webkit::WebView,
     error: adw::StatusPage,
     banner: gtk::Box,
-    attachments: gtk::FlowBox,
+    attachments: gtk::Box,
     loaded: Cell<bool>,
 }
 
@@ -774,17 +775,14 @@ impl Reader {
 
         // Room above and below, so the chips do not touch the message
         // text or the separator of the action bar.
-        let attachments = gtk::FlowBox::builder()
-            .selection_mode(gtk::SelectionMode::None)
-            .column_spacing(10)
-            .row_spacing(10)
-            .max_children_per_line(4)
+        let attachments = gtk::Box::builder()
             .margin_start(14)
             .margin_end(14)
             .margin_top(14)
             .margin_bottom(14)
             .visible(false)
             .build();
+        attachments.set_layout_manager(Some(WrapLayout::new()));
 
         let actions = gtk::Box::builder()
             .spacing(4)
