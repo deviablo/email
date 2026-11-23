@@ -351,7 +351,7 @@ impl Window {
         let folders = FolderList::new();
         let switcher = build_account_switcher();
         let settings_button = gtk::Button::builder()
-            .icon_name("emblem-system-symbolic")
+            .icon_name(format!("{APP_ID}-settings-symbolic"))
             .action_name("app.settings")
             .tooltip_text(gettext("Settings (Ctrl+,)"))
             .build();
