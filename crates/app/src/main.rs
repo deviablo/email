@@ -11,6 +11,7 @@ mod editor;
 mod files;
 mod folder_list;
 mod message_list;
+mod message_window;
 mod reader;
 mod recipients;
 mod reply_editor;

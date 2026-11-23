@@ -47,6 +47,7 @@ use crate::folder_list::{FolderList, folder_label};
 use crate::message_list::{
     ListContext, MessageList, RowAction, format_long_time, format_quote_time,
 };
+use crate::message_window::MessageWindow;
 use crate::reader::{BodyContent, CardAction, ImageChoice, Reader, sender_domain};
 use crate::recipients::ContactSource;
 use crate::reply_editor::ReplyEditor;
@@ -134,6 +135,8 @@ pub struct Window {
     state: RefCell<State>,
     reply: RefCell<Option<Rc<ReplyEditor>>>,
     composers: RefCell<Vec<Rc<ComposeWindow>>>,
+    /// Single messages open in windows of their own.
+    message_windows: RefCell<Vec<Rc<MessageWindow>>>,
     search_button: gtk::ToggleButton,
     search_bar: gtk::Revealer,
     search_entry: gtk::SearchEntry,
@@ -631,6 +634,7 @@ impl Window {
             state: RefCell::default(),
             reply: RefCell::default(),
             composers: RefCell::default(),
+            message_windows: RefCell::default(),
             search_button,
             search_bar,
             search_entry,
@@ -670,6 +674,12 @@ impl Window {
         self.messages.connect_open(move |id| {
             if let Some(this) = weak.upgrade() {
                 this.open_thread(id);
+            }
+        });
+        let weak = Rc::downgrade(self);
+        self.messages.connect_open_window(move |id| {
+            if let Some(this) = weak.upgrade() {
+                this.open_message_window(id);
             }
         });
         let weak = Rc::downgrade(self);
@@ -1217,6 +1227,7 @@ impl Window {
             return;
         };
         self.clear_notice(id);
+        self.close_message_windows(|window| window.account == id);
         {
             let mut prefs = self.prefs.borrow_mut();
             if prefs.notify.muted.remove(&id) {
@@ -1281,6 +1292,7 @@ impl Window {
         }
         self.leave_reply();
         self.close_search();
+        self.close_message_windows(|window| window.account != id);
         {
             let mut state = self.state.borrow_mut();
             state.active = Some(id);
@@ -1621,6 +1633,7 @@ impl Window {
     fn refresh_now(self: &Rc<Self>) {
         self.reload_threads();
         self.refresh_conversation();
+        self.refresh_message_windows();
         self.reload_folders();
         self.update_switcher();
     }
@@ -2136,6 +2149,12 @@ impl Window {
     /// if it is not stored yet. Preparing the HTML happens off the main
     /// thread, as large messages take a while.
     fn show_body(self: &Rc<Self>, id: MessageId) {
+        let reader = self.reader.clone();
+        self.load_body(&reader, id);
+    }
+
+    /// Like `show_body`, for the reading pane or a message window.
+    pub fn load_body(self: &Rc<Self>, reader: &Rc<Reader>, id: MessageId) {
         let (raw, domain_allowed) = self.with_store(|store| {
             let message = store.message(id).ok().flatten();
             let domain = message
@@ -2156,7 +2175,7 @@ impl Window {
         let allowed = domain_allowed
             || self.prefs.borrow().load_remote_images
             || self.state.borrow().images_once.contains(&id);
-        let weak = Rc::downgrade(self);
+        let reader = Rc::downgrade(reader);
         glib::spawn_future_local(async move {
             let content = gio::spawn_blocking(move || {
                 let parsed = parse::parse_message(&raw);
@@ -2168,19 +2187,17 @@ impl Window {
                 }
             })
             .await;
-            let Some(this) = weak.upgrade() else {
+            let Some(reader) = reader.upgrade() else {
                 return;
             };
             match content {
-                Ok(content) => this.reader.set_body(id, &content, allowed),
-                Err(_) => this
-                    .reader
-                    .set_body_error(id, &gettext("The message could not be read.")),
+                Ok(content) => reader.set_body(id, &content, allowed),
+                Err(_) => reader.set_body_error(id, &gettext("The message could not be read.")),
             }
         });
     }
 
-    fn allow_images(self: &Rc<Self>, id: MessageId, choice: ImageChoice) {
+    pub fn allow_images(self: &Rc<Self>, id: MessageId, choice: ImageChoice) {
         match choice {
             ImageChoice::Once => {
                 self.state.borrow_mut().images_once.insert(id);
@@ -2210,7 +2227,7 @@ impl Window {
         }
     }
 
-    fn handle_attachment(self: &Rc<Self>, id: MessageId, attachment: Attachment, open: bool) {
+    pub fn handle_attachment(self: &Rc<Self>, id: MessageId, attachment: Attachment, open: bool) {
         let Some(raw) = self.with_store(|store| store.body(id).ok().flatten()) else {
             return;
         };
@@ -2337,6 +2354,12 @@ impl Window {
                 if self.reader.wants_body(message) {
                     self.show_body(message);
                 }
+                let windows = self.message_windows.borrow().clone();
+                for window in windows {
+                    if window.reader.wants_body(message) {
+                        self.load_body(&window.reader, message);
+                    }
+                }
             }
             SyncEvent::BodyFailed {
                 account,
@@ -2344,6 +2367,9 @@ impl Window {
                 error,
             } if is_active(account) => {
                 self.reader.set_body_error(message, &error);
+                for window in self.message_windows.borrow().iter() {
+                    window.reader.set_body_error(message, &error);
+                }
             }
             SyncEvent::ChangeFailed { account } if is_active(account) => {
                 self.toast(&gettext("A change could not be saved on the server."));
@@ -2513,6 +2539,12 @@ impl Window {
         for message in self.reader.messages() {
             if self.reader.is_open(message.id) {
                 self.show_body(message.id);
+            }
+        }
+        let windows = self.message_windows.borrow().clone();
+        for window in windows {
+            if window.reader.is_open(window.message) {
+                self.load_body(&window.reader, window.message);
             }
         }
     }
@@ -3497,6 +3529,159 @@ impl Window {
         let window = ComposeWindow::new(self, account, draft);
         window.present();
         self.composers.borrow_mut().push(window);
+    }
+
+    /// Opens the newest message of a conversation in a window of its own.
+    /// Drafts open in the compose window on the first click already.
+    fn open_message_window(self: &Rc<Self>, thread: ThreadId) {
+        if self.messages.selection_mode() {
+            return;
+        }
+        let (Some(account), Some(folder)) = (self.active(), self.thread_folder(thread)) else {
+            return;
+        };
+        let (is_drafts, message) = self.with_store(|store| {
+            let is_drafts = store
+                .folder(folder)
+                .ok()
+                .flatten()
+                .is_some_and(|folder| folder.role == Some(FolderRole::Drafts));
+            let messages = store.conversation(thread, folder).unwrap_or_default();
+            let message = messages
+                .iter()
+                .rfind(|message| message.folder_id == folder)
+                .or(messages.last())
+                .map(|message| message.id);
+            (is_drafts, message)
+        });
+        let Some(message) = message.filter(|_| !is_drafts) else {
+            return;
+        };
+        let existing = self
+            .message_windows
+            .borrow()
+            .iter()
+            .find(|window| window.message == message)
+            .cloned();
+        if let Some(existing) = existing {
+            existing.present();
+            return;
+        }
+        let window = MessageWindow::new(self, account, message);
+        self.message_windows.borrow_mut().push(window.clone());
+        self.refresh_message_window(&window);
+        window.present();
+    }
+
+    /// Shows the current state of the message, or closes the window when
+    /// the message is gone.
+    fn refresh_message_window(self: &Rc<Self>, window: &Rc<MessageWindow>) {
+        let found = self.with_store(|store| {
+            let message = store.message(window.message).ok().flatten()?;
+            let folder = store
+                .folder(message.folder_id)
+                .ok()
+                .flatten()
+                .map(|folder| folder_label(&folder))
+                .unwrap_or_default();
+            Some((message, folder))
+        });
+        let Some((message, folder)) = found else {
+            window.window.close();
+            return;
+        };
+        let subject = if message.subject.is_empty() {
+            gettext("(No subject)")
+        } else {
+            message.subject.clone()
+        };
+        window.window.set_title(Some(&subject));
+        let original_subject = message.subject.clone();
+        window.reader.show_conversation(
+            message.thread_id,
+            &original_subject,
+            &folder,
+            vec![message],
+            &self.own_address(),
+            &self.own_name(),
+        );
+    }
+
+    fn refresh_message_windows(self: &Rc<Self>) {
+        let windows = self.message_windows.borrow().clone();
+        for window in windows {
+            self.refresh_message_window(&window);
+        }
+    }
+
+    fn close_message_windows(&self, which: impl Fn(&MessageWindow) -> bool) {
+        let windows: Vec<_> = self
+            .message_windows
+            .borrow()
+            .iter()
+            .filter(|window| which(window))
+            .cloned()
+            .collect();
+        for window in windows {
+            window.window.close();
+        }
+    }
+
+    pub fn message_window_closed(&self, message: MessageId) {
+        self.message_windows
+            .borrow_mut()
+            .retain(|window| window.message != message);
+    }
+
+    /// The actions of the card in a message window. Replies open in the
+    /// compose window; deleting removes just this message and closes it.
+    pub fn message_window_action(
+        self: &Rc<Self>,
+        window: &Rc<MessageWindow>,
+        action: CardAction,
+        id: MessageId,
+    ) {
+        if self.active() != Some(window.account) {
+            return;
+        }
+        let kind = match action {
+            CardAction::Reply => ReplyKind::Reply,
+            CardAction::ReplyAll => ReplyKind::ReplyAll,
+            CardAction::Forward => ReplyKind::Forward,
+            CardAction::ToggleStar | CardAction::ToggleRead => {
+                self.card_action(action, id);
+                return;
+            }
+            CardAction::Delete => {
+                let deletion =
+                    self.change(|store| store.delete_messages(&[id], Window::undo_due()));
+                if !deletion.undo.is_empty() {
+                    self.undo_toast(&gettext("Message deleted"), deletion.undo);
+                } else if deletion.permanent > 0 {
+                    self.undo_toast(&gettext("Permanently deleted"), Vec::new());
+                }
+                window.window.close();
+                return;
+            }
+        };
+        let Some(account) = self.account(window.account) else {
+            return;
+        };
+        let Some(raw) = self.with_store(|store| store.body(id).ok().flatten()) else {
+            return;
+        };
+        let weak = Rc::downgrade(self);
+        glib::spawn_future_local(async move {
+            let Ok(original) = gio::spawn_blocking(move || compose::read_original(&raw)).await
+            else {
+                return;
+            };
+            let Some(this) = weak.upgrade() else {
+                return;
+            };
+            let draft = this.reply_draft(&account, &original, kind);
+            this.open_compose(account, &draft);
+        });
     }
 
     pub fn compose_closed(&self, message_id: &str) {

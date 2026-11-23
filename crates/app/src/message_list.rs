@@ -68,6 +68,7 @@ pub struct MessageList {
     selected: RefCell<HashSet<ThreadId>>,
     context: RefCell<ListContext>,
     on_open: RefCell<Option<OpenCallback>>,
+    on_open_window: RefCell<Option<OpenCallback>>,
     on_menu: RefCell<Option<MenuCallback>>,
     on_selection: RefCell<Option<SelectionCallback>>,
     on_request_selection: RefCell<Option<RequestCallback>>,
@@ -158,6 +159,7 @@ impl MessageList {
                 selected: RefCell::default(),
                 context: RefCell::default(),
                 on_open: RefCell::default(),
+                on_open_window: RefCell::default(),
                 on_menu: RefCell::default(),
                 on_selection: RefCell::default(),
                 on_request_selection: RefCell::default(),
@@ -198,6 +200,20 @@ impl MessageList {
 
     pub fn connect_open(&self, callback: impl Fn(ThreadId) + 'static) {
         *self.on_open.borrow_mut() = Some(Box::new(callback));
+    }
+
+    /// Called when a row is double-clicked, to open it in a window of its own.
+    pub fn connect_open_window(&self, callback: impl Fn(ThreadId) + 'static) {
+        *self.on_open_window.borrow_mut() = Some(Box::new(callback));
+    }
+
+    fn open_window(&self, thread: ThreadId) {
+        if self.selecting.get() {
+            return;
+        }
+        if let Some(callback) = self.on_open_window.borrow().as_ref() {
+            callback(thread);
+        }
     }
 
     /// Called with the number of selected conversations in selection mode.
@@ -655,6 +671,30 @@ fn build_row(list: &Weak<MessageList>) -> (gtk::Overlay, RowWidgets) {
         });
     }
     overlay.add_controller(modified);
+
+    // A double click opens the message in a window of its own; the first
+    // click has already opened it in the reading pane.
+    let double = gtk::GestureClick::builder()
+        .button(gtk::gdk::BUTTON_PRIMARY)
+        .build();
+    {
+        let list = list.clone();
+        let thread = thread.clone();
+        double.connect_pressed(move |gesture, presses, _, _| {
+            let modifiers = gesture.current_event_state();
+            if presses != 2
+                || modifiers.intersects(
+                    gtk::gdk::ModifierType::SHIFT_MASK | gtk::gdk::ModifierType::CONTROL_MASK,
+                )
+            {
+                return;
+            }
+            if let Some(list) = list.upgrade() {
+                list.open_window(thread.get());
+            }
+        });
+    }
+    overlay.add_controller(double);
 
     // The actions of a row: right click, long press on touch screens.
     let open_menu = {

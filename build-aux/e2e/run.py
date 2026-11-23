@@ -699,6 +699,29 @@ def reply():
     assert raw and b"In-Reply-To" in raw, "reply without In-Reply-To"
 
 
+def message_windows(subject):
+    return [node for node in find_all(None, subject, exact=True)
+            if node.get_role_name() in ("frame", "window")]
+
+
+@scenario("Doppelklick öffnet eine einzelne Mail in einem eigenen Fenster")
+def message_window():
+    press(find(None, "Inbox", exact=True))
+    row = find(None, "Invoice May")
+    extents = row.get_component_iface().get_extents(Atspi.CoordType.WINDOW)
+    ox, oy = window_origin()
+    xdo("mousemove", str(ox + extents.x + 60), str(oy + extents.y + extents.height // 2))
+    xdo("click", "--repeat", "2", "--delay", "80", "1")
+    wait_until(lambda: message_windows("Invoice May"), 15, "the message window")
+    window = message_windows("Invoice May")[0]
+    wait_until(lambda: find_all(None, "invoice.pdf", root=window), 30,
+               "the message in its window")
+    assert not find_all("label", "Newest", exact=True, root=window), "more than one message"
+    shot("18b-mail-im-fenster")
+    key("Escape")
+    wait_until(lambda: not message_windows("Invoice May"), 15, "the window to close")
+
+
 @scenario("Benachrichtigung bei geschlossenem Fenster, Aktion „Als gelesen markieren“")
 def notification():
     action("settings")
@@ -982,7 +1005,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, looks,
+                 compose_send, cc_toggle, draft, reply, message_window, accordion, ungrouped, notification, tray, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()
