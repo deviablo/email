@@ -617,11 +617,7 @@ def drag_to_folder():
 @scenario("Als Spam markieren: Mail erscheint sofort im Spam-Ordner")
 def spam():
     press(find(None, "Newsletter"))
-    click(find(None, "Conversation Menu"))
-    # Menus are separate windows the accessibility tree does not reach;
-    # the keyboard does: "Move To…", then "Mark as Spam".
-    key("Down")
-    key("Return")
+    press(find("push button", "Mark as Spam", exact=True))
     time.sleep(1)
     click(find("label", "Spam", exact=True))
     wait_until(lambda: find_all(None, "Newsletter"), 15, "the mail in spam")
@@ -764,16 +760,12 @@ def tray():
     return f"Symbol: {icon.strip()}"
 
 
-@scenario("Tastenkürzel-Übersicht, Über diese App, dunkler Modus, schmales Fenster")
+@scenario("Tastenkürzel-Übersicht, dunkler Modus, schmales Fenster")
 def no_webkit_looks():
     focus(find("list", "Messages"))
     key("question")
     find(None, "Next conversation", timeout=10)
     shot("10-kuerzel-uebersicht")
-    key("Escape")
-    action("about")
-    find(None, "Report an Issue", timeout=10)
-    shot("11-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})
@@ -883,13 +875,13 @@ def ungrouped():
     shot("19c-gruppiert")
 
 
-def open_general_settings():
+def open_settings_page(name, marker):
     """The dialog grows in; a click too early hits the wrong tab."""
     action("settings")
-    find("page tab", "General", timeout=10)
+    find("page tab", name, timeout=10)
     for _ in range(3):
         time.sleep(1.5)
-        tab = find("page tab", "General", timeout=10)
+        tab = find("page tab", name, timeout=10)
         # Through the accessibility interface; a click hit the wrong tab.
         actions = tab.get_action_iface()
         if actions is not None and actions.get_n_actions() > 0:
@@ -897,22 +889,34 @@ def open_general_settings():
         else:
             click(tab)
         time.sleep(1)
-        if find_all(None, "Run in background"):
+        if find_all(None, marker):
             return
-    raise AssertionError("the General page did not open")
+    raise AssertionError(f"the page {name} did not open")
 
 
-@scenario("Einstellungen, Über diese App, dunkler Modus, schmales Fenster")
+def open_general_settings():
+    open_settings_page("General", "Run in background")
+
+
+@scenario("Zahnrad in der Ordnerleiste öffnet die Einstellungen")
+def gear():
+    # The tray scenario before quits the app.
+    stop_app()
+    start_app()
+    press(find("push button", "Settings", exact=True, timeout=20))
+    find("page tab", "General", timeout=10)
+    shot("19a-zahnrad-einstellungen")
+    key("Escape")
+    gone("page tab", "General")
+
+
+@scenario("Einstellungen, dunkler Modus, schmales Fenster")
 def looks():
     stop_app()
     start_app()
     action("settings")
     find(None, "Accounts", timeout=15)
     shot("20-einstellungen")
-    key("Escape")
-    action("about")
-    find(None, "E-Mail", timeout=10)
-    shot("21-ueber")
     key("Escape")
     stop_app()
     start_app({"ADW_DEBUG_COLOR_SCHEME": "prefer-dark"})
@@ -982,7 +986,7 @@ def main():
     for test in [first_start, setup_wrong_password, setup_success, receive, search,
                  no_webkit_looks, restart, read, hostile, shortcuts, delete_undo,
                  context_menu, drag_to_folder, spam,
-                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, looks,
+                 compose_send, cc_toggle, draft, reply, accordion, ungrouped, notification, tray, gear, looks,
                  repetition(1), repetition(2), repetition(3), repetition(4), repetition(5)]:
         test()
     stop_app()

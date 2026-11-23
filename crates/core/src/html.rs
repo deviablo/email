@@ -80,6 +80,9 @@ fn clean_html(html: &str, inline_images: &[InlineImage], allow_remote: bool) -> 
     let clean = ammonia::Builder::default()
         .add_tags(["style", "font", "center"])
         .rm_clean_content_tags(["style"])
+        // The document title often repeats the subject; without its tag
+        // the text would show up at the top of the message.
+        .add_clean_content_tags(["title"])
         .add_generic_attributes([
             "style",
             "align",
@@ -265,6 +268,18 @@ mod tests {
         assert!(!body.contains("onclick"));
         assert!(!body.contains("javascript:"));
         assert!(body.contains("<p>Hi</p>"));
+    }
+
+    #[test]
+    fn drops_the_document_title() {
+        let rendered = render_html(
+            "<html><head><title>Repeated subject</title></head><body><p>Hello</p></body></html>",
+            &[],
+            false,
+        );
+        let body = body_of(&rendered.document);
+        assert!(!body.contains("Repeated subject"));
+        assert!(body.contains("<p>Hello</p>"));
     }
 
     #[test]

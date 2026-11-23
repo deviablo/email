@@ -630,6 +630,7 @@ impl Store {
         Ok(ids)
     }
 
+    #[cfg(test)]
     pub fn insert_message(
         &mut self,
         folder: FolderId,

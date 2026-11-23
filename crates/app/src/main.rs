@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-mod about;
 mod application;
 mod background;
 mod compose_window;
@@ -22,6 +21,7 @@ mod shortcuts;
 mod tray;
 mod widgets;
 mod window;
+mod wrap_layout;
 
 use gettextrs::LocaleCategory;
 use gtk::glib;

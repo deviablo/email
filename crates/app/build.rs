@@ -2,5 +2,4 @@
 
 fn main() {
     println!("cargo:rerun-if-env-changed=E_MAIL_LOCALEDIR");
-    println!("cargo:rerun-if-env-changed=E_MAIL_PACKAGE");
 }

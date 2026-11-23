@@ -21,9 +21,10 @@ const STYLE: &str = "
 }
 .message-row-frame { border-radius: 8px; }
 .message-row-frame.picked {
-    background-color: alpha(@accent_bg_color, 0.22);
-    box-shadow: inset 0 0 0 1px alpha(@accent_bg_color, 0.6);
+    background-color: alpha(@accent_bg_color, 0.18);
+    box-shadow: inset 0 0 0 1px @accent_bg_color;
 }
+.selecting .unread-dot { opacity: 0; }
 .unread-dot {
     background-color: @accent_bg_color;
     border: 2px solid @window_bg_color;
@@ -125,11 +126,6 @@ const STYLE: &str = "
 }
 .account-confirm {
     padding: 14px;
-}
-.count-pill.outline {
-    background-color: transparent;
-    border: 1px solid alpha(currentColor, 0.25);
-    font-weight: normal;
 }
 .navigation-sidebar > row:drop(active) {
     background-color: alpha(@accent_bg_color, 0.25);
@@ -259,16 +255,6 @@ pub fn run() -> glib::ExitCode {
     let quit = gio::ActionEntry::builder("quit")
         .activate(|app: &adw::Application, _, _| app.quit())
         .build();
-    let about = {
-        let window = window.clone();
-        gio::ActionEntry::builder("about")
-            .activate(move |_: &adw::Application, _, _| {
-                if let Some(window) = window.borrow().as_ref() {
-                    crate::about::show(&window.window, window.accounts().len());
-                }
-            })
-            .build()
-    };
     let add_account = {
         let window = window.clone();
         gio::ActionEntry::builder("add-account")
@@ -347,7 +333,6 @@ pub fn run() -> glib::ExitCode {
     };
     app.add_action_entries([
         quit,
-        about,
         add_account,
         settings,
         compose,

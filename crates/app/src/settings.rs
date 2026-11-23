@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Settings → Accounts, with the subpage "Edit Account", Settings →
-//! General (running in the background, notifications) and Settings →
-//! Signature for the active account.
+//! General (running in the background, notifications), Settings →
+//! Signature for the active account and Settings → Keyboard Shortcuts.
 
 use std::cell::{Cell, RefCell};
 use std::rc::{Rc, Weak};
@@ -234,6 +234,7 @@ impl Settings {
             .build();
         signature_page.add(&signature_group);
         dialog.add(&signature_page);
+        dialog.add(&crate::shortcuts::page());
 
         let this = Rc::new(Settings {
             dialog,

@@ -350,18 +350,14 @@ impl Window {
         // Folder sidebar.
         let folders = FolderList::new();
         let switcher = build_account_switcher();
-        let menu = gio::Menu::new();
-        menu.append(Some(&gettext("Settings")), Some("app.settings"));
-        menu.append(Some(&gettext("Keyboard Shortcuts")), Some("app.shortcuts"));
-        menu.append(Some(&gettext("About E-Mail")), Some("app.about"));
-        let menu_button = gtk::MenuButton::builder()
-            .icon_name("open-menu-symbolic")
-            .menu_model(&menu)
-            .primary(true)
-            .tooltip_text(gettext("Main Menu"))
+        let settings_button = gtk::Button::builder()
+            .icon_name(format!("{APP_ID}-settings-symbolic"))
+            .action_name("app.settings")
+            .tooltip_text(gettext("Settings (Ctrl+,)"))
             .build();
+        settings_button.update_property(&[gtk::accessible::Property::Label(&gettext("Settings"))]);
         let sidebar_header = adw::HeaderBar::builder().show_title(false).build();
-        sidebar_header.pack_end(&menu_button);
+        sidebar_header.pack_end(&settings_button);
         let sidebar_view = adw::ToolbarView::new();
         sidebar_view.add_top_bar(&sidebar_header);
         sidebar_view.set_content(Some(&folders.widget));
@@ -382,14 +378,23 @@ impl Window {
             .tooltip_text(gettext("Select conversations"))
             .build();
         select_button.update_property(&[gtk::accessible::Property::Label(&gettext("Select"))]);
-        let compose_button = gtk::Button::builder()
-            .icon_name(format!("{APP_ID}-compose-symbolic"))
-            .tooltip_text(gettext("New Mail (Ctrl+N)"))
-            .action_name("app.compose")
-            .build();
-        compose_button.update_property(&[gtk::accessible::Property::Label(&gettext("New Mail"))]);
-        // From the left: search, select, new message.
-        list_header.pack_end(&compose_button);
+        let compose_button = || {
+            let button = gtk::Button::builder()
+                .icon_name(format!("{APP_ID}-compose-symbolic"))
+                .tooltip_text(gettext("New Mail (Ctrl+N)"))
+                .action_name("app.compose")
+                .build();
+            button.update_property(&[gtk::accessible::Property::Label(&gettext("New Mail"))]);
+            button
+        };
+        // "New Mail" sits at the left of the reading pane; only in the
+        // single-column layout, where that pane is hidden, it moves to the
+        // list (see `add_breakpoints`).
+        let reader_compose = compose_button();
+        let list_compose = compose_button();
+        list_compose.set_visible(false);
+        // From the left: search, select (and new message when narrow).
+        list_header.pack_end(&list_compose);
         list_header.pack_end(&select_button);
         let search_button = gtk::ToggleButton::builder()
             .icon_name("system-search-symbolic")
@@ -517,7 +522,8 @@ impl Window {
         let reader_header = adw::HeaderBar::builder()
             .title_widget(&reader.title)
             .build();
-        reader_header.pack_end(&reader.menu_button);
+        reader_header.pack_start(&reader_compose);
+        reader_header.pack_start(&reader.actions);
         let reader_view = adw::ToolbarView::new();
         reader_view.add_top_bar(&reader_header);
         reader_view.set_content(Some(&reader.widget));
@@ -600,7 +606,7 @@ impl Window {
         toasts.set_child(Some(&root));
         window.set_content(Some(&toasts));
 
-        add_breakpoints(&window, &outer, &inner);
+        add_breakpoints(&window, &outer, &inner, &list_compose);
 
         let this = Rc::new(Window {
             window,
@@ -1902,18 +1908,6 @@ impl Window {
             CardAction::ToggleStar => {
                 self.change(|store| store.set_flagged(&[id], !message.flags.flagged));
             }
-            CardAction::ToggleRead => {
-                let seen = !message.flags.seen;
-                self.change(|store| store.set_seen(&[id], seen));
-                self.undo_toast(
-                    &if seen {
-                        gettext("Message marked as read")
-                    } else {
-                        gettext("Message marked as unread")
-                    },
-                    Vec::new(),
-                );
-            }
             CardAction::Delete => {
                 if self.reader.messages().len() <= 1 {
                     let thread = self.reader.thread().unwrap_or(message.thread_id);
@@ -1933,10 +1927,9 @@ impl Window {
 
     fn add_conversation_actions(self: &Rc<Self>) {
         let actions = gio::SimpleActionGroup::new();
-        let entries: [(&str, ConversationHandler); 4] = [
+        let entries: [(&str, ConversationHandler); 3] = [
             ("move", Window::move_conversation),
             ("spam", Window::spam_conversation),
-            ("source", Window::show_source),
             ("print", Window::print_conversation),
         ];
         for (name, handler) in entries {
@@ -1958,23 +1951,15 @@ impl Window {
         let junk = self
             .current_folder()
             .is_some_and(|folder| folder.role == Some(FolderRole::Junk));
-        let menu = gio::Menu::new();
-        let first = gio::Menu::new();
-        first.append(Some(&gettext("Move To…")), Some("conversation.move"));
-        first.append(
-            Some(&if junk {
-                gettext("Not Spam")
-            } else {
-                gettext("Mark as Spam")
-            }),
-            Some("conversation.spam"),
-        );
-        menu.append_section(None, &first);
-        let second = gio::Menu::new();
-        second.append(Some(&gettext("Show Source")), Some("conversation.source"));
-        second.append(Some(&gettext("Print…")), Some("conversation.print"));
-        menu.append_section(None, &second);
-        self.reader.menu_button.set_menu_model(Some(&menu));
+        let spam = if junk {
+            gettext("Not Spam")
+        } else {
+            gettext("Mark as Spam")
+        };
+        self.reader.spam_button.set_tooltip_text(Some(&spam));
+        self.reader
+            .spam_button
+            .update_property(&[gtk::accessible::Property::Label(&spam)]);
     }
 
     fn move_conversation(self: &Rc<Self>) {
@@ -2060,16 +2045,6 @@ impl Window {
             });
         }
         self.toasts.add_toast(toast);
-    }
-
-    fn show_source(self: &Rc<Self>) {
-        let Some(newest) = self.reader.messages().last().map(|m| m.id) else {
-            return;
-        };
-        match self.with_store(|store| store.body(newest).ok().flatten()) {
-            Some(raw) => dialogs::show_source(&self.window, &raw),
-            None => self.toast(&gettext("The message is still loading.")),
-        }
     }
 
     fn print_conversation(self: &Rc<Self>) {
@@ -3851,6 +3826,7 @@ fn add_breakpoints(
     window: &adw::ApplicationWindow,
     outer: &adw::OverlaySplitView,
     inner: &adw::NavigationSplitView,
+    list_compose: &gtk::Button,
 ) {
     let medium = adw::Breakpoint::new(
         adw::BreakpointCondition::parse("max-width: 900sp").expect("valid condition"),
@@ -3863,5 +3839,6 @@ fn add_breakpoints(
     );
     narrow.add_setter(outer, "collapsed", Some(&true.to_value()));
     narrow.add_setter(inner, "collapsed", Some(&true.to_value()));
+    narrow.add_setter(list_compose, "visible", Some(&true.to_value()));
     window.add_breakpoint(narrow);
 }

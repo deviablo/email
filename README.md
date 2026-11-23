@@ -8,7 +8,7 @@ A simple, modern email client for Linux (GNOME and KDE), written in Rust with GT
 
 Several accounts, IMAP and SMTP, nothing else: no calendar, no chat, no contact management.
 
-**Current version: 1.0**
+**Current version: 1.0.1**
 
 ![Main window with folders, message list and an open conversation](data/screenshots/main.png)
 
@@ -23,9 +23,9 @@ Several accounts, IMAP and SMTP, nothing else: no calendar, no chat, no contact 
 ## Features
 
 - **Several accounts, strictly separate:** every account on its own, without a shared inbox. The guided setup recognises your provider and helps with app passwords.
-- **Conversations:** replies sit right below the message, the newest one stands out.
+- **Conversations:** replies sit right below the message, the newest one stands out. Move, spam and print are one click away above the reading pane, which uses the whole width of the window.
 - **Writing:** new messages in their own window, formatting, pictures in the text, attachments and one signature per account. Drafts are saved automatically, and what you write while offline is sent as soon as you are connected again.
-- **Search and keyboard shortcuts:** search the whole account with filters; `?` shows all shortcuts.
+- **Search and keyboard shortcuts:** search the whole account with filters; `?` or Settings → Keyboard Shortcuts shows all shortcuts. The gear at the top of the folder sidebar opens the settings.
 - **Notifications through the system,** also with the window closed, per account if you like. In the background an icon in the panel shows unread mail; on GNOME this needs the “AppIndicator” extension (included in Ubuntu).
 - **Private:** external images load only after you allow them, passwords live in the system keyring.
 - **Languages:** English and German.
@@ -38,18 +38,18 @@ The installation files for every version are under [Releases](https://github.com
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-File: `e-mail_1.0.0_amd64.deb` · for Ubuntu 24.04 and newer, Debian 13 and newer, Linux Mint 22 and newer
+File: `e-mail_1.0.1_amd64.deb` · for Ubuntu 24.04 and newer, Debian 13 and newer, Linux Mint 22 and newer
 
 ```bash
-sudo apt install ./e-mail_1.0.0_amd64.deb
+sudo apt install ./e-mail_1.0.1_amd64.deb
 ```
 
 ### Fedora
 
-File: `e-mail-1.0.0-1.x86_64.rpm` · for the current Fedora releases
+File: `e-mail-1.0.1-1.x86_64.rpm` · for the current Fedora releases
 
 ```bash
-sudo dnf install ./e-mail-1.0.0-1.x86_64.rpm
+sudo dnf install ./e-mail-1.0.1-1.x86_64.rpm
 ```
 
 ### All other systems (Flatpak)
@@ -94,7 +94,7 @@ How to build the app from source, run the tests and make the packages yourself i
 
 ## Contributing
 
-Please report bugs and ideas as an [issue](https://github.com/deviablo/email/issues). In the app, “About E-Mail → Report an Issue” takes you there, with technical details already filled in (no passwords or message contents).
+Please report bugs and ideas as an [issue](https://github.com/deviablo/email/issues).
 
 ## License
 

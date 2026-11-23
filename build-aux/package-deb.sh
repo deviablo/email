@@ -12,7 +12,7 @@ version="$(sed -n "s/^  version: '\(.*\)',$/\1/p" meson.build)"
 root="$(mktemp -d)"
 work="$(mktemp -d)"
 
-meson setup build-deb --prefix=/usr --buildtype=release -Dpackage_format=deb
+meson setup build-deb --prefix=/usr --buildtype=release
 meson compile -C build-deb
 DESTDIR="$root" meson install -C build-deb --no-rebuild
 

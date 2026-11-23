@@ -8,7 +8,7 @@ Eine einfache, moderne E-Mail-App für Linux (GNOME und KDE), geschrieben in Rus
 
 Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kontaktverwaltung.
 
-**Aktuelle Version: 1.0**
+**Aktuelle Version: 1.0.1**
 
 ![Hauptfenster mit Ordnern, Liste und geöffneter Unterhaltung](data/screenshots/main.png)
 
@@ -23,9 +23,9 @@ Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kon
 ## Funktionen
 
 - **Mehrere Konten, strikt getrennt:** jedes Konto für sich, ohne gemeinsamen Posteingang. Die geführte Einrichtung erkennt den Anbieter und hilft bei App-Passwörtern.
-- **Unterhaltungen:** Antworten stehen direkt unter der Nachricht, die neueste ist hervorgehoben.
+- **Unterhaltungen:** Antworten stehen direkt unter der Nachricht, die neueste ist hervorgehoben. Verschieben, Spam und Drucken sind mit einem Klick über der Leseansicht erreichbar, die die ganze Fensterbreite nutzt.
 - **Schreiben:** neue Mails im eigenen Fenster, Formatierung, Bilder im Text, Anhänge und eine Signatur pro Konto. Entwürfe werden automatisch gespeichert, und was ohne Internet geschrieben wird, geht raus, sobald die Verbindung wieder steht.
-- **Suche und Tastenkürzel:** Suche im ganzen Konto mit Filtern; `?` zeigt alle Tastenkürzel.
+- **Suche und Tastenkürzel:** Suche im ganzen Konto mit Filtern; `?` oder Einstellungen → Tastenkürzel zeigt alle Tastenkürzel. Das Zahnrad oben in der Ordnerleiste öffnet die Einstellungen.
 - **Benachrichtigungen über das System,** auch wenn das Fenster geschlossen ist, auf Wunsch pro Konto. Im Hintergrund zeigt ein Symbol in der Leiste ungelesene Mails; unter GNOME braucht es dafür die Erweiterung „AppIndicator“ (bei Ubuntu schon dabei).
 - **Privat:** Externe Bilder werden erst nach Freigabe geladen, Passwörter liegen im Schlüsselbund des Systems.
 - **Sprachen:** Deutsch und Englisch.
@@ -38,18 +38,18 @@ Die Installationsdateien liegen bei jeder Version unter [Releases](https://githu
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-Datei: `e-mail_1.0.0_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
+Datei: `e-mail_1.0.1_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
 
 ```bash
-sudo apt install ./e-mail_1.0.0_amd64.deb
+sudo apt install ./e-mail_1.0.1_amd64.deb
 ```
 
 ### Fedora
 
-Datei: `e-mail-1.0.0-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
+Datei: `e-mail-1.0.1-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
 
 ```bash
-sudo dnf install ./e-mail-1.0.0-1.x86_64.rpm
+sudo dnf install ./e-mail-1.0.1-1.x86_64.rpm
 ```
 
 ### Alle anderen Systeme (Flatpak)
@@ -94,7 +94,7 @@ Wie man die App aus dem Quelltext baut, testet und die Pakete selbst erzeugt, st
 
 ## Mitmachen
 
-Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden. In der App führt „Über diese App → Ein Problem melden“ direkt dorthin, mit vorausgefüllten technischen Angaben (ohne Passwörter oder Mailinhalte).
+Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden.
 
 ## Lizenz
 

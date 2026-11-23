@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 project(
   'e-mail',
-  version: '1.0.0',
+  version: '1.0.1',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.62.0',
 )
@@ -36,7 +36,6 @@ endif
 
 cargo_env = environment()
 cargo_env.set('E_MAIL_LOCALEDIR', localedir)
-cargo_env.set('E_MAIL_PACKAGE', get_option('package_format'))
 
 custom_target(
   'cargo-build',

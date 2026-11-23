@@ -17,5 +17,4 @@ crates/app/src/recipients.rs
 crates/app/src/reply_editor.rs
 crates/app/src/shortcuts.rs
 crates/app/src/background.rs
-crates/app/src/about.rs
 crates/app/src/tray.rs

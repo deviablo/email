@@ -24,6 +24,7 @@ use webkit::prelude::*;
 use crate::config::APP_ID;
 use crate::message_list::{format_long_time, format_message_time, format_time};
 use crate::widgets::fmt;
+use crate::wrap_layout::WrapLayout;
 
 const WORLD: &str = "e-mail";
 const HEIGHT_SCRIPT: &str = "(() => {
@@ -39,7 +40,6 @@ pub enum CardAction {
     ReplyAll,
     Forward,
     ToggleStar,
-    ToggleRead,
     Delete,
 }
 
@@ -59,12 +59,11 @@ pub struct BodyContent {
 
 struct OpenCard {
     star: gtk::Button,
-    read: gtk::Button,
     body: gtk::Stack,
     web: webkit::WebView,
     error: adw::StatusPage,
     banner: gtk::Box,
-    attachments: gtk::FlowBox,
+    attachments: gtk::Box,
     loaded: Cell<bool>,
 }
 
@@ -82,7 +81,9 @@ type AttachmentCallback = Box<dyn Fn(MessageId, Attachment, bool)>;
 pub struct Reader {
     pub widget: gtk::Stack,
     pub title: adw::WindowTitle,
-    pub menu_button: gtk::MenuButton,
+    /// Move, spam and print for the whole conversation.
+    pub actions: gtk::Box,
+    pub spam_button: gtk::Button,
     scroller: gtk::ScrolledWindow,
     link_preview: gtk::Label,
     subject: gtk::Label,
@@ -113,6 +114,7 @@ impl Reader {
             .icon_name(format!("{APP_ID}-symbolic"))
             .title(gettext("No Conversation Selected"))
             .description(gettext("Choose a message on the left to read it."))
+            .css_classes(["compact"])
             .build();
 
         let subject = gtk::Label::builder()
@@ -153,15 +155,12 @@ impl Reader {
         column.append(&line);
         column.append(&cards_box);
         column.append(&reply_button);
-        let clamp = adw::Clamp::builder()
-            .maximum_size(900)
-            .tightening_threshold(600)
-            .child(&column)
-            .build();
+        // The conversation uses the whole width of the pane, so a larger
+        // or full-screen window leaves no empty margins beside it.
         let scroller = gtk::ScrolledWindow::builder()
             .hscrollbar_policy(gtk::PolicyType::Never)
             .vexpand(true)
-            .child(&clamp)
+            .child(&column)
             .build();
 
         let widget = gtk::Stack::new();
@@ -184,16 +183,38 @@ impl Reader {
         widget.add_named(&conversation, Some("conversation"));
 
         let title = adw::WindowTitle::new("", "");
-        let menu_button = gtk::MenuButton::builder()
-            .icon_name("view-more-symbolic")
-            .tooltip_text(gettext("Conversation Menu"))
-            .visible(false)
-            .build();
+        let action_button = |icon: String, tooltip: String, action: &str| {
+            let button = gtk::Button::builder()
+                .icon_name(icon)
+                .tooltip_text(&tooltip)
+                .action_name(action)
+                .build();
+            button.update_property(&[gtk::accessible::Property::Label(&tooltip)]);
+            button
+        };
+        let spam_button = action_button(
+            "mail-mark-junk-symbolic".into(),
+            gettext("Mark as Spam"),
+            "conversation.spam",
+        );
+        let actions = gtk::Box::builder().spacing(6).visible(false).build();
+        actions.append(&action_button(
+            format!("{APP_ID}-move-symbolic"),
+            gettext("Move To…"),
+            "conversation.move",
+        ));
+        actions.append(&spam_button);
+        actions.append(&action_button(
+            "document-print-symbolic".into(),
+            gettext("Print…"),
+            "conversation.print",
+        ));
 
         let this = Rc::new(Reader {
             widget,
             title,
-            menu_button,
+            actions,
+            spam_button,
             scroller,
             link_preview,
             subject,
@@ -351,7 +372,7 @@ impl Reader {
         self.clear_cards();
         self.title.set_title("");
         self.title.set_subtitle("");
-        self.menu_button.set_visible(false);
+        self.actions.set_visible(false);
         self.widget.set_visible_child_name("empty");
     }
 
@@ -388,7 +409,7 @@ impl Reader {
         // The subject and the cards say it all; the title bar stays empty.
         self.title.set_title("");
         self.title.set_subtitle("");
-        self.menu_button.set_visible(true);
+        self.actions.set_visible(true);
         self.widget.set_visible_child_name("conversation");
 
         let same_thread = self.thread.get() == Some(thread);
@@ -666,8 +687,9 @@ impl Reader {
         );
         let head = gtk::Box::builder()
             .spacing(12)
+            .hexpand(true)
             .margin_start(14)
-            .margin_end(14)
+            .margin_end(6)
             .margin_top(12)
             .margin_bottom(8)
             .build();
@@ -702,6 +724,27 @@ impl Reader {
             });
             button.upcast()
         };
+        // The star sits at the right of the head, beside the "Newest" tag.
+        let star = gtk::Button::builder()
+            .icon_name("non-starred-symbolic")
+            .valign(gtk::Align::Center)
+            .margin_end(10)
+            .css_classes(["flat"])
+            .build();
+        {
+            let weak = self.weak.borrow().clone();
+            let id = message.id;
+            star.connect_clicked(move |_| {
+                if let Some(this) = weak.upgrade()
+                    && let Some(callback) = this.on_action.borrow().as_ref()
+                {
+                    callback(CardAction::ToggleStar, id);
+                }
+            });
+        }
+        let head_row = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+        head_row.append(&head);
+        head_row.append(&star);
         let banner = self.image_banner(&message);
         let web = self.build_web_view();
         let error = adw::StatusPage::builder()
@@ -725,16 +768,16 @@ impl Reader {
         body.add_named(&web, Some("web"));
         body.add_named(&error, Some("error"));
 
-        let attachments = gtk::FlowBox::builder()
-            .selection_mode(gtk::SelectionMode::None)
-            .column_spacing(6)
-            .row_spacing(6)
-            .max_children_per_line(4)
+        // Room above and below, so the chips do not touch the message
+        // text or the separator of the action bar.
+        let attachments = gtk::Box::builder()
             .margin_start(14)
             .margin_end(14)
-            .margin_bottom(6)
+            .margin_top(14)
+            .margin_bottom(14)
             .visible(false)
             .build();
+        attachments.set_layout_manager(Some(WrapLayout::new()));
 
         let actions = gtk::Box::builder()
             .spacing(4)
@@ -804,8 +847,6 @@ impl Reader {
             actions.append(&button);
             button
         };
-        let star = action_button("non-starred-symbolic", "", CardAction::ToggleStar);
-        let read = action_button("mail-unread-symbolic", "", CardAction::ToggleRead);
         action_button(
             "user-trash-symbolic",
             &gettext("Delete this message"),
@@ -819,7 +860,7 @@ impl Reader {
         if newest && tagged {
             frame.add_css_class("newest");
         }
-        frame.append(&head);
+        frame.append(&head_row);
         let rest = gtk::Box::new(gtk::Orientation::Vertical, 0);
         rest.append(&banner);
         rest.append(&body);
@@ -840,7 +881,6 @@ impl Reader {
 
         *card.open.borrow_mut() = Some(OpenCard {
             star,
-            read,
             body,
             web,
             error,
@@ -961,17 +1001,6 @@ impl Reader {
         } else {
             open.star.remove_css_class("accent");
         }
-        let seen = message.flags.seen;
-        open.read.set_icon_name(if seen {
-            "mail-unread-symbolic"
-        } else {
-            "mail-read-symbolic"
-        });
-        open.read.set_tooltip_text(Some(&if seen {
-            gettext("Mark as Unread")
-        } else {
-            gettext("Mark as Read")
-        }));
     }
 
     /// True if the message is open on screen and has no body yet.

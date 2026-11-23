@@ -224,11 +224,6 @@ msgstr "Mit Anhang"
 msgid "Starred"
 msgstr "Markiert"
 
-#. Translators: date of a message from this year, see strftime(3).
-#: crates/app/src/message_list.rs:622
-msgid "%b %-e"
-msgstr "%-e. %b"
-
 #. Translators: date and time of a message, see strftime(3).
 #: crates/app/src/message_list.rs:637
 msgid "%A, %B %-e, %Y, %R"
@@ -242,10 +237,6 @@ msgstr "Keine Unterhaltung ausgewählt"
 msgid "Choose a message on the left to read it."
 msgstr "Wähle links eine Nachricht, um sie zu lesen."
 
-#: crates/app/src/reader.rs:191
-msgid "Conversation Menu"
-msgstr "Menü der Unterhaltung"
-
 #: crates/app/src/reader.rs:269
 #, rust-format
 msgid "Reply to {} …"
@@ -255,14 +246,6 @@ msgstr "Antworten an {} …"
 #, rust-format
 msgid "{} messages"
 msgstr "{} Nachrichten"
-
-#: crates/app/src/reader.rs:390
-msgid "with attachment"
-msgstr "mit Anhang"
-
-#: crates/app/src/reader.rs:392
-msgid "with attachments"
-msgstr "mit Anhängen"
 
 #: crates/app/src/reader.rs:398 crates/app/src/window.rs:530
 #: crates/app/src/editor.rs:135 crates/app/src/shortcuts.rs:20
@@ -367,10 +350,6 @@ msgstr "Als gelesen markieren"
 #: crates/app/src/reader.rs:929 crates/app/src/shortcuts.rs:14
 msgid "Open"
 msgstr "Öffnen"
-
-#: crates/app/src/reader.rs:933
-msgid "Save As…"
-msgstr "Speichern unter …"
 
 #: crates/app/src/settings.rs:45 crates/app/src/window.rs:345
 #: crates/app/src/shortcuts.rs:36
@@ -1077,10 +1056,6 @@ msgstr ""
 "Die Anmeldung hat geklappt, aber das Postfach ließ sich nicht öffnen. Bitte "
 "versuche es später noch einmal."
 
-#: crates/app/src/setup.rs:1428
-msgid "Works with, for example"
-msgstr "Funktioniert zum Beispiel mit"
-
 #: crates/app/src/setup.rs:1441
 msgid "your own server"
 msgstr "eigener Server"
@@ -1219,13 +1194,9 @@ msgstr "Löschen"
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: crates/app/src/window.rs:347
-msgid "About E-Mail"
-msgstr "Über diese App"
-
 #: crates/app/src/window.rs:352
-msgid "Main Menu"
-msgstr "Hauptmenü"
+msgid "Settings (Ctrl+,)"
+msgstr "Einstellungen (Strg+,)"
 
 #: crates/app/src/window.rs:375 crates/app/src/window.rs:381
 #: crates/app/src/window.rs:3581
@@ -1375,14 +1346,6 @@ msgstr "Endgültig gelöscht"
 msgid "{} updated"
 msgstr "{} aktualisiert"
 
-#: crates/app/src/window.rs:1820
-msgid "Message marked as read"
-msgstr "Nachricht als gelesen markiert"
-
-#: crates/app/src/window.rs:1822
-msgid "Message marked as unread"
-msgstr "Nachricht als ungelesen markiert"
-
 #: crates/app/src/window.rs:1836
 msgid "Message deleted"
 msgstr "Nachricht gelöscht"
@@ -1394,10 +1357,6 @@ msgstr "Kein Spam"
 #: crates/app/src/window.rs:1878 crates/app/src/window.rs:2721
 msgid "Mark as Spam"
 msgstr "Als Spam markieren"
-
-#: crates/app/src/window.rs:1884
-msgid "Show Source"
-msgstr "Quelltext anzeigen"
 
 #: crates/app/src/window.rs:1885
 msgid "Print…"
@@ -1414,10 +1373,6 @@ msgstr "Als Spam markiert. Neue Mails dieses Absenders landen im Spam-Ordner."
 #: crates/app/src/window.rs:1921
 msgid "This account has no spam folder."
 msgstr "Dieses Konto hat keinen Spam-Ordner."
-
-#: crates/app/src/window.rs:1981
-msgid "The message is still loading."
-msgstr "Die Nachricht wird noch geladen."
 
 #: crates/app/src/window.rs:2012
 msgid "To:"
@@ -1484,10 +1439,6 @@ msgstr "Bearbeiten"
 #: crates/app/src/window.rs:2707
 msgid "Remove Star"
 msgstr "Markierung entfernen"
-
-#: crates/app/src/window.rs:3008 crates/app/src/window.rs:3009
-msgid "Search Results"
-msgstr "Suchergebnisse"
 
 #: crates/app/src/window.rs:3013
 msgid "No Results"
@@ -1616,10 +1567,6 @@ msgstr "Konto wechseln"
 msgid "Move To"
 msgstr "Verschieben nach"
 
-#: crates/app/src/dialogs.rs:96
-msgid "Message Source"
-msgstr "Quelltext der Nachricht"
-
 #: crates/app/src/compose_window.rs:44 crates/app/src/reply_editor.rs:81
 #: crates/app/src/shortcuts.rs:35
 msgid "Send"
@@ -1636,10 +1583,6 @@ msgid ""
 msgstr ""
 "Gesendet wird immer vom aktiven Konto. Wechsle das Konto in der "
 "Ordnerleiste, um von einem anderen zu schreiben."
-
-#: crates/app/src/compose_window.rs:116
-msgid "The draft is saved automatically"
-msgstr "Entwurf wird automatisch gespeichert"
 
 #: crates/app/src/compose_window.rs:277
 msgid "Saved as draft"
@@ -1804,10 +1747,6 @@ msgstr "Gelesen/Ungelesen"
 msgid "The E-Mail developers"
 msgstr "Die Entwicklerinnen und Entwickler von E-Mail"
 
-#: crates/app/src/about.rs:29
-msgid "Source Code"
-msgstr "Quelltext"
-
 #: data/io.github.deviablo.EMail.gschema.xml:32
 msgid "Show an icon in the panel while running in the background"
 msgstr "Im Hintergrund ein Symbol in der Leiste zeigen"
@@ -1847,7 +1786,6 @@ msgstr "Neue Mail mit Formatierung und Signatur"
 #: data/io.github.deviablo.EMail.metainfo.xml.in:40
 msgid "Guided account setup"
 msgstr "Geführte Kontoeinrichtung"
-
 
 #: crates/app/src/reader.rs:686
 msgid "Hide message"
@@ -1963,3 +1901,27 @@ msgstr "1 Nachricht endgültig gelöscht"
 
 msgid "{} messages deleted for good"
 msgstr "{} Nachrichten endgültig gelöscht"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "A small update after the first feedback."
+msgstr "Ein kleines Update nach den ersten Rückmeldungen."
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "The reading pane uses the whole width of the window"
+msgstr "Die Leseansicht nutzt die ganze Breite des Fensters"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "Keyboard shortcuts are listed in the settings"
+msgstr "Die Tastenkürzel stehen jetzt auch in den Einstellungen"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "A gear in the folder sidebar opens the settings"
+msgstr "Ein Zahnrad in der Ordnerleiste öffnet die Einstellungen"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "New Mail sits above the reading pane, with a clearer icon"
+msgstr "„Neue Mail“ steht über der Leseansicht, mit klarerem Symbol"
+
+#: data/io.github.deviablo.EMail.metainfo.xml.in
+msgid "Move, spam and print sit as buttons above the reading pane"
+msgstr "Verschieben, Spam und Drucken stehen als Knöpfe über der Leseansicht"

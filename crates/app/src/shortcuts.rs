@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! The overview of keyboard shortcuts (Ctrl+?, F1, ? or the main menu).
+//! The keyboard shortcuts: as an overview window (Ctrl+?, F1 or ?) and
+//! as the page "Keyboard Shortcuts" in the settings.
 
+use adw::prelude::*;
 use gettextrs::gettext;
 
-pub fn window() -> gtk::ShortcutsWindow {
-    let groups: [(String, Vec<(String, &str)>); 3] = [
+/// Groups of (label, accelerators); several accelerators are separated by
+/// spaces, as `GtkShortcutsShortcut` and `GtkShortcutLabel` expect.
+fn groups() -> [(String, Vec<(String, &'static str)>); 3] {
+    [
         (
             gettext("Navigation"),
             vec![
@@ -40,12 +44,15 @@ pub fn window() -> gtk::ShortcutsWindow {
                 ),
             ],
         ),
-    ];
+    ]
+}
+
+pub fn window() -> gtk::ShortcutsWindow {
     let section = gtk::ShortcutsSection::builder()
         .section_name("main")
         .max_height(16)
         .build();
-    for (title, rows) in groups {
+    for (title, rows) in groups() {
         let group = gtk::ShortcutsGroup::builder().title(&title).build();
         for (label, accelerator) in rows {
             let shortcut = gtk::ShortcutsShortcut::builder()
@@ -59,4 +66,27 @@ pub fn window() -> gtk::ShortcutsWindow {
     let window = gtk::ShortcutsWindow::builder().build();
     window.add_section(&section);
     window
+}
+
+/// Settings → Keyboard Shortcuts: the same list, to look up.
+pub fn page() -> adw::PreferencesPage {
+    let page = adw::PreferencesPage::builder()
+        .title(gettext("Keyboard Shortcuts"))
+        .icon_name("input-keyboard-symbolic")
+        .build();
+    for (title, rows) in groups() {
+        let group = adw::PreferencesGroup::builder().title(&title).build();
+        for (label, accelerator) in rows {
+            let row = adw::ActionRow::builder().title(&label).build();
+            row.add_suffix(
+                &gtk::ShortcutLabel::builder()
+                    .accelerator(accelerator)
+                    .valign(gtk::Align::Center)
+                    .build(),
+            );
+            group.add(&row);
+        }
+        page.add(&group);
+    }
+    page
 }
