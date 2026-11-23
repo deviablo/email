@@ -1386,9 +1386,6 @@ msgstr "Kein Spam"
 msgid "Mark as Spam"
 msgstr "Als Spam markieren"
 
-#: crates/app/src/window.rs:1884
-msgid "Show Source"
-msgstr "Quelltext anzeigen"
 
 #: crates/app/src/window.rs:1885
 msgid "Print…"
@@ -1406,9 +1403,6 @@ msgstr "Als Spam markiert. Neue Mails dieses Absenders landen im Spam-Ordner."
 msgid "This account has no spam folder."
 msgstr "Dieses Konto hat keinen Spam-Ordner."
 
-#: crates/app/src/window.rs:1981
-msgid "The message is still loading."
-msgstr "Die Nachricht wird noch geladen."
 
 #: crates/app/src/window.rs:2012
 msgid "To:"
@@ -1607,9 +1601,6 @@ msgstr "Konto wechseln"
 msgid "Move To"
 msgstr "Verschieben nach"
 
-#: crates/app/src/dialogs.rs:96
-msgid "Message Source"
-msgstr "Quelltext der Nachricht"
 
 #: crates/app/src/compose_window.rs:44 crates/app/src/reply_editor.rs:81
 #: crates/app/src/shortcuts.rs:35
@@ -1977,5 +1968,5 @@ msgid "New Mail sits above the reading pane, with a clearer icon"
 msgstr "„Neue Mail“ steht über der Leseansicht, mit klarerem Symbol"
 
 #: data/io.github.deviablo.EMail.metainfo.xml.in
-msgid "Move, spam, source and print sit as buttons above the reading pane"
-msgstr "Verschieben, Spam, Quelltext und Drucken stehen als Knöpfe über der Leseansicht"
+msgid "Move, spam and print sit as buttons above the reading pane"
+msgstr "Verschieben, Spam und Drucken stehen als Knöpfe über der Leseansicht"

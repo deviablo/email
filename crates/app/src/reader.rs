@@ -81,7 +81,7 @@ type AttachmentCallback = Box<dyn Fn(MessageId, Attachment, bool)>;
 pub struct Reader {
     pub widget: gtk::Stack,
     pub title: adw::WindowTitle,
-    /// Move, spam, source and print for the whole conversation.
+    /// Move, spam and print for the whole conversation.
     pub actions: gtk::Box,
     pub spam_button: gtk::Button,
     scroller: gtk::ScrolledWindow,
@@ -204,11 +204,6 @@ impl Reader {
             "conversation.move",
         ));
         actions.append(&spam_button);
-        actions.append(&action_button(
-            format!("{APP_ID}-source-symbolic"),
-            gettext("Show Source"),
-            "conversation.source",
-        ));
         actions.append(&action_button(
             "document-print-symbolic".into(),
             gettext("Print…"),

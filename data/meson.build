@@ -52,7 +52,6 @@ install_data(
   icon_dir / app_id + '-compose-symbolic.svg',
   icon_dir / app_id + '-settings-symbolic.svg',
   icon_dir / app_id + '-move-symbolic.svg',
-  icon_dir / app_id + '-source-symbolic.svg',
   icon_dir / app_id + '-send-symbolic.svg',
   icon_dir / app_id + '-link-symbolic.svg',
   icon_dir / app_id + '-folder-inbox-symbolic.svg',

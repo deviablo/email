@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! Small dialogs of the reading pane: choosing a folder to move to, the
-//! source of a message, and printing a conversation.
+//! Small dialogs of the reading pane: choosing a folder to move to and
+//! printing a conversation.
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -68,36 +68,6 @@ pub fn choose_folder(
             dialog.close();
         }
     });
-    dialog.present(Some(parent));
-}
-
-/// Shows the raw text of a message as it came from the server.
-pub fn show_source(parent: &impl IsA<gtk::Widget>, raw: &[u8]) {
-    let buffer = gtk::TextBuffer::new(None);
-    buffer.set_text(&String::from_utf8_lossy(raw));
-    let text = gtk::TextView::builder()
-        .buffer(&buffer)
-        .editable(false)
-        .monospace(true)
-        .wrap_mode(gtk::WrapMode::WordChar)
-        .left_margin(12)
-        .right_margin(12)
-        .top_margin(12)
-        .bottom_margin(12)
-        .build();
-    let scroller = gtk::ScrolledWindow::builder()
-        .child(&text)
-        .vexpand(true)
-        .build();
-    let view = adw::ToolbarView::new();
-    view.add_top_bar(&adw::HeaderBar::new());
-    view.set_content(Some(&scroller));
-    let dialog = adw::Dialog::builder()
-        .title(gettext("Message Source"))
-        .content_width(760)
-        .content_height(600)
-        .child(&view)
-        .build();
     dialog.present(Some(parent));
 }
 

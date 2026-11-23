@@ -1927,10 +1927,9 @@ impl Window {
 
     fn add_conversation_actions(self: &Rc<Self>) {
         let actions = gio::SimpleActionGroup::new();
-        let entries: [(&str, ConversationHandler); 4] = [
+        let entries: [(&str, ConversationHandler); 3] = [
             ("move", Window::move_conversation),
             ("spam", Window::spam_conversation),
-            ("source", Window::show_source),
             ("print", Window::print_conversation),
         ];
         for (name, handler) in entries {
@@ -2046,16 +2045,6 @@ impl Window {
             });
         }
         self.toasts.add_toast(toast);
-    }
-
-    fn show_source(self: &Rc<Self>) {
-        let Some(newest) = self.reader.messages().last().map(|m| m.id) else {
-            return;
-        };
-        match self.with_store(|store| store.body(newest).ok().flatten()) {
-            Some(raw) => dialogs::show_source(&self.window, &raw),
-            None => self.toast(&gettext("The message is still loading.")),
-        }
     }
 
     fn print_conversation(self: &Rc<Self>) {
