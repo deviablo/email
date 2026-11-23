@@ -330,6 +330,11 @@ impl Reader {
         *self.on_attachment.borrow_mut() = Some(Box::new(callback));
     }
 
+    /// Drops a selection the subject got by taking the focus.
+    pub fn unselect_subject(&self) {
+        self.subject.select_region(0, 0);
+    }
+
     pub fn thread(&self) -> Option<ThreadId> {
         self.thread.get()
     }

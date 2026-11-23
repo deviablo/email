@@ -97,10 +97,15 @@ impl MessageWindow {
 
         // Otherwise the selectable subject takes the focus and shows up
         // fully selected when the window opens.
-        this.window.connect_map(|window| {
+        let reader = Rc::downgrade(&this.reader);
+        this.window.connect_map(move |window| {
             let window = window.clone();
+            let reader = reader.clone();
             glib::idle_add_local_once(move || {
                 gtk::prelude::GtkWindowExt::set_focus(&window, gtk::Widget::NONE);
+                if let Some(reader) = reader.upgrade() {
+                    reader.unselect_subject();
+                }
             });
         });
         this
