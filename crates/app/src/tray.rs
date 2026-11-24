@@ -452,8 +452,8 @@ mod tests {
 
     #[test]
     fn icon_shows_unread_mail() {
-        assert_eq!(icon_name(0), "io.github.deviablo.EMail-symbolic");
-        assert_eq!(icon_name(3), "io.github.deviablo.EMail-unread-symbolic");
+        assert_eq!(icon_name(0), "io.github.digistalter.EMail-symbolic");
+        assert_eq!(icon_name(3), "io.github.digistalter.EMail-unread-symbolic");
         assert_eq!(tooltip(0), "E-Mail");
     }
 

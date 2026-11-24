@@ -30,10 +30,10 @@ pub fn folder_label(folder: &Folder) -> String {
 /// Adwaita has no symbols for these folders, so the app brings its own.
 pub fn role_icon(role: Option<FolderRole>) -> &'static str {
     match role {
-        Some(FolderRole::Inbox) => "io.github.deviablo.EMail-folder-inbox-symbolic",
-        Some(FolderRole::Drafts) => "io.github.deviablo.EMail-folder-drafts-symbolic",
-        Some(FolderRole::Sent) => "io.github.deviablo.EMail-folder-sent-symbolic",
-        Some(FolderRole::Archive) => "io.github.deviablo.EMail-folder-archive-symbolic",
+        Some(FolderRole::Inbox) => "io.github.digistalter.EMail-folder-inbox-symbolic",
+        Some(FolderRole::Drafts) => "io.github.digistalter.EMail-folder-drafts-symbolic",
+        Some(FolderRole::Sent) => "io.github.digistalter.EMail-folder-sent-symbolic",
+        Some(FolderRole::Archive) => "io.github.digistalter.EMail-folder-archive-symbolic",
         Some(FolderRole::Junk) => "mail-mark-junk-symbolic",
         Some(FolderRole::Trash) => "user-trash-symbolic",
         None => "folder-symbolic",

@@ -15,24 +15,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/io.github.deviablo.EMail.desktop.in.in:2
+#: data/io.github.digistalter.EMail.desktop.in.in:2
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: data/io.github.deviablo.EMail.desktop.in.in:3
+#: data/io.github.digistalter.EMail.desktop.in.in:3
 msgid "Read your email"
 msgstr "Deine E-Mails lesen"
 
 #. Translators: search terms, separated by semicolons, ending with a semicolon.
-#: data/io.github.deviablo.EMail.desktop.in.in:10
+#: data/io.github.digistalter.EMail.desktop.in.in:10
 msgid "mail;email;imap;inbox;"
 msgstr "mail;email;e-mail;imap;posteingang;"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:8
+#: data/io.github.digistalter.EMail.metainfo.xml.in:8
 msgid "Simple, modern email"
 msgstr "Einfach und modern mailen"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:10
+#: data/io.github.digistalter.EMail.metainfo.xml.in:10
 msgid ""
 "E-Mail is a simple email app for GNOME and KDE. It connects to your accounts "
 "with IMAP and SMTP and does nothing else: no calendar, no chat, no contact "
@@ -42,83 +42,83 @@ msgstr ""
 "per IMAP und SMTP mit deinen Konten und macht sonst nichts: kein Kalender, "
 "kein Chat, keine Kontaktverwaltung."
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:12
+#: data/io.github.digistalter.EMail.metainfo.xml.in:12
 msgid "Several accounts, strictly kept apart"
 msgstr "Mehrere Konten, streng getrennt"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:13
-#: data/io.github.deviablo.EMail.metainfo.xml.in:46 crates/app/src/about.rs:36
+#: data/io.github.digistalter.EMail.metainfo.xml.in:13
+#: data/io.github.digistalter.EMail.metainfo.xml.in:46 crates/app/src/about.rs:36
 msgid "Conversations with replies right below the message"
 msgstr "Unterhaltungen mit Antworten direkt unter der Nachricht"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:14
-#: data/io.github.deviablo.EMail.metainfo.xml.in:47 crates/app/src/about.rs:37
+#: data/io.github.digistalter.EMail.metainfo.xml.in:14
+#: data/io.github.digistalter.EMail.metainfo.xml.in:47 crates/app/src/about.rs:37
 msgid "Writing with formatting, pictures and a signature per account"
 msgstr "Schreiben mit Formatierung, Bildern und einer Signatur pro Konto"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:15
-#: data/io.github.deviablo.EMail.metainfo.xml.in:49 crates/app/src/about.rs:39
+#: data/io.github.digistalter.EMail.metainfo.xml.in:15
+#: data/io.github.digistalter.EMail.metainfo.xml.in:49 crates/app/src/about.rs:39
 msgid "Search with filters and keyboard shortcuts"
 msgstr "Suche mit Filtern und Tastenkürzel"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:16
-#: data/io.github.deviablo.EMail.metainfo.xml.in:50 crates/app/src/about.rs:40
+#: data/io.github.digistalter.EMail.metainfo.xml.in:16
+#: data/io.github.digistalter.EMail.metainfo.xml.in:50 crates/app/src/about.rs:40
 msgid "Notifications through the system, also with the window closed"
 msgstr "Benachrichtigungen über das System, auch bei geschlossenem Fenster"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:17
+#: data/io.github.digistalter.EMail.metainfo.xml.in:17
 msgid "External images stay blocked until you allow them"
 msgstr "Externe Bilder bleiben blockiert, bis du sie freigibst"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:18
+#: data/io.github.digistalter.EMail.metainfo.xml.in:18
 msgid "Passwords are kept in the system keyring"
 msgstr "Passwörter liegen im Schlüsselbund des Systems"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:43 crates/app/src/about.rs:43
+#: data/io.github.digistalter.EMail.metainfo.xml.in:43 crates/app/src/about.rs:43
 msgid "The first release."
 msgstr "Die erste Version."
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:45 crates/app/src/about.rs:35
+#: data/io.github.digistalter.EMail.metainfo.xml.in:45 crates/app/src/about.rs:35
 msgid "Several IMAP accounts, strictly kept apart"
 msgstr "Mehrere IMAP-Konten, strikt getrennt"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:48 crates/app/src/about.rs:38
+#: data/io.github.digistalter.EMail.metainfo.xml.in:48 crates/app/src/about.rs:38
 msgid "Drafts, and mail that is sent once you are online again"
 msgstr "Entwürfe, und Mails werden gesendet, sobald du wieder online bist"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:51 crates/app/src/about.rs:41
+#: data/io.github.digistalter.EMail.metainfo.xml.in:51 crates/app/src/about.rs:41
 msgid "External images only after you allow them"
 msgstr "Externe Bilder erst nach deiner Freigabe"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:57
+#: data/io.github.digistalter.EMail.metainfo.xml.in:57
 msgid "First technical preview: connect one IMAP account and read your mail."
 msgstr "Erste technische Vorschau: ein IMAP-Konto verbinden und Mails lesen."
 
-#: data/io.github.deviablo.EMail.gschema.xml:7
+#: data/io.github.digistalter.EMail.gschema.xml:7
 msgid "Window width"
 msgstr "Fensterbreite"
 
-#: data/io.github.deviablo.EMail.gschema.xml:11
+#: data/io.github.digistalter.EMail.gschema.xml:11
 msgid "Window height"
 msgstr "Fensterhöhe"
 
-#: data/io.github.deviablo.EMail.gschema.xml:15
+#: data/io.github.digistalter.EMail.gschema.xml:15
 msgid "Whether the window is maximized"
 msgstr "Ob das Fenster maximiert ist"
 
-#: data/io.github.deviablo.EMail.gschema.xml:20
+#: data/io.github.digistalter.EMail.gschema.xml:20
 msgid "Width of the message list"
 msgstr "Breite der Mail-Liste"
 
-#: data/io.github.deviablo.EMail.gschema.xml:24
+#: data/io.github.digistalter.EMail.gschema.xml:24
 msgid "Account shown at start"
 msgstr "Konto, das beim Start angezeigt wird"
 
-#: data/io.github.deviablo.EMail.gschema.xml:28
+#: data/io.github.digistalter.EMail.gschema.xml:28
 msgid "Keep running after the window is closed"
 msgstr "Nach dem Schließen des Fensters weiterlaufen"
 
-#: data/io.github.deviablo.EMail.gschema.xml:29
+#: data/io.github.digistalter.EMail.gschema.xml:29
 msgid ""
 "New mail is fetched and notified even when the window is closed. Also starts "
 "the app hidden after login."
@@ -126,39 +126,39 @@ msgstr ""
 "Neue Mails werden auch bei geschlossenem Fenster abgeholt und gemeldet. "
 "Startet die App außerdem unsichtbar nach der Anmeldung."
 
-#: data/io.github.deviablo.EMail.gschema.xml:33 crates/app/src/settings.rs:153
+#: data/io.github.digistalter.EMail.gschema.xml:33 crates/app/src/settings.rs:153
 msgid "Notify about new mail"
 msgstr "Bei neuen Mails benachrichtigen"
 
-#: data/io.github.deviablo.EMail.gschema.xml:37
+#: data/io.github.digistalter.EMail.gschema.xml:37
 msgid "Accounts without notifications"
 msgstr "Konten ohne Benachrichtigungen"
 
-#: data/io.github.deviablo.EMail.gschema.xml:46 crates/app/src/settings.rs:74
+#: data/io.github.digistalter.EMail.gschema.xml:46 crates/app/src/settings.rs:74
 msgid "Language of the app"
 msgstr "Sprache der App"
 
-#: data/io.github.deviablo.EMail.gschema.xml:47
+#: data/io.github.digistalter.EMail.gschema.xml:47
 msgid "Empty to follow the system. Takes effect after a restart."
 msgstr "Leer, um dem System zu folgen. Gilt nach einem Neustart."
 
-#: data/io.github.deviablo.EMail.gschema.xml:51
+#: data/io.github.digistalter.EMail.gschema.xml:51
 msgid "Load external images without asking"
 msgstr "Externe Bilder ohne Nachfrage laden"
 
-#: data/io.github.deviablo.EMail.gschema.xml:55 crates/app/src/settings.rs:135
+#: data/io.github.digistalter.EMail.gschema.xml:55 crates/app/src/settings.rs:135
 msgid "Group messages into conversations"
 msgstr "Als Unterhaltungen gruppieren"
 
-#: data/io.github.deviablo.EMail.gschema.xml:56
+#: data/io.github.digistalter.EMail.gschema.xml:56
 msgid "Otherwise every message is listed on its own."
 msgstr "Sonst wird jede Mail einzeln aufgeführt."
 
-#: data/io.github.deviablo.EMail.gschema.xml:60
+#: data/io.github.digistalter.EMail.gschema.xml:60
 msgid "Remove mail older than 30 days from the trash"
 msgstr "Mails nach 30 Tagen aus dem Papierkorb entfernen"
 
-#: data/io.github.deviablo.EMail.gschema.xml:64
+#: data/io.github.digistalter.EMail.gschema.xml:64
 msgid "Remove mail older than 30 days from the spam folder"
 msgstr "Mails nach 30 Tagen aus dem Spam-Ordner entfernen"
 
@@ -1747,7 +1747,7 @@ msgstr "Gelesen/Ungelesen"
 msgid "The E-Mail developers"
 msgstr "Die Entwicklerinnen und Entwickler von E-Mail"
 
-#: data/io.github.deviablo.EMail.gschema.xml:32
+#: data/io.github.digistalter.EMail.gschema.xml:32
 msgid "Show an icon in the panel while running in the background"
 msgstr "Im Hintergrund ein Symbol in der Leiste zeigen"
 
@@ -1771,19 +1771,19 @@ msgstr "E-Mail öffnen"
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:28
+#: data/io.github.digistalter.EMail.metainfo.xml.in:28
 msgid "Conversations, list and folders at a glance"
 msgstr "Unterhaltungen, Liste und Ordner auf einen Blick"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:32
+#: data/io.github.digistalter.EMail.metainfo.xml.in:32
 msgid "Dark style"
 msgstr "Dunkler Modus"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:36
+#: data/io.github.digistalter.EMail.metainfo.xml.in:36
 msgid "Writing a message with formatting and signature"
 msgstr "Neue Mail mit Formatierung und Signatur"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in:40
+#: data/io.github.digistalter.EMail.metainfo.xml.in:40
 msgid "Guided account setup"
 msgstr "Geführte Kontoeinrichtung"
 
@@ -1902,26 +1902,38 @@ msgstr "1 Nachricht endgültig gelöscht"
 msgid "{} messages deleted for good"
 msgstr "{} Nachrichten endgültig gelöscht"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "A small update after the first feedback."
 msgstr "Ein kleines Update nach den ersten Rückmeldungen."
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "The reading pane uses the whole width of the window"
 msgstr "Die Leseansicht nutzt die ganze Breite des Fensters"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "Keyboard shortcuts are listed in the settings"
 msgstr "Die Tastenkürzel stehen jetzt auch in den Einstellungen"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "A gear in the folder sidebar opens the settings"
 msgstr "Ein Zahnrad in der Ordnerleiste öffnet die Einstellungen"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "New Mail sits above the reading pane, with a clearer icon"
 msgstr "„Neue Mail“ steht über der Leseansicht, mit klarerem Symbol"
 
-#: data/io.github.deviablo.EMail.metainfo.xml.in
+#: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "Move, spam and print sit as buttons above the reading pane"
 msgstr "Verschieben, Spam und Drucken stehen als Knöpfe über der Leseansicht"
+
+#: data/io.github.digistalter.EMail.metainfo.xml.in
+msgid "The project now lives at github.com/digistalter/email."
+msgstr "Das Projekt liegt jetzt unter github.com/digistalter/email."
+
+#: data/io.github.digistalter.EMail.metainfo.xml.in
+msgid "New App ID io.github.digistalter.EMail; passwords, settings and autostart are taken over"
+msgstr "Neue App-ID io.github.digistalter.EMail; Passwörter, Einstellungen und Autostart werden übernommen"
+
+#: data/io.github.digistalter.EMail.metainfo.xml.in
+msgid "Flatpak: the earlier version has to be uninstalled once, accounts are set up again"
+msgstr "Flatpak: Die bisherige Version muss einmal deinstalliert werden, Konten werden neu eingerichtet"

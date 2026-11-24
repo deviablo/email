@@ -105,5 +105,5 @@ jobs:
       - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: e-mail.flatpak
-          manifest-path: build-aux/flatpak/io.github.deviablo.EMail.json
+          manifest-path: build-aux/flatpak/io.github.digistalter.EMail.json
           cache-key: flatpak-builder-${{ github.sha }}

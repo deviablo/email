@@ -1,5 +1,5 @@
 {
-  "id": "io.github.deviablo.EMail",
+  "id": "io.github.digistalter.EMail",
   "runtime": "org.gnome.Platform",
   "runtime-version": "51",
   "sdk": "org.gnome.Sdk",

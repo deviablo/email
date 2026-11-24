@@ -46,8 +46,8 @@ Als Flatpak bauen und installieren:
 
 ```bash
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak-builder --user --install-deps-from=flathub --install --force-clean flatpak-build build-aux/flatpak/io.github.deviablo.EMail.json
-flatpak run io.github.deviablo.EMail
+flatpak-builder --user --install-deps-from=flathub --install --force-clean flatpak-build build-aux/flatpak/io.github.digistalter.EMail.json
+flatpak run io.github.digistalter.EMail
 ```
 
 ## Tests

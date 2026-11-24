@@ -3,11 +3,11 @@ resolver = "3"
 members = ["crates/core", "crates/app"]
 
 [workspace.package]
-version = "1.0.1"
+version = "1.0.2"
 edition = "2024"
 rust-version = "1.89"
 license = "GPL-3.0-or-later"
-repository = "https://github.com/deviablo/email"
+repository = "https://github.com/digistalter/email"
 authors = ["Die Entwicklerinnen und Entwickler von E-Mail"]
 
 [workspace.dependencies]

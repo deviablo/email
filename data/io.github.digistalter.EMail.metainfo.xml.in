@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <component type="desktop-application">
-  <id>io.github.deviablo.EMail</id>
+  <id>io.github.digistalter.EMail</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name translate="no">E-Mail</name>
@@ -18,31 +18,31 @@
       <li>Passwords are kept in the system keyring</li>
     </ul>
   </description>
-  <developer id="io.github.deviablo">
+  <developer id="io.github.digistalter">
     <name translate="no">The E-Mail developers</name>
   </developer>
-  <launchable type="desktop-id">io.github.deviablo.EMail.desktop</launchable>
+  <launchable type="desktop-id">io.github.digistalter.EMail.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/main.png</image>
+      <image>https://raw.githubusercontent.com/digistalter/email/main/data/screenshots/main.png</image>
       <caption>Conversations, list and folders at a glance</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/main-dark.png</image>
+      <image>https://raw.githubusercontent.com/digistalter/email/main/data/screenshots/main-dark.png</image>
       <caption>Dark style</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/compose.png</image>
+      <image>https://raw.githubusercontent.com/digistalter/email/main/data/screenshots/compose.png</image>
       <caption>Writing a message with formatting and signature</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/deviablo/email/main/data/screenshots/setup.png</image>
+      <image>https://raw.githubusercontent.com/digistalter/email/main/data/screenshots/setup.png</image>
       <caption>Guided account setup</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/deviablo/email</url>
-  <url type="bugtracker">https://github.com/deviablo/email/issues</url>
-  <url type="vcs-browser">https://github.com/deviablo/email</url>
+  <url type="homepage">https://github.com/digistalter/email</url>
+  <url type="bugtracker">https://github.com/digistalter/email/issues</url>
+  <url type="vcs-browser">https://github.com/digistalter/email</url>
   <content_rating type="oars-1.1"/>
   <requires>
     <display_length compare="ge">360</display_length>
@@ -56,6 +56,15 @@
     <binary>e-mail</binary>
   </provides>
   <releases>
+    <release version="1.0.2" date="2026-11-24">
+      <description>
+        <p>The project now lives at github.com/digistalter/email.</p>
+        <ul>
+          <li>New App ID io.github.digistalter.EMail; passwords, settings and autostart are taken over</li>
+          <li>Flatpak: the earlier version has to be uninstalled once, accounts are set up again</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-11-23">
       <description>
         <p>A small update after the first feedback.</p>

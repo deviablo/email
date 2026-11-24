@@ -77,7 +77,7 @@ impl ReplyEditor {
         let send = gtk::Button::builder()
             .child(
                 &adw::ButtonContent::builder()
-                    .icon_name("io.github.deviablo.EMail-send-symbolic")
+                    .icon_name("io.github.digistalter.EMail-send-symbolic")
                     .label(gettext("Send"))
                     .build(),
             )

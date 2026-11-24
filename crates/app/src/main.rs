@@ -10,6 +10,7 @@ mod editor;
 mod files;
 mod folder_list;
 mod message_list;
+mod migrate;
 mod reader;
 mod recipients;
 mod reply_editor;
@@ -32,6 +33,9 @@ fn main() -> glib::ExitCode {
             tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| "warn".into()),
         )
         .init();
+
+    // Before anything reads the settings.
+    migrate::from_legacy_app_id();
 
     // The language chosen in Settings → General wins over the system.
     // SAFETY: called before any other thread exists.
