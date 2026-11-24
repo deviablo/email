@@ -98,7 +98,7 @@ Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) mel
 
 ## Lizenz
 
-E-Mail ist ein offenes Gemeinschaftsprojekt der Entwicklerinnen und Entwickler von E-Mail.
+E-Mail ist eine offene Community, gesponsert von der [DIGISTALTER GmbH](https://www.digistalter.de).
 
 Dieses Programm ist freie Software: Du kannst es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder verändern, entweder gemäß Version 3 der Lizenz oder (nach deiner Wahl) jeder späteren Version.
 
