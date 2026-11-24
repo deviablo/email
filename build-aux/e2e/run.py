@@ -277,8 +277,8 @@ def calm_down():
 
 def action(name, target=None):
     """Activates an application action over D-Bus, as the menu would."""
-    args = ["gdbus", "call", "--session", "--dest", "io.github.deviablo.EMail",
-            "--object-path", "/io/github/deviablo/EMail",
+    args = ["gdbus", "call", "--session", "--dest", "io.github.digistalter.EMail",
+            "--object-path", "/io/github/digistalter/EMail",
             "--method", "org.gtk.Actions.Activate", name, target or "[]", "{}"]
     subprocess.run(args, check=False, capture_output=True)
     time.sleep(1.5)
@@ -742,7 +742,7 @@ def tray():
     wait_until(lambda: tray_items(), 20, "the icon in the panel")
     item = tray_items()[0]
     icon = tray_property(item, "IconName")
-    assert "io.github.deviablo.EMail" in icon, icon
+    assert "io.github.digistalter.EMail" in icon, icon
     tooltip = tray_property(item, "ToolTip")
     assert "E-Mail" in tooltip, tooltip
     # "-1" would be read as an option by gdbus.

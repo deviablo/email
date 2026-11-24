@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 project(
   'e-mail',
-  version: '1.0.1',
+  version: '1.0.2',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.62.0',
 )
@@ -9,7 +9,7 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-app_id = 'io.github.deviablo.EMail'
+app_id = 'io.github.digistalter.EMail'
 gettext_package = meson.project_name()
 prefix = get_option('prefix')
 bindir = prefix / get_option('bindir')

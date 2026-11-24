@@ -24,7 +24,7 @@ arch="$(dpkg --print-architecture)"
 size="$(du -sk "$root" | cut -f1)"
 
 # Lets WebKit start its sandbox on Ubuntu, see data/apparmor/.
-profile=io.github.deviablo.EMail
+profile=io.github.digistalter.EMail
 install -Dm644 "data/apparmor/$profile" "$root/etc/apparmor.d/$profile"
 
 mkdir -p "$root/DEBIAN"
@@ -32,6 +32,15 @@ echo "/etc/apparmor.d/$profile" > "$root/DEBIAN/conffiles"
 cat > "$root/DEBIAN/postinst" <<SCRIPT
 #!/bin/sh
 set -e
+# Up to 1.0.1 the profile had the old App ID; two profiles for the same
+# program would clash.
+legacy=/etc/apparmor.d/io.github.deviablo.EMail
+if [ "\$1" = configure ] && [ -f "\$legacy" ]; then
+  if command -v apparmor_parser >/dev/null 2>&1 && [ -d /sys/kernel/security/apparmor ]; then
+    apparmor_parser -R "\$legacy" 2>/dev/null || true
+  fi
+  rm -f "\$legacy"
+fi
 if [ "\$1" = configure ] && command -v apparmor_parser >/dev/null 2>&1 \\
     && [ -d /sys/kernel/security/apparmor ]; then
   apparmor_parser -r -T -W /etc/apparmor.d/$profile || true
@@ -50,13 +59,13 @@ cat > "$root/DEBIAN/control" <<CONTROL
 Package: e-mail
 Version: $version
 Architecture: $arch
-Maintainer: The E-Mail developers <317311006+deviablo@users.noreply.github.com>
+Maintainer: The E-Mail developers <308797711+digistalter@users.noreply.github.com>
 Installed-Size: $size
 Depends: $depends
 Recommends: xdg-desktop-portal, librsvg2-common, gnome-keyring | kwalletmanager | keepassxc
 Section: mail
 Priority: optional
-Homepage: https://github.com/deviablo/email
+Homepage: https://github.com/digistalter/email
 Description: Simple, modern email
  E-Mail is a simple email app for GNOME and KDE. It connects to your
  accounts with IMAP and SMTP and does nothing else: no calendar, no chat,

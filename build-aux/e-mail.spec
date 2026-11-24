@@ -11,7 +11,7 @@ Version:        %{version}
 Release:        1
 Summary:        Simple, modern email
 License:        GPL-3.0-or-later
-URL:            https://github.com/deviablo/email
+URL:            https://github.com/digistalter/email
 Requires:       hicolor-icon-theme
 Recommends:     xdg-desktop-portal
 
@@ -27,11 +27,11 @@ install -Dm644 %{license_file} %{buildroot}%{_datadir}/licenses/e-mail/LICENSE
 %files
 %license %{_datadir}/licenses/e-mail/LICENSE
 %{_bindir}/e-mail
-%{_datadir}/applications/io.github.deviablo.EMail.desktop
-%{_datadir}/metainfo/io.github.deviablo.EMail.metainfo.xml
-%{_datadir}/glib-2.0/schemas/io.github.deviablo.EMail.gschema.xml
-%{_datadir}/dbus-1/services/io.github.deviablo.EMail.service
-%{_datadir}/icons/hicolor/scalable/apps/io.github.deviablo.EMail.svg
-%{_datadir}/icons/hicolor/symbolic/apps/io.github.deviablo.EMail-symbolic.svg
-%{_datadir}/icons/hicolor/symbolic/apps/io.github.deviablo.EMail-*-symbolic.svg
+%{_datadir}/applications/io.github.digistalter.EMail.desktop
+%{_datadir}/metainfo/io.github.digistalter.EMail.metainfo.xml
+%{_datadir}/glib-2.0/schemas/io.github.digistalter.EMail.gschema.xml
+%{_datadir}/dbus-1/services/io.github.digistalter.EMail.service
+%{_datadir}/icons/hicolor/scalable/apps/io.github.digistalter.EMail.svg
+%{_datadir}/icons/hicolor/symbolic/apps/io.github.digistalter.EMail-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/io.github.digistalter.EMail-*-symbolic.svg
 %{_datadir}/locale/*/LC_MESSAGES/e-mail.mo

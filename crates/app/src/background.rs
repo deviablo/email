@@ -64,9 +64,27 @@ pub fn set_autostart(enabled: bool, reason: String) {
 }
 
 fn autostart_file() -> PathBuf {
+    autostart_file_for(APP_ID)
+}
+
+fn autostart_file_for(app_id: &str) -> PathBuf {
     glib::user_config_dir()
         .join("autostart")
-        .join(format!("{APP_ID}.desktop"))
+        .join(format!("{app_id}.desktop"))
+}
+
+/// Replaces the autostart entry of an installation before the App ID
+/// changed with one under the current ID.
+pub fn take_over_legacy_autostart() {
+    let legacy = autostart_file_for(crate::config::LEGACY_APP_ID);
+    if is_flatpak() || !legacy.exists() {
+        return;
+    }
+    if let Err(error) = std::fs::remove_file(&legacy) {
+        tracing::warn!("could not remove the old autostart entry: {error}");
+        return;
+    }
+    set_autostart(true, String::new());
 }
 
 fn autostart_entry(exec: &str) -> String {
@@ -106,6 +124,6 @@ mod tests {
         let entry = autostart_entry("/usr/bin/e-mail");
         assert!(entry.contains("Exec=/usr/bin/e-mail --background\n"));
         assert!(entry.starts_with("[Desktop Entry]\n"));
-        assert!(entry.contains("Icon=io.github.deviablo.EMail\n"));
+        assert!(entry.contains("Icon=io.github.digistalter.EMail\n"));
     }
 }

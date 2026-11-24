@@ -40,10 +40,10 @@ jobs:
       - name: Install and start
         run: |
           sudo apt-get install -y ./dist/*.deb xvfb dbus-daemon apparmor-utils
-          sudo aa-status | grep io.github.deviablo.EMail
+          sudo aa-status | grep io.github.digistalter.EMail
           test -f /usr/share/glib-2.0/schemas/gschemas.compiled
           test -f /usr/share/locale/de/LC_MESSAGES/e-mail.mo
-          appstreamcli validate --no-net /usr/share/metainfo/io.github.deviablo.EMail.metainfo.xml
+          appstreamcli validate --no-net /usr/share/metainfo/io.github.digistalter.EMail.metainfo.xml
           build-aux/smoke-test.sh
       - uses: actions/upload-artifact@v4
         with:
@@ -94,7 +94,7 @@ jobs:
       - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: e-mail.flatpak
-          manifest-path: build-aux/flatpak/io.github.deviablo.EMail.json
+          manifest-path: build-aux/flatpak/io.github.digistalter.EMail.json
           cache-key: flatpak-packages-${{ github.sha }}
 
   release:

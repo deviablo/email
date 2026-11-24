@@ -1,6 +1,6 @@
 [English](README.md) · **Deutsch**
 
-<img src="design/icon/io.github.deviablo.EMail.svg" width="96" alt="">
+<img src="design/icon/io.github.digistalter.EMail.svg" width="96" alt="">
 
 # E-Mail – die moderne E-Mail-App für Linux
 
@@ -8,7 +8,7 @@ Eine einfache, moderne E-Mail-App für Linux (GNOME und KDE), geschrieben in Rus
 
 Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kontaktverwaltung.
 
-**Aktuelle Version: 1.0.1**
+**Aktuelle Version: 1.0.2**
 
 ![Hauptfenster mit Ordnern, Liste und geöffneter Unterhaltung](data/screenshots/main.png)
 
@@ -34,22 +34,22 @@ Unterstützt werden alle Anbieter mit IMAP und SMTP, zum Beispiel Gmail, GMX, WE
 
 ## Installieren
 
-Die Installationsdateien liegen bei jeder Version unter [Releases](https://github.com/deviablo/email/releases/latest). Passende Datei herunterladen, ein Terminal im Download-Ordner öffnen und den Befehl für dein System ausführen. Danach erscheint „E-Mail“ in der App-Übersicht.
+Die Installationsdateien liegen bei jeder Version unter [Releases](https://github.com/digistalter/email/releases/latest). Passende Datei herunterladen, ein Terminal im Download-Ordner öffnen und den Befehl für dein System ausführen. Danach erscheint „E-Mail“ in der App-Übersicht.
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-Datei: `e-mail_1.0.1_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
+Datei: `e-mail_1.0.2_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
 
 ```bash
-sudo apt install ./e-mail_1.0.1_amd64.deb
+sudo apt install ./e-mail_1.0.2_amd64.deb
 ```
 
 ### Fedora
 
-Datei: `e-mail-1.0.1-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
+Datei: `e-mail-1.0.2-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
 
 ```bash
-sudo dnf install ./e-mail-1.0.1-1.x86_64.rpm
+sudo dnf install ./e-mail-1.0.2-1.x86_64.rpm
 ```
 
 ### Alle anderen Systeme (Flatpak)
@@ -74,7 +74,13 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 flatpak install --user ./e-mail.flatpak
 ```
 
-Starten lässt sich die App dann über die App-Übersicht oder mit `flatpak run io.github.deviablo.EMail`.
+Starten lässt sich die App dann über die App-Übersicht oder mit `flatpak run io.github.digistalter.EMail`.
+
+War das Flatpak von Version 1.0.0 oder 1.0.1 installiert? Seit 1.0.2 hat die App eine neue Kennung. Das alte deshalb einmal entfernen und die Konten neu einrichten (bei `.deb` und `.rpm` wird alles übernommen):
+
+```bash
+flatpak uninstall --user io.github.deviablo.EMail
+```
 
 ### Tipp zum Ausprobieren
 
@@ -86,7 +92,7 @@ Zuerst ein Testkonto einrichten, nicht gleich das wichtigste Postfach.
 |---|---|
 | `.deb` | `sudo apt remove e-mail` |
 | `.rpm` | `sudo dnf remove e-mail` |
-| Flatpak | `flatpak uninstall --user io.github.deviablo.EMail` |
+| Flatpak | `flatpak uninstall --user io.github.digistalter.EMail` |
 
 ## Selbst bauen
 
@@ -94,7 +100,7 @@ Wie man die App aus dem Quelltext baut, testet und die Pakete selbst erzeugt, st
 
 ## Mitmachen
 
-Fehler und Ideen bitte als [Issue](https://github.com/deviablo/email/issues) melden.
+Fehler und Ideen bitte als [Issue](https://github.com/digistalter/email/issues) melden.
 
 ## Lizenz
 

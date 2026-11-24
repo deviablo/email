@@ -1,6 +1,6 @@
-data/io.github.deviablo.EMail.desktop.in.in
-data/io.github.deviablo.EMail.metainfo.xml.in
-data/io.github.deviablo.EMail.gschema.xml
+data/io.github.digistalter.EMail.desktop.in.in
+data/io.github.digistalter.EMail.metainfo.xml.in
+data/io.github.digistalter.EMail.gschema.xml
 crates/app/src/application.rs
 crates/app/src/folder_list.rs
 crates/app/src/message_list.rs

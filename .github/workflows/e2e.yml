@@ -42,7 +42,7 @@ jobs:
         run: |
           build-aux/package-deb.sh dist
           sudo apt-get install -y ./dist/*.deb
-          sudo aa-status | grep io.github.deviablo.EMail
+          sudo aa-status | grep io.github.digistalter.EMail
       - name: Test mail server
         run: |
           build-aux/test-mail-server.sh "$RUNNER_TEMP/mail-server"
@@ -51,9 +51,9 @@ jobs:
       - name: Settings
         run: |
           mkdir -p "$RUNNER_TEMP/schemas"
-          cp data/io.github.deviablo.EMail.gschema.xml "$RUNNER_TEMP/schemas/"
+          cp data/io.github.digistalter.EMail.gschema.xml "$RUNNER_TEMP/schemas/"
           # A tall window, so whole forms fit on the virtual screen.
-          printf '[io.github.deviablo.EMail]\nwindow-width=1300\nwindow-height=1150\n' \
+          printf '[io.github.digistalter.EMail]\nwindow-width=1300\nwindow-height=1150\n' \
             > "$RUNNER_TEMP/schemas/zz-e2e.gschema.override"
           glib-compile-schemas "$RUNNER_TEMP/schemas"
       - name: Run the user tests
@@ -82,8 +82,8 @@ jobs:
           GSETTINGS_BACKEND: memory
         run: |
           mkdir -p "$RUNNER_TEMP/shot-schemas"
-          cp data/io.github.deviablo.EMail.gschema.xml "$RUNNER_TEMP/shot-schemas/"
-          printf '[io.github.deviablo.EMail]\nwindow-width=1200\nwindow-height=760\n' \
+          cp data/io.github.digistalter.EMail.gschema.xml "$RUNNER_TEMP/shot-schemas/"
+          printf '[io.github.digistalter.EMail]\nwindow-width=1200\nwindow-height=760\n' \
             > "$RUNNER_TEMP/shot-schemas/zz-shots.gschema.override"
           glib-compile-schemas "$RUNNER_TEMP/shot-schemas"
           export HOME="$RUNNER_TEMP/shot-home"

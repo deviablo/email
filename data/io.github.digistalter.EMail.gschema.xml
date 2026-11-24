@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <schemalist gettext-domain="e-mail">
-  <schema id="io.github.deviablo.EMail" path="/io/github/deviablo/EMail/">
+  <schema id="io.github.digistalter.EMail" path="/io/github/digistalter/EMail/">
     <key name="window-width" type="i">
       <default>1100</default>
       <summary>Window width</summary>

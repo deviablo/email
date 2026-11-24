@@ -187,7 +187,7 @@ impl Editor {
         let bold = icon_button("format-text-bold-symbolic", &gettext("Bold (Ctrl+B)"));
         let italic = icon_button("format-text-italic-symbolic", &gettext("Italic (Ctrl+I)"));
         let link = icon_button(
-            "io.github.deviablo.EMail-link-symbolic",
+            "io.github.digistalter.EMail-link-symbolic",
             &gettext("Insert Link"),
         );
         let list = icon_button("view-list-bullet-symbolic", &gettext("Bulleted List"));
