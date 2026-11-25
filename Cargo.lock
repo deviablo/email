@@ -494,7 +494,7 @@ dependencies = [
 
 [[package]]
 name = "e-mail"
-version = "1.0.2"
+version = "1.0.3"
 dependencies = [
  "anyhow",
  "ashpd",
@@ -514,7 +514,7 @@ dependencies = [
 
 [[package]]
 name = "e-mail-core"
-version = "1.0.2"
+version = "1.0.3"
 dependencies = [
  "ammonia",
  "anyhow",

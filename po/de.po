@@ -1937,3 +1937,7 @@ msgstr "Neue App-ID io.github.digistalter.EMail; Passwörter, Einstellungen und 
 #: data/io.github.digistalter.EMail.metainfo.xml.in
 msgid "Flatpak: the earlier version has to be uninstalled once, accounts are set up again"
 msgstr "Flatpak: Die bisherige Version muss einmal deinstalliert werden, Konten werden neu eingerichtet"
+
+#: data/io.github.digistalter.EMail.metainfo.xml.in
+msgid "The app icon now has the same height as other app icons in the dock."
+msgstr "Das App-Symbol ist jetzt so hoch wie andere App-Symbole im Dock."
