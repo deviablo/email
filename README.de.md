@@ -8,7 +8,7 @@ Eine einfache, moderne E-Mail-App für Linux (GNOME und KDE), geschrieben in Rus
 
 Mehrere Konten, IMAP und SMTP, sonst nichts: kein Kalender, kein Chat, keine Kontaktverwaltung.
 
-**Aktuelle Version: 1.0.2**
+**Aktuelle Version: 1.0.3**
 
 ![Hauptfenster mit Ordnern, Liste und geöffneter Unterhaltung](data/screenshots/main.png)
 
@@ -38,18 +38,18 @@ Die Installationsdateien liegen bei jeder Version unter [Releases](https://githu
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-Datei: `e-mail_1.0.2_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
+Datei: `e-mail_1.0.3_amd64.deb` · für Ubuntu 24.04 und neuer, Debian 13 und neuer, Linux Mint 22 und neuer
 
 ```bash
-sudo apt install ./e-mail_1.0.2_amd64.deb
+sudo apt install ./e-mail_1.0.3_amd64.deb
 ```
 
 ### Fedora
 
-Datei: `e-mail-1.0.2-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
+Datei: `e-mail-1.0.3-1.x86_64.rpm` · für die aktuellen Fedora-Versionen
 
 ```bash
-sudo dnf install ./e-mail-1.0.2-1.x86_64.rpm
+sudo dnf install ./e-mail-1.0.3-1.x86_64.rpm
 ```
 
 ### Alle anderen Systeme (Flatpak)

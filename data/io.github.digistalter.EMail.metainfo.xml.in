@@ -56,6 +56,11 @@
     <binary>e-mail</binary>
   </provides>
   <releases>
+    <release version="1.0.3" date="2026-11-25">
+      <description>
+        <p>The app icon now has the same height as other app icons in the dock.</p>
+      </description>
+    </release>
     <release version="1.0.2" date="2026-11-24">
       <description>
         <p>The project now lives at github.com/digistalter/email.</p>

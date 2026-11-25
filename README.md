@@ -8,7 +8,7 @@ A simple, modern email client for Linux (GNOME and KDE), written in Rust with GT
 
 Several accounts, IMAP and SMTP, nothing else: no calendar, no chat, no contact management.
 
-**Current version: 1.0.2**
+**Current version: 1.0.3**
 
 ![Main window with folders, message list and an open conversation](data/screenshots/main.png)
 
@@ -38,18 +38,18 @@ The installation files for every version are under [Releases](https://github.com
 
 ### Ubuntu, Debian, Linux Mint, Pop!_OS, elementary OS
 
-File: `e-mail_1.0.2_amd64.deb` · for Ubuntu 24.04 and newer, Debian 13 and newer, Linux Mint 22 and newer
+File: `e-mail_1.0.3_amd64.deb` · for Ubuntu 24.04 and newer, Debian 13 and newer, Linux Mint 22 and newer
 
 ```bash
-sudo apt install ./e-mail_1.0.2_amd64.deb
+sudo apt install ./e-mail_1.0.3_amd64.deb
 ```
 
 ### Fedora
 
-File: `e-mail-1.0.2-1.x86_64.rpm` · for the current Fedora releases
+File: `e-mail-1.0.3-1.x86_64.rpm` · for the current Fedora releases
 
 ```bash
-sudo dnf install ./e-mail-1.0.2-1.x86_64.rpm
+sudo dnf install ./e-mail-1.0.3-1.x86_64.rpm
 ```
 
 ### All other systems (Flatpak)
